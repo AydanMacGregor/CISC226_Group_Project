@@ -6,6 +6,7 @@ public class movement : MonoBehaviour
 {
     public Rigidbody2D rb;
     Vector3 move;
+    int movementSpeed = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        move = new Vector3(Input.GetAxis("Horizontal") * 10, Input.GetAxis("Vertical") * 10, 0.0f);
+        move = new Vector3(Input.GetAxis("Horizontal") * movementSpeed, Input.GetAxis("Vertical") * movementSpeed, 0.0f);
         rb.velocity = new Vector3(move.x, move.y);
     }
 }
