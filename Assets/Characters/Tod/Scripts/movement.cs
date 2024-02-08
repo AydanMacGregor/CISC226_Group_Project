@@ -6,8 +6,12 @@ public class movement : MonoBehaviour
 {
     public Rigidbody2D rb;
     Vector3 move;
+<<<<<<< Updated upstream
     int movementSpeed = 4;
     public Vector2 direction;
+=======
+    int movementSpeed = 5;
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +21,7 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
         ProcessInputs();
     }
 
@@ -51,5 +56,9 @@ public class movement : MonoBehaviour
     void Move()
     {
         rb.velocity = new Vector3(move.x * movementSpeed, move.y * movementSpeed, 0.0f);
+=======
+        move = new Vector3(Input.GetAxis("Horizontal") * movementSpeed, Input.GetAxis("Vertical") * movementSpeed, 0.0f);
+        rb.velocity = new Vector3(move.x, move.y);
+>>>>>>> Stashed changes
     }
 }
