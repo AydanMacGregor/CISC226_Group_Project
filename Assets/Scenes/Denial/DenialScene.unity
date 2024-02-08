@@ -1014,7 +1014,10 @@ MonoBehaviour:
   lines:
   - Where, where am I? What is happening? How did I get here? Did I die?
   - No, that can't be, I can't be dead?! I'm the Grim Reaper God Dammit!
+  - This is a text<br>This is a test
+  - Huh thats weird
   textSpeed: 0
+  cam: {fileID: 229994897}
 --- !u!114 &953570853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,7 +1072,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

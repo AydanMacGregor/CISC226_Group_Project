@@ -9,9 +9,11 @@ public class DenialDialogue : MonoBehaviour
     public string[] lines;
     public float textSpeed;
     private int index;
+    private bool select;
     // Start is called before the first frame update
     void Start()
     {
+        select = false;
         textSpeed = .08f;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -20,9 +22,25 @@ public class DenialDialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (select)
         {
-            if (textComponent.text == lines[index])
+            if (Input.GetMouseButtonDown(0))
+            {
+                int wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, null);
+                if (wordIndex != -1)
+                {
+                    NextLine();
+                    select = false;
+                }
+            }
+        }
+        else if (Input.GetKeyDown("space"))
+        {
+            if (index > lines.Length - 1)
+            {
+                textComponent.enabled = false;
+            }
+            else if (textComponent.text == lines[index])
             {
                 NextLine();
             }
@@ -32,6 +50,7 @@ public class DenialDialogue : MonoBehaviour
                 textComponent.text = lines[index];
             }
         }
+        
     }
 
     void StartDialogue()
@@ -51,15 +70,20 @@ public class DenialDialogue : MonoBehaviour
 
     void NextLine()
     {
-        if (index < lines.Length -1)
+        index++;
+        Debug.Log("Increase index to: " + index + " " + (lines.Length - 1));
+        if ((index % 2) == 0 && index != 0 && index <= lines.Length - 1)
         {
-            index++;
+            Debug.Log("Now start prompting");
+            StopAllCoroutines();
+            textComponent.text = lines[index];
+            select = true;
+        }
+        else if (index <= lines.Length - 1)
+        {
+            Debug.Log("Tod Talking");
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
-        }
-        else
-        {
-            textComponent.enabled = false;
         }
     }
         
