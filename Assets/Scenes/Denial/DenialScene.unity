@@ -840,8 +840,8 @@ Tilemap:
   - first: {x: 10, y: -7, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 3
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -883,6 +883,7 @@ Tilemap:
       m_TileIndex: 3
       m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
+
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -7330,22 +7331,22 @@ Tilemap:
   - m_RefCount: 79
     m_Data:
       e00: -1
-      e01: 0.00000008742278
-      e02: 0
+      e01: -0.00000008742278
+      e02: -0
       e03: 0
-      e10: -0.00000008742278
+      e10: 0.00000008742278
       e11: -1
       e12: 0
       e13: 0
       e20: 0
-      e21: 0
+      e21: -0
       e22: 1
       e23: 0
       e30: 0
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 0
+  - m_RefCount: 2
     m_Data:
       e00: 1.7331275e-29
       e01: 2.2e-44
@@ -7402,8 +7403,6 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 685
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  - m_RefCount: 0
-    m_Data: {r: 3.6753e-41, g: 3.6753e-41, b: 3.6753e-41, a: 3.6753e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7553,15 +7552,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 03c8d23daeff997478bdd8ce3b48be79, type: 2}
-  m_sharedMaterial: {fileID: -2844904180721625416, guid: 03c8d23daeff997478bdd8ce3b48be79, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 80329b19e3f0d1c4791853fadbdce506, type: 2}
+  m_sharedMaterial: {fileID: -2844904180721625416, guid: 80329b19e3f0d1c4791853fadbdce506, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7642,7 +7641,6 @@ GameObject:
   - component: {fileID: 1225087261}
   - component: {fileID: 1225087260}
   - component: {fileID: 1225087265}
-  - component: {fileID: 1225087266}
   m_Layer: 6
   m_Name: Tod
   m_TagString: Tod
@@ -7815,7 +7813,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b51519b3dddd7f1409fd5448a2960ef6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad90fd562943e2a42b60465258e9edd0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7855,27 +7853,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slash: {fileID: 4586270653272118301, guid: 4d9924d0ab2d4384b9f4b626cce6555f, type: 3}
   tod: {fileID: 1225087259}
---- !u!95 &1225087266
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225087259}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c9453f5c93c07fa42a63488eb3644383, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1479927471
 GameObject:
   m_ObjectHideFlags: 0
@@ -37310,15 +37287,15 @@ Tilemap:
   - m_RefCount: 274
     m_Data:
       e00: -1
-      e01: 0.00000008742278
-      e02: 0
+      e01: -0.00000008742278
+      e02: -0
       e03: 0
-      e10: -0.00000008742278
+      e10: 0.00000008742278
       e11: -1
       e12: 0
       e13: 0
       e20: 0
-      e21: 0
+      e21: -0
       e22: 1
       e23: 0
       e30: 0
