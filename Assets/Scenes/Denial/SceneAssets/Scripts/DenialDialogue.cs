@@ -36,7 +36,7 @@ public class DenialDialogue : MonoBehaviour
         }
         else if (Input.GetKeyDown("space"))
         {
-            if (index > lines.Length - 1)
+            if (index > lines.Length - 2)
             {
                 textComponent.enabled = false;
             }
@@ -50,7 +50,6 @@ public class DenialDialogue : MonoBehaviour
                 textComponent.text = lines[index];
             }
         }
-        
     }
 
     void StartDialogue()
@@ -71,17 +70,14 @@ public class DenialDialogue : MonoBehaviour
     void NextLine()
     {
         index++;
-        Debug.Log("Increase index to: " + index + " " + (lines.Length - 1));
         if ((index % 2) == 0 && index != 0 && index <= lines.Length - 1)
         {
-            Debug.Log("Now start prompting");
             StopAllCoroutines();
             textComponent.text = lines[index];
             select = true;
         }
         else if (index <= lines.Length - 1)
         {
-            Debug.Log("Tod Talking");
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
