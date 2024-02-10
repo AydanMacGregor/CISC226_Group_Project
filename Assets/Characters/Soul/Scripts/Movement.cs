@@ -5,14 +5,14 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     internal Transform thisTransform;
-    public Animator animator;
+    //public Animator animator;
     public GameObject Tod;
 
     // The movement speed of the object
     public float moveSpeed = 1.5f;
 
     // A minimum and maximum time delay for taking a decision, choosing a direction to move in
-    public Vector2 decisionTime = new Vector2(1, 4);
+    public Vector2 decisionTime = new Vector2(1, 2);
     internal float decisionTimeCount = 0;
 
     // The possible directions that the object can move int, right, left, up, down, and zero for staying in place.
@@ -41,13 +41,16 @@ public class Movement : MonoBehaviour
 
         thisTransform.position += direction * Time.deltaTime * moveSpeed;
 
-        if (animator)
-        {
-            animator.SetFloat("MoveX", xDir);
-            animator.SetFloat("MoveY", yDir);
-        }
+        // if (animator)
+        // {
+        //     animator.SetFloat("MoveX", xDir);
+        //     animator.SetFloat("MoveY", yDir);
+        // }
 
-        if (decisionTimeCount > 0) decisionTimeCount -= Time.deltaTime;
+        if (decisionTimeCount > 0)
+        {
+            decisionTimeCount -= Time.deltaTime;
+        }
         else
         {
             // Choose a random time delay for taking a decision
@@ -58,10 +61,10 @@ public class Movement : MonoBehaviour
             ChooseMoveDirection();
         }
 
-        if (Vector2.Distance(Tod.transform.position, this.transform.position) <= 5)
+        if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 6 && Vector2.Distance(Tod.transform.position, thisTransform.position) >= 2)
         {
-            transform.position = Vector2.MoveTowards(transform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
-            transform.up = Tod.transform.position - transform.position;
+            thisTransform.position = Vector2.MoveTowards(transform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
+            //transform.up = Tod.transform.position - transform.position;
         }
     }
 
