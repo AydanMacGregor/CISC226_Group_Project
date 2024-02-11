@@ -7,6 +7,7 @@ public class Movement : MonoBehaviour
     internal Transform thisTransform;
     //public Animator animator;
     public GameObject Tod;
+    private float attackTime = 2f;
 
     // The movement speed of the object
     private float moveSpeed = 2f;
@@ -22,6 +23,9 @@ public class Movement : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    public bool isCharging = false;
+    private Vector3 todDir;
+    public bool touchingTod = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,16 +41,26 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 5)
+        if (!isCharging)
         {
-            if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 2f)
+            if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 5)
             {
-                transform.position = Vector2.MoveTowards(thisTransform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
+                FollowTod();
+            }
+            else
+            {
+                Move();
             }
         }
         else
         {
-            // Move the object in the chosen direction at the set speed
+            ChargeTod();
+        }
+    }
+
+    void Move()
+    {
+        // Move the object in the chosen direction at the set speed
             direction = moveDirections[currentMoveDirection];
             float xDir = direction.x;
             float yDir = direction.y;
@@ -72,6 +86,40 @@ public class Movement : MonoBehaviour
                 // Choose a movement direction, or stay in place
                 ChooseMoveDirection();
             }
+    }
+
+    void FollowTod()
+    {
+        if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 2f)
+            {
+                transform.position = Vector2.MoveTowards(thisTransform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
+            }
+            else
+            {
+                if (attackTime > 0)
+                {
+                    attackTime -= Time.deltaTime;
+                }
+                else
+                {
+                    attackTime = 2f;
+                    this.GetComponent<animationScript>().chooseAttack(1);
+                    this.GetComponent<attackScript>().attackChoice(1);
+                }
+            }
+    }
+
+    void ChargeTod()
+    {
+        if (thisTransform.position != Tod.transform.position)
+        {
+            todDir = (Tod.transform.position - thisTransform.position).normalized;
+            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+        }
+        else
+        {
+            touchingTod = true;
+            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
         }
     }
 
@@ -79,5 +127,10 @@ public class Movement : MonoBehaviour
     {
         // Choose whether to move sideways or up/down
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 }
