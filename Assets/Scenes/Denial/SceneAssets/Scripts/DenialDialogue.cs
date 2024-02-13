@@ -10,6 +10,7 @@ public class DenialDialogue : MonoBehaviour
     public float textSpeed;
     private int index;
     private bool select;
+    private int wordIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,13 @@ public class DenialDialogue : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                int wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, null);
+                wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, null);
                 if (wordIndex != -1)
                 {
+                    if (wordIndex == 1)
+                    {
+                        index++;
+                    }
                     NextLine();
                     select = false;
                 }
@@ -70,7 +75,7 @@ public class DenialDialogue : MonoBehaviour
     void NextLine()
     {
         index++;
-        if ((index % 2) == 0 && index != 0 && index <= lines.Length - 1)
+        if (index == 2)
         {
             StopAllCoroutines();
             textComponent.text = lines[index];
