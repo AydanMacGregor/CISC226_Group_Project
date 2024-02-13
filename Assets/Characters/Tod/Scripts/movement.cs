@@ -8,10 +8,11 @@ public class movement : MonoBehaviour
     Vector3 move;
     int movementSpeed = 4;
     public Vector2 direction;
+    public GameObject tod;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

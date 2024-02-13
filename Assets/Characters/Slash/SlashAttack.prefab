@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4559785402658226915}
   - component: {fileID: 7827881338406144408}
   - component: {fileID: 636607333031008646}
-  m_Layer: 0
+  - component: {fileID: 700982027281785676}
+  m_Layer: 8
   m_Name: SlashAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec62c01822f6630418445d78bc9704d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 42f61fbe9cc49bb49994b76e2fcd73f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08478844, y: 0.046423674}
+  m_Offset: {x: 0.007471472, y: -0.060348034}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -129,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6550472, y: 0.90873003}
+  m_Size: {x: 1.126313, y: 1.1222734}
   m_EdgeRadius: 0
 --- !u!114 &636607333031008646
 MonoBehaviour:
@@ -144,3 +145,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tf: {fileID: 8265502697488567960}
+--- !u!95 &700982027281785676
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586270653272118301}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58499352404c9cc43af816581d442c0d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
