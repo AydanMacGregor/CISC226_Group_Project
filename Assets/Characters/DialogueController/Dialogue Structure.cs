@@ -7,12 +7,9 @@ public class DialogueStructure : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     private float textSpeed;
-    private int index;
     private int wordIndex;
-    public ArrayList dialogue = new ArrayList();
-    public ArrayList isPrompt = new ArrayList();
-    private string currentNode;
-    private bool currentPrompt;
+    public List<Node> dialogue = new List<Node>();
+    private Node currentNode;
     
     void Start()
     {
@@ -22,63 +19,57 @@ public class DialogueStructure : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentPrompt)
+        if (currentNode.getPrompt())
         {
             if (Input.GetMouseButtonDown(0))
             {
                 wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, null);
                 if (wordIndex != -1)
                 {
-                    index += wordIndex;
+                    currentNode = currentNode.nextPrompt(wordIndex);
                     NextLine();
                 }
             }
         }
         else if (Input.GetKeyDown("space"))
         {
-            if (index > dialogue.Count - 2)
+            if (currentNode.getNext() == null)
             {
                 textComponent.enabled = false;
             }
-            else if (textComponent.text == currentNode)
+            else if (textComponent.text == currentNode.getText())
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = currentNode;
+                textComponent.text = currentNode.getText();
             }
         }
         
     }
 
-    public void initializeVar(bool[] s, string[] d, TextMeshProUGUI t, int i) 
+    public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
-        foreach (string str in d) 
+        for (int i = 0; i < d.Count; i ++)
         {
-            dialogue.Add(str);
-        }
-        foreach (bool p in s) 
-        {
-            isPrompt.Add(p);
+            dialogue.Add(d[i]);
         }
         textComponent = t;
-        index = i;
         StartDialogue();
     }
     
     public void StartDialogue()
     {
         textComponent.text = string.Empty;
-        currentNode = (string) dialogue[0];
-        currentPrompt = (bool) isPrompt[0];
+        currentNode = dialogue[0];
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
-        foreach (char c in currentNode.ToCharArray())
+        foreach (char c in currentNode.getText().ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
@@ -87,17 +78,17 @@ public class DialogueStructure : MonoBehaviour
 
     void NextLine()
     {
-        index++;
-        currentNode = (string) dialogue[index];
-        currentPrompt = (bool) isPrompt[index];
-        if (currentPrompt)
+        currentNode = currentNode.getNext();
+        if (currentNode.ip)
         {
             StopAllCoroutines();
-            textComponent.text = currentNode;
+            textComponent.alignment = TextAlignmentOptions.Left;
+            textComponent.text = currentNode.getText();
         }
         else
         {
             textComponent.text = string.Empty;
+            textComponent.alignment = TextAlignmentOptions.Center;
             StartCoroutine(TypeLine());
         }
     }
