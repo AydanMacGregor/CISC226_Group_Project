@@ -625,6 +625,7 @@ GameObject:
   - component: {fileID: 1225087265}
   - component: {fileID: 1225087267}
   - component: {fileID: 1225087266}
+  - component: {fileID: 1225087268}
   m_Layer: 6
   m_Name: Tod
   m_TagString: Tod
@@ -873,6 +874,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1225087268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225087259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14a823a0f914348699ad8409472910d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  minHealth: 0
+  currentHealth: 0
+  eyeball: {fileID: 21300000, guid: c522552c4e3497146a469eaf3c7bfeea, type: 3}
+  Charge: {fileID: 21300000, guid: 50cd97d87e708c0499a88f0f044f926f, type: 3}
 --- !u!1 &1459569366
 GameObject:
   m_ObjectHideFlags: 0
@@ -33437,11 +33455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8378512772114984642, guid: ccad5c1a4060c704d84e88c59325b38a, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 119
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 8378512772114984642, guid: ccad5c1a4060c704d84e88c59325b38a, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
-      value: 128
+      value: 448
       objectReference: {fileID: 0}
     - target: {fileID: 9205842456532771704, guid: ccad5c1a4060c704d84e88c59325b38a, type: 3}
       propertyPath: m_Constraints

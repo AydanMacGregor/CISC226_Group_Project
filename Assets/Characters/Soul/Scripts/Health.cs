@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     private int defaultHealth = 100;
     private int defaultDamageAmount = 50;
     public GameObject slash;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,20 +33,9 @@ public class Health : MonoBehaviour
     }
 
     // Check if the slash hit the soul
-    bool OnTriggerEnter()
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if(gameObject.name.Equals("slash"))
-        {
-            return true;
-        }
-        return false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Check if the slash hit the soul
-        if (OnTriggerEnter())
+        if(other.gameObject.name == "SlashAttack(Clone)")
         {
             damage(defaultDamageAmount);
         }
@@ -55,7 +45,7 @@ public class Health : MonoBehaviour
     public void damage(int damageAmount)
     {
         currentHealth -= damageAmount;
-        if (currentHealth <= minHealth)
+        if (currentHealth <= 0)
         {
             kill();
         }

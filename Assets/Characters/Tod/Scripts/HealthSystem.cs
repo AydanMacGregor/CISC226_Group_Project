@@ -10,8 +10,8 @@ public class HealthSystem : MonoBehaviour
     private int eyeballDamageAmount = 50;
     private int chargeDamageAmount = 25;
 
-    public GameObject eyeball;
-    public GameObject Charge;
+    public Sprite eyeball;
+    public Sprite Charge;
 
     // Start is called before the first frame update
     void Start()
@@ -34,39 +34,27 @@ public class HealthSystem : MonoBehaviour
     }
 
     // Check which attack hit Tod
-    int OnTriggerEnter()
+    void OnCollisionEnter2D(Collision2D other)
     {
-        if(gameObject.name.Equals("Charge3"))
+        if (other.gameObject.name == "Soul")
         {
-            return 1;
+            if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
+            {
+                damage(chargeDamageAmount);
+            }
+            else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == eyeball)
+            {
+                damage(eyeballDamageAmount);
+            }
         }
-        else if (gameObject.name.Equals("Projectile"))
-        {
-            return 2;
-        }
-
-        return -1;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        int attackCase = OnTriggerEnter();
-        // Check which attack hit Tod
-        if (attackCase == 1)
-        {
-            damage(eyeballDamageAmount);
-        }
-        else if (attackCase == 2)
-        {
-            damage(chargeDamageAmount);
-        }
+        
     }
 
     // Damage Tod's health when the souls attack him
     public void damage(int damageAmount)
     {
         currentHealth -= damageAmount;
+        Debug.Log(currentHealth);
 
         if (currentHealth < minHealth)
         {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tod
   - DialogueSystem
+  - SlashAttack
   layers:
   - Default
   - TransparentFX

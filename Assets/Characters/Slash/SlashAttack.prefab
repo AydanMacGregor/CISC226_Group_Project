@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 700982027281785676}
   m_Layer: 8
   m_Name: SlashAttack
-  m_TagString: Untagged
+  m_TagString: SlashAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 439
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 64

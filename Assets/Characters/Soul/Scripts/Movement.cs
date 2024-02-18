@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    void Move()
+    public void Move()
     {
         // Move the object in the chosen direction at the set speed
             direction = moveDirections[currentMoveDirection];
@@ -66,12 +66,6 @@ public class Movement : MonoBehaviour
             float yDir = direction.y;
 
             thisTransform.position += direction * Time.deltaTime * moveSpeed;
-
-            // if (animator)
-            // {
-            //     animator.SetFloat("MoveX", xDir);
-            //     animator.SetFloat("MoveY", yDir);
-            // }
 
             if (decisionTimeCount > 0)
             {
@@ -111,16 +105,8 @@ public class Movement : MonoBehaviour
 
     void ChargeTod()
     {
-        if (thisTransform.position != Tod.transform.position)
-        {
-            todDir = (Tod.transform.position - thisTransform.position).normalized;
-            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
-        }
-        else
-        {
-            touchingTod = true;
-            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
-        }
+        todDir = (Tod.transform.position - thisTransform.position).normalized;
+        transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
     }
 
     void ChooseMoveDirection()
@@ -131,6 +117,10 @@ public class Movement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        Debug.Log(collision.gameObject.name);
+        if (collision.gameObject.name == "Tod")
+        {
+            isCharging = false;
+        }
     }
 }
