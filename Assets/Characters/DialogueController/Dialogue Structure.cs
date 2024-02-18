@@ -3,69 +3,73 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class DenialDialogue : MonoBehaviour
+public class DialogueStructure : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
-    public string[] lines;
-    public float textSpeed;
-    private int index;
-    private bool select;
+    private float textSpeed;
     private int wordIndex;
-    // Start is called before the first frame update
+    public List<Node> dialogue = new List<Node>();
+    private Node currentNode;
+    
     void Start()
     {
-        select = false;
         textSpeed = .08f;
-        textComponent.text = string.Empty;
-        StartDialogue();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (select)
+        if (currentNode.getPrompt())
         {
             if (Input.GetMouseButtonDown(0))
             {
                 wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, null);
                 if (wordIndex != -1)
                 {
-                    if (wordIndex == 1)
-                    {
-                        index++;
-                    }
+                    currentNode = currentNode.nextPrompt(wordIndex);
                     NextLine();
-                    select = false;
                 }
             }
         }
         else if (Input.GetKeyDown("space"))
         {
-            if (index > lines.Length - 2)
+            if (currentNode.getNext() == null)
             {
                 textComponent.enabled = false;
             }
-            else if (textComponent.text == lines[index])
+            else if (textComponent.text == currentNode.getText())
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = currentNode.getText();
             }
         }
+        
     }
 
-    void StartDialogue()
+    public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
-        index = 0;
+        for (int i = 0; i < d.Count; i ++)
+        {
+            dialogue.Add(d[i]);
+        }
+        textComponent = t;
+        StartDialogue();
+    }
+    
+    public void StartDialogue()
+    {
+        textComponent.text = string.Empty;
+        currentNode = dialogue[0];
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
-        foreach (char c in lines[index].ToCharArray())
+        foreach (char c in currentNode.getText().ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
@@ -74,18 +78,18 @@ public class DenialDialogue : MonoBehaviour
 
     void NextLine()
     {
-        index++;
-        if (index == 2)
+        currentNode = currentNode.getNext();
+        if (currentNode.ip)
         {
             StopAllCoroutines();
-            textComponent.text = lines[index];
-            select = true;
+            textComponent.alignment = TextAlignmentOptions.Left;
+            textComponent.text = currentNode.getText();
         }
-        else if (index <= lines.Length - 1)
+        else
         {
             textComponent.text = string.Empty;
+            textComponent.alignment = TextAlignmentOptions.Center;
             StartCoroutine(TypeLine());
         }
     }
-        
 }
