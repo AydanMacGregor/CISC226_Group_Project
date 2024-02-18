@@ -52,6 +52,7 @@ public class DialogueStructure : MonoBehaviour
 
     public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
+        dialogue = new List<Node>();
         for (int i = 0; i < d.Count; i ++)
         {
             dialogue.Add(d[i]);
