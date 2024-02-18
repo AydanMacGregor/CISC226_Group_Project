@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 733555142563548269}
   - component: {fileID: 160154267281456771}
   - component: {fileID: 6350695972500001051}
+  - component: {fileID: 5393909998385729015}
   m_Layer: 0
   m_Name: Soul
   m_TagString: Untagged
@@ -216,3 +217,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eyeball: {fileID: 5384778140745771583, guid: 15023c5a75cb7a94aa98c7e0f088bc05, type: 3}
+--- !u!114 &5393909998385729015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106664310733263799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa9bfd784a6044cc892c31f219df43b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  minHealth: 0
+  currentHealth: 100
+  slash: {fileID: 4586270653272118301, guid: 4d9924d0ab2d4384b9f4b626cce6555f, type: 3}
