@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class batMovements : MonoBehaviour
+public class BMovement : MonoBehaviour
 {
     internal Transform thisTransform;
     //public Animator animator;
@@ -10,7 +10,7 @@ public class batMovements : MonoBehaviour
     private float attackTime = 2f;
 
     // The movement speed of the object
-    private float moveSpeed = 2.5f;
+    private float moveSpeed = 3f;
 
     // A minimum and maximum time delay for taking a decision, choosing a direction to move in
     private Vector2 decisionTime = new Vector2(1, 6);
@@ -95,9 +95,8 @@ public class batMovements : MonoBehaviour
                 }
                 else
                 {
-                    attackTime = 2f;
-                    this.GetComponent<animationScript>().chooseAttack(1);
-                    this.GetComponent<attackScript>().attackChoice(1);
+                    attackTime = 2f; 
+                    this.GetComponent<BAttack>().attackChoice(0);
                 }
             }
     }
@@ -107,12 +106,12 @@ public class batMovements : MonoBehaviour
         if (thisTransform.position != Tod.transform.position)
         {
             todDir = (Tod.transform.position - thisTransform.position).normalized;
-            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
         }
         else
         {
             touchingTod = true;
-            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
         }
     }
 
