@@ -18,7 +18,7 @@ public class animationScript : MonoBehaviour
         
     }
 
-    public void chooseAttack(short n)
+    public void chooseAttack(int n)
     {
         an.Play(attackAnimations[n]);
     }

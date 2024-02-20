@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
     public Rigidbody2D rb;
 
     public bool isCharging = false;
+    public bool isMovingBack = false;
     private Vector3 todDir;
     public bool touchingTod = false;
     // Start is called before the first frame update
@@ -43,7 +44,7 @@ public class Movement : MonoBehaviour
     {
         if (!isCharging)
         {
-            if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 5)
+            if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 8)
             {
                 FollowTod();
             }
@@ -54,11 +55,12 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            ChargeTod();
+            AttackTod();
         }
+        
     }
 
-    void Move()
+    public void Move()
     {
         // Move the object in the chosen direction at the set speed
             direction = moveDirections[currentMoveDirection];
@@ -66,12 +68,6 @@ public class Movement : MonoBehaviour
             float yDir = direction.y;
 
             thisTransform.position += direction * Time.deltaTime * moveSpeed;
-
-            // if (animator)
-            // {
-            //     animator.SetFloat("MoveX", xDir);
-            //     animator.SetFloat("MoveY", yDir);
-            // }
 
             if (decisionTimeCount > 0)
             {
@@ -90,36 +86,37 @@ public class Movement : MonoBehaviour
 
     void FollowTod()
     {
-        if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 2f)
+        if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 4f)
+        {
+            transform.position = Vector2.MoveTowards(thisTransform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            if (attackTime > 0)
             {
-                transform.position = Vector2.MoveTowards(thisTransform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
+                attackTime -= Time.deltaTime;
             }
             else
             {
-                if (attackTime > 0)
-                {
-                    attackTime -= Time.deltaTime;
-                }
-                else
-                {
-                    attackTime = 2f;
-                    this.GetComponent<animationScript>().chooseAttack(1);
-                    this.GetComponent<attackScript>().attackChoice(1);
-                }
+                attackTime = 3f;
+                int attack = Random.Range(0, 2);
+                this.GetComponent<animationScript>().chooseAttack(attack);
+                this.GetComponent<attackScript>().attackChoice(attack);
             }
+        }
     }
 
-    void ChargeTod()
+    public void AttackTod()
     {
-        if (thisTransform.position != Tod.transform.position)
+        if (isMovingBack)
         {
-            todDir = (Tod.transform.position - thisTransform.position).normalized;
+            todDir = (thisTransform.position - Tod.transform.position).normalized;
             transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
         }
         else
         {
-            touchingTod = true;
-            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+            todDir = (Tod.transform.position - thisTransform.position).normalized;
+            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
         }
     }
 
@@ -131,6 +128,10 @@ public class Movement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        if (collision.gameObject.name == "Tod")
+        {
+            this.GetComponent<attackScript>().StopAllCoroutines();
+            StartCoroutine(this.GetComponent<attackScript>().MoveAwayTod());
+        }
     }
 }

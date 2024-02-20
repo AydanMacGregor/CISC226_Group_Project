@@ -5,19 +5,8 @@ using UnityEngine;
 public class attackScript : MonoBehaviour
 {
     public GameObject eyeball;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void attackChoice(short n)
+   
+    public void attackChoice(int n)
     {
         switch (n){
             case 0:
@@ -42,15 +31,22 @@ public class attackScript : MonoBehaviour
     IEnumerator DelayCharge()
     {
         yield return new WaitForSeconds(0.2f);
+        this.GetComponent<Movement>().isCharging = true;
         StartCoroutine(MoveTowardsTod());
     }
 
     IEnumerator MoveTowardsTod()
     {
-        this.GetComponent<Movement>().isCharging = true;
         yield return new WaitForSeconds(2f);
-        this.GetComponent<Movement>().isCharging = false;
-        this.GetComponent<Movement>().touchingTod = false;
+        StartCoroutine(MoveAwayTod());
+    }
+
+    public IEnumerator MoveAwayTod()
+    {
         this.GetComponent<Animator>().Play("UnCharge");
+        this.GetComponent<Movement>().isMovingBack = true;
+        yield return new WaitForSeconds(0.5f);
+        this.GetComponent<Movement>().isCharging = false;
+        this.GetComponent<Movement>().isMovingBack = false;
     }
 }

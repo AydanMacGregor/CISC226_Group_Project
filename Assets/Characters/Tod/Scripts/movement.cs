@@ -8,16 +8,22 @@ public class movement : MonoBehaviour
     Vector3 move;
     int movementSpeed = 4;
     public Vector2 direction;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    public GameObject tod;
+    public bool doneDialogue;
+    
     // Update is called once per frame
     void Update()
     {
-        ProcessInputs();
+        Debug.Log(doneDialogue);
+        if (!this.GetComponent<NovelIdea>().blockInput && doneDialogue)
+        {
+            ProcessInputs();
+        }
+        else
+        {
+            move = Vector2.zero;
+        }
+        
     }
 
     void FixedUpdate()
