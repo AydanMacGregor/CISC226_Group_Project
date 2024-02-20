@@ -10,6 +10,8 @@ public class DialogueStructure : MonoBehaviour
     private int wordIndex;
     public List<Node> dialogue = new List<Node>();
     private Node currentNode;
+    public GameObject tod;
+    public bool done = false;
     
     void Start()
     {
@@ -36,6 +38,7 @@ public class DialogueStructure : MonoBehaviour
             if (currentNode.getNext() == null)
             {
                 textComponent.enabled = false;
+                tod.GetComponent<movement>().doneDialogue = true;
             }
             else if (textComponent.text == currentNode.getText())
             {
@@ -52,6 +55,7 @@ public class DialogueStructure : MonoBehaviour
 
     public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
+        tod.GetComponent<movement>().doneDialogue = false;
         dialogue = new List<Node>();
         for (int i = 0; i < d.Count; i ++)
         {

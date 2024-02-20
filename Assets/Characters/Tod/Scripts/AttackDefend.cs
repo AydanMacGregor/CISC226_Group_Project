@@ -16,9 +16,13 @@ public class AttackDefend : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (!this.GetComponent<NovelIdea>().blockInput && this.GetComponent<movement>().doneDialogue)
         {
-            Instantiate(slash, new Vector3(tod.transform.position.x + (0.5f * dir.x), tod.transform.position.y + (0.5f * dir.y), tod.transform.position.z), Quaternion.identity);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Instantiate(slash, new Vector3(tod.transform.position.x + (0.5f * dir.x), tod.transform.position.y + (0.5f * dir.y), tod.transform.position.z), Quaternion.identity);
+            }
         }
+        
     }
 }
