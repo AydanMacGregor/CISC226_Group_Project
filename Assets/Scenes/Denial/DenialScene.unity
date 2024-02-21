@@ -691,6 +691,11 @@ MonoBehaviour:
   cam: {fileID: 229994897}
   blockInput: 0
   canStart: 0
+--- !u!95 &1225087268 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4437435298262432465, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
+  m_PrefabInstance: {fileID: 7067811893197500173}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1459569366
 GameObject:
   m_ObjectHideFlags: 0
@@ -36838,6 +36843,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1956514534477776163, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
+      propertyPath: an
+      value: 
+      objectReference: {fileID: 1225087268}
     - target: {fileID: 6207316408233641074, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
       propertyPath: m_Name
       value: Tod

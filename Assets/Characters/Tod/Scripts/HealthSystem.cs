@@ -36,18 +36,20 @@ public class HealthSystem : MonoBehaviour
     // Check which attack hit Tod
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Soul")
+        if (!gameObject.GetComponent<AttackDefend>().s)
         {
-            if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
+            if (other.gameObject.name == "Soul")
             {
-                damage(chargeDamageAmount);
-            }
-            else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == eyeball)
-            {
-                damage(eyeballDamageAmount);
+                if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
+                {
+                    damage(chargeDamageAmount);
+                }
+                else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == eyeball)
+                {
+                    damage(eyeballDamageAmount);
+                }
             }
         }
-        
     }
 
     // Damage Tod's health when the souls attack him

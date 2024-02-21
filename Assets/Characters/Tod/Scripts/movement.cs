@@ -14,7 +14,6 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(doneDialogue);
         if (!this.GetComponent<NovelIdea>().blockInput && doneDialogue)
         {
             ProcessInputs();
