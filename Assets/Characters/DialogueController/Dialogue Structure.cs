@@ -12,6 +12,8 @@ public class DialogueStructure : MonoBehaviour
     private Node currentNode;
     public GameObject tod;
     public bool done = false;
+    public int todScore;
+    private int[] timeScores = {3, 6, 9};
     
     void Start()
     {
@@ -28,6 +30,10 @@ public class DialogueStructure : MonoBehaviour
                 wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, null);
                 if (wordIndex != -1)
                 {
+                    if (wordIndex >= 0)
+                    {
+                        todScore += timeScores[wordIndex];
+                    }
                     currentNode = currentNode.nextPrompt(wordIndex);
                     NextLine();
                 }
@@ -38,6 +44,7 @@ public class DialogueStructure : MonoBehaviour
             if (currentNode.getNext() == null)
             {
                 textComponent.enabled = false;
+                tod.GetComponent<NovelIdea>().scoreTime = todScore;
                 tod.GetComponent<movement>().doneDialogue = true;
             }
             else if (textComponent.text == currentNode.getText())
@@ -55,6 +62,8 @@ public class DialogueStructure : MonoBehaviour
 
     public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
+        todScore = 0;
+        tod.GetComponent<NovelIdea>().scoreTime = 0;
         tod.GetComponent<movement>().doneDialogue = false;
         dialogue = new List<Node>();
         for (int i = 0; i < d.Count; i ++)
@@ -87,13 +96,14 @@ public class DialogueStructure : MonoBehaviour
         if (currentNode.ip)
         {
             StopAllCoroutines();
-            textComponent.alignment = TextAlignmentOptions.Left;
+            textComponent.alignment = TextAlignmentOptions.TopLeft;
             textComponent.text = currentNode.getText();
         }
         else
         {
             textComponent.text = string.Empty;
             textComponent.alignment = TextAlignmentOptions.Center;
+            textComponent.alignment = TextAlignmentOptions.Top;
             StartCoroutine(TypeLine());
         }
     }

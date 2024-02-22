@@ -10,6 +10,7 @@ public class AttackDefend : MonoBehaviour
     private float attackTimer = 1f;
     public Animator an;
     public bool s = false;
+    public bool sl = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +28,7 @@ public class AttackDefend : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     attackTimer = 1f;
+                    sl = true;
                     Instantiate(slash, new Vector3(tod.transform.position.x + (0.5f * dir.x), tod.transform.position.y + (0.5f * dir.y), tod.transform.position.z), Quaternion.identity);
                 }
                 else if (Input.GetMouseButtonDown(1))

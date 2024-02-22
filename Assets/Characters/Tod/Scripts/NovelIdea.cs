@@ -10,6 +10,7 @@ public class NovelIdea : MonoBehaviour
     public bool blockInput;
     private int ran;
     public bool canStart;
+    public int scoreTime;
 
     void Start()
     {
@@ -20,12 +21,12 @@ public class NovelIdea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(scoreTime);
         if (canStart)
         {
             if (timedRebel < 0)
             {
                 ran = Random.Range(0,2);
-                ran = 1;
                 if (flip)
                 {
                     flip = flip ? false : true;
@@ -46,7 +47,7 @@ public class NovelIdea : MonoBehaviour
                 {
                     blockInput = blockInput ? false : true;
                 }
-                timedRebel = 20f;
+                timedRebel = scoreTime;
             }
             timedRebel -= Time.deltaTime;
         }
