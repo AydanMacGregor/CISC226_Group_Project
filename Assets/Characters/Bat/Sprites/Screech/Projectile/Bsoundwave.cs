@@ -11,14 +11,22 @@ public class Bsoundwave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tod = GameObject.Find("Tod");
-        dir = (tod.transform.position - this.transform.position).normalized;
+        rb = GetComponent<Rigidbody2D>();
+        tod = GameObject.FindGameObjectWithTag("Tod");
+
+        dir = (tod.transform.position - transform.position);
+        rb.velocity = new Vector2(dir.x, dir.y).normalized * Speed;
+
+        float rot = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rot - 90);
+
+        Destroy(gameObject, 4);
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(dir.x * Speed, dir.y * Speed);
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)

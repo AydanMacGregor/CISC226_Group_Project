@@ -10,8 +10,15 @@ public class HealthSystem : MonoBehaviour
     private int eyeballDamageAmount = 50;
     private int chargeDamageAmount = 25;
 
+    private int screechDamageAmount = 50;
+
+    private int batDamageAmount = 25;
+
     public Sprite eyeball;
     public Sprite Charge;
+    public Sprite Screech;
+    public Sprite Bat;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +52,18 @@ public class HealthSystem : MonoBehaviour
             else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == eyeball)
             {
                 damage(eyeballDamageAmount);
+            }
+        }
+
+        if (other.gameObject.name == "Bat")
+        {
+            if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Bat)
+            {
+                damage(batDamageAmount);
+            }
+            else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Screech)
+            {
+                damage(screechDamageAmount);
             }
         }
         

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BAttack : MonoBehaviour
 {
     public GameObject soundwave;
+    public Transform wavePos;
 
     // Start is called before the first frame update
     void Start()
@@ -49,12 +50,13 @@ public class BAttack : MonoBehaviour
         this.GetComponent<BMovement>().isBiting = true;
         yield return new WaitForSeconds(2f);
         this.GetComponent<BMovement>().isBiting = false;
-        this.GetComponent<BMovement>().touchingTod = false;
     }
 
     IEnumerator screechAttack()
     {
+        this.GetComponent<BMovement>().isScreeching = true;
         yield return new WaitForSeconds(0.5f);
-        Instantiate(soundwave, new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z), Quaternion.identity);
+        Instantiate(soundwave, wavePos.position, Quaternion.identity);
+        this.GetComponent<BMovement>().isScreeching = false;
     }
 }

@@ -10,7 +10,7 @@ public class BMovement : MonoBehaviour
     private float attackTime = 2f;
 
     // The movement speed of the object
-    private float moveSpeed = 3f;
+    private float moveSpeed = 2.75f;
 
     // A minimum and maximum time delay for taking a decision, choosing a direction to move in
     private Vector2 decisionTime = new Vector2(1, 6);
@@ -24,8 +24,10 @@ public class BMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     public bool isBiting = false;
+
+    public bool isScreeching = false;
     private Vector3 todDir;
-    public bool touchingTod = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,13 +60,8 @@ public class BMovement : MonoBehaviour
             float xDir = direction.x;
             float yDir = direction.y;
 
-            thisTransform.position += direction * Time.deltaTime * moveSpeed;
-
-            // if (animator)
-            // {
-            //     animator.SetFloat("MoveX", xDir);
-            //     animator.SetFloat("MoveY", yDir);
-            // }
+            // thisTransform.position += direction * Time.deltaTime * moveSpeed;
+            rb.velocity = new Vector3(xDir * moveSpeed, yDir * moveSpeed, 0.0f);
 
             if (decisionTimeCount > 0)
             {
@@ -85,10 +82,13 @@ public class BMovement : MonoBehaviour
     {
         if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 2f)
             {
-                transform.position = Vector2.MoveTowards(thisTransform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
+                todDir = (Tod.transform.position - thisTransform.position).normalized;
+                rb.velocity = new Vector3(todDir.x * moveSpeed, todDir.y * moveSpeed, 0.0f);
             }
             else
             {
+                rb.velocity = Vector2.zero;
+
                 if (attackTime > 0)
                 {
                     attackTime -= Time.deltaTime;
@@ -96,6 +96,7 @@ public class BMovement : MonoBehaviour
                 else
                 {
                     attackTime = 2f; 
+                    this.GetComponent<BAnimation>().chooseAttack(1);
                     this.GetComponent<BAttack>().attackChoice(1);
                 }
             }
@@ -103,28 +104,13 @@ public class BMovement : MonoBehaviour
 
     void AttackTod()
     {
-        if (thisTransform.position != Tod.transform.position)
-        {
-            todDir = (Tod.transform.position - thisTransform.position).normalized;
-            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
-            attackTime = 2f; 
-            this.GetComponent<BAttack>().attackChoice(1);
-        }
-        else
-        {
-            touchingTod = true;
-            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
-        }
+        todDir = (Tod.transform.position - thisTransform.position).normalized;
+        transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
     }
 
     void ChooseMoveDirection()
     {
         // Choose whether to move sideways or up/down
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        
     }
 }

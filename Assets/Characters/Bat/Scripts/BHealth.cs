@@ -9,7 +9,9 @@ public class BHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     private int defaultHealth = 150;
     private int defaultDamageAmount = 50;
-    public GameObject slash;
+
+    public GameObject Slash;
+    public GameObject bat;
     
 
     // Start is called before the first frame update
@@ -33,9 +35,9 @@ public class BHealth : MonoBehaviour
     }
 
     // Check if the slash hit the bat
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if(other.gameObject.name == "SlashAttack(Clone)")
+        if (collision.gameObject == Slash)
         {
             damage(defaultDamageAmount);
         }
@@ -47,13 +49,7 @@ public class BHealth : MonoBehaviour
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
-            kill();
+            Destroy(bat);
         }
-    }
-
-    // Destroy bat if health >= minHealth
-    public void kill()
-    {
-        Destroy(this.gameObject);
     }
 }
