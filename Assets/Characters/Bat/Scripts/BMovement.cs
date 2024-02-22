@@ -96,7 +96,7 @@ public class BMovement : MonoBehaviour
                 else
                 {
                     attackTime = 2f; 
-                    this.GetComponent<BAttack>().attackChoice(0);
+                    this.GetComponent<BAttack>().attackChoice(1);
                 }
             }
     }
@@ -107,6 +107,8 @@ public class BMovement : MonoBehaviour
         {
             todDir = (Tod.transform.position - thisTransform.position).normalized;
             transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
+            attackTime = 2f; 
+            this.GetComponent<BAttack>().attackChoice(1);
         }
         else
         {

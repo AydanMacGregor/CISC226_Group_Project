@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class animationScript : MonoBehaviour
+public class BAnimation : MonoBehaviour
 {
     public Animator an;
-    private string[] attackAnimations = {"ThrowEye", "Charge", "ProjectileThrow"};
+    private string[] attackAnimations = {"Bite_Anim", "Screech_Anim"};
     // Start is called before the first frame update
     void Start()
     {
