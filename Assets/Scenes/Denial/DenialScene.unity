@@ -36825,7 +36825,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3077336506777984200, guid: d8b4aaefe4a8da04a871cc06477bb51d, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
-      value: 2039
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4990476943609280984, guid: d8b4aaefe4a8da04a871cc06477bb51d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -36872,12 +36872,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1225087259}
     - target: {fileID: 6817932703630424688, guid: d8b4aaefe4a8da04a871cc06477bb51d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817932703630424688, guid: d8b4aaefe4a8da04a871cc06477bb51d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817932703630424688, guid: d8b4aaefe4a8da04a871cc06477bb51d, type: 3}
       propertyPath: m_IncludeLayers.m_Bits
-      value: 2039
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 7573728687409043104, guid: d8b4aaefe4a8da04a871cc06477bb51d, type: 3}
       propertyPath: m_Name
       value: Bat
+      objectReference: {fileID: 0}
+    - target: {fileID: 7573728687409043104, guid: d8b4aaefe4a8da04a871cc06477bb51d, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
