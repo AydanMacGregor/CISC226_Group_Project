@@ -12,8 +12,15 @@ public class HealthSystem : MonoBehaviour
     private int beamDamageAmount = 25;
     private float damageTime = 0f;
 
+    private int screechDamageAmount = 50;
+
+    private int batDamageAmount = 25;
+
     public Sprite eyeball;
     public Sprite Charge;
+    public Sprite Screech;
+    public Sprite Bat;
+
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +81,17 @@ public class HealthSystem : MonoBehaviour
         if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
         {
             damageTime = 0;
+        }
+        if (other.gameObject.name == "Bat")
+        {
+            if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Bat)
+            {
+                damage(batDamageAmount);
+            }
+            else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Screech)
+            {
+                damage(screechDamageAmount);
+            }
         }
     }
 
