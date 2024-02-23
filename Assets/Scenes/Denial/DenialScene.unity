@@ -553,8 +553,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -253, y: -277}
-  m_SizeDelta: {x: 800, y: 200}
+  m_AnchoredPosition: {x: -300, y: -300}
+  m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953570853
 MonoBehaviour:
@@ -676,11 +676,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8947285784463414411, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
   m_PrefabInstance: {fileID: 7067811893197500173}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1225087265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!95 &1225087268 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4437435298262432465, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
+  m_PrefabInstance: {fileID: 7067811893197500173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1225087275 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6199062994869009301, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
+  m_PrefabInstance: {fileID: 7067811893197500173}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225087259}
   m_Enabled: 1
@@ -36991,6 +36995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tod
       objectReference: {fileID: 0}
+    - target: {fileID: 7111556100648401284, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 229994897}
     - target: {fileID: 8947285784463414411, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.5
@@ -37034,10 +37042,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6207316408233641074, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1225087265}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
 --- !u!1001 &8691445126424792268
 PrefabInstance:

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4437435298262432465}
   - component: {fileID: 486470272222347524}
   - component: {fileID: 245716782362604562}
+  - component: {fileID: 7111556100648401284}
   m_Layer: 6
   m_Name: Tod
   m_TagString: Tod
@@ -216,6 +217,7 @@ MonoBehaviour:
   rb: {fileID: 850761657555952327}
   direction: {x: 0, y: 0}
   tod: {fileID: 6207316408233641074}
+  doneDialogue: 0
 --- !u!114 &1956514534477776163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +232,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slash: {fileID: 4586270653272118301, guid: 4d9924d0ab2d4384b9f4b626cce6555f, type: 3}
   tod: {fileID: 6207316408233641074}
+  an: {fileID: 4437435298262432465}
+  s: 0
+  sl: 0
 --- !u!95 &4437435298262432465
 Animator:
   serializedVersion: 5
@@ -265,6 +270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   an: {fileID: 4437435298262432465}
   rb: {fileID: 850761657555952327}
+  idle: {fileID: 21300000, guid: ad90fd562943e2a42b60465258e9edd0, type: 3}
+  sr: {fileID: 6199062994869009301}
 --- !u!114 &245716782362604562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,3 +289,19 @@ MonoBehaviour:
   currentHealth: 0
   eyeball: {fileID: 21300000, guid: c522552c4e3497146a469eaf3c7bfeea, type: 3}
   Charge: {fileID: 21300000, guid: 50cd97d87e708c0499a88f0f044f926f, type: 3}
+--- !u!114 &7111556100648401284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6207316408233641074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 668cceb390e910e409bc928bd1f7d451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  blockInput: 0
+  canStart: 0
+  scoreTime: 0

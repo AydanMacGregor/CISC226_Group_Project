@@ -9,6 +9,8 @@ public class HealthSystem : MonoBehaviour
     private int defaultHealth = 100;
     private int eyeballDamageAmount = 50;
     private int chargeDamageAmount = 25;
+    private int beamDamageAmount = 25;
+    private float damageTime = 0f;
 
     private int screechDamageAmount = 50;
 
@@ -43,18 +45,43 @@ public class HealthSystem : MonoBehaviour
     // Check which attack hit Tod
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.name == "Soul")
+        if (!gameObject.GetComponent<AttackDefend>().s)
         {
-            if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
+            if (other.gameObject.name == "Soul")
             {
-                damage(chargeDamageAmount);
+                if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
+                {
+                    damage(chargeDamageAmount);
+                }
+                else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == eyeball)
+                {
+                    damage(eyeballDamageAmount);
+                }
             }
-            else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == eyeball)
-            {
-                damage(eyeballDamageAmount);
-            }
+            
         }
+    }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+        {
+            damageTime -= Time.deltaTime;
+            if (damageTime <= 0)
+            {
+                damage(beamDamageAmount);
+                damageTime = 1f;
+            }
+            
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+        {
+            damageTime = 0;
+        }
         if (other.gameObject.name == "Bat")
         {
             if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Bat)
@@ -66,16 +93,13 @@ public class HealthSystem : MonoBehaviour
                 damage(screechDamageAmount);
             }
         }
-        
     }
 
     // Damage Tod's health when the souls attack him
     public void damage(int damageAmount)
     {
         currentHealth -= damageAmount;
-        Debug.Log(currentHealth);
-
-        if (currentHealth < minHealth)
+        if (currentHealth <= minHealth)
         {
             kill();
         }

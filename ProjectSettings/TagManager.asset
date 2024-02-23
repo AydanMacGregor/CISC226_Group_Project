@@ -7,6 +7,9 @@ TagManager:
   - Tod
   - DialogueSystem
   - SlashAttack
+  - DenialBoss
+  - Beam
+  - BeamLine
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - Slash
   - Soul
   - BlockSoul
-  - 
+  - Boss
   - 
   - 
   - 

@@ -7,6 +7,7 @@ public class SelfDestruct : MonoBehaviour
     private GameObject pos;
     public Transform tf;
     private Vector2 dir;
+    private float timer;
     void Awake()
     {
         pos = GameObject.FindWithTag("Tod");
@@ -31,11 +32,19 @@ public class SelfDestruct : MonoBehaviour
     
     void Start()
     {
-        Destroy (gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length);
+        timer = this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+        StartCoroutine(ChangeBool());
+        Destroy (gameObject, timer);
     }
 
     void Update()
     {
         transform.position = new Vector3(pos.transform.position.x + (0.5f * dir.x), pos.transform.position.y + (0.5f * dir.y), pos.transform.position.z);
+    }
+
+    IEnumerator ChangeBool()
+    {
+        yield return new WaitForSeconds(0.4f);
+        pos.GetComponent<AttackDefend>().sl = false;
     }
 }

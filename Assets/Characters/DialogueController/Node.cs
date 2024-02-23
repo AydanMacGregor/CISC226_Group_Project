@@ -22,6 +22,10 @@ public class Node
         {
             return text;
         }
+        if (extraNodes.Count > 0)
+        {
+            Debug.Log(extraNodes[0].getText() + " " + extraNodes[1].getText());
+        }
         return text + "<br>" + extraNodes[0].getText() + "<br>" + extraNodes[1].getText();
     }
 
@@ -42,11 +46,8 @@ public class Node
 
     public void setPrompt(Node one, Node two) 
     {
-        if (ip)
-        {
-            extraNodes.Add(one);
-            extraNodes.Add(two);
-        }
+        extraNodes.Add(one);
+        extraNodes.Add(two);
     }
 
     public Node nextPrompt(int n)  

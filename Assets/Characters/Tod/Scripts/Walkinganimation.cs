@@ -7,7 +7,12 @@ public class Walkinganimation : MonoBehaviour
     public Animator an;
     Vector2 dir;
     public Rigidbody2D rb;
-    // Start is called before the first frame update
+    private bool sh;
+    private bool slash = true;
+    private string animationChoice;
+    public Sprite idle;
+    public SpriteRenderer sr;
+    
     void Start()
     {
         dir = gameObject.GetComponent<movement>().direction;
@@ -16,29 +21,46 @@ public class Walkinganimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dir = gameObject.GetComponent<movement>().direction;
-        if (rb.velocity == Vector2.zero)
+        sh = gameObject.GetComponent<AttackDefend>().s;
+        slash = gameObject.GetComponent<AttackDefend>().sl;
+        if (!sh)
         {
-            an.Play("TodIdle");
+            dir = gameObject.GetComponent<movement>().direction;
+            if (rb.velocity == Vector2.zero)
+            {
+                if (slash)
+                {
+                    an.Play("TodIdle_NS");;
+                }
+                else
+                {
+                    an.Play("TodIdle");
+                }
+            }
+            else if (dir.x > 0)
+            {
+                animationChoice = slash ? "Walking_Right_NS" : "Walking_Right";
+                an.Play(animationChoice);
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else if (dir.x < 0)
+            {
+                animationChoice = slash ? "Walking_Right_NS" : "Walking_Right";
+                an.Play(animationChoice);
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else if (dir.y > 0)
+            {
+                animationChoice = slash ? "Walking_Up_NS" : "Walking_Up";
+                an.Play(animationChoice);
+            }
+            else if (dir.y < 0)
+            {
+                animationChoice = slash ? "Walking_Right_NS" : "Walking_Right";
+                an.Play(animationChoice);
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            }
         }
-        else if (dir.x > 0)
-        {
-            an.Play("Walking_Right");
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else if (dir.x < 0)
-        {
-            an.Play("Walking_Right");
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else if (dir.y > 0)
-        {
-            an.Play("Walking_Up");
-        }
-        else if (dir.y < 0)
-        {
-            an.Play("Walking_Right");
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        }
+        
     }
 }
