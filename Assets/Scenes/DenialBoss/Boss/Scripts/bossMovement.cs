@@ -26,7 +26,7 @@ public class bossMovement : MonoBehaviour
 
     void Update()
     {
-        if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 5)
+        if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 8)
         {
             FollowTod();
         }
@@ -96,21 +96,19 @@ public class bossMovement : MonoBehaviour
     {
         if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 4f)
         {
-            transform.position = Vector2.MoveTowards(thisTransform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
+            Vector3 oldpos = thisTransform.position;
+            Vector3 newpos = Vector2.MoveTowards(thisTransform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
+            transform.position = newpos;
+            direction = (newpos - oldpos).normalized;
+        }
+        if (attackTime > 0)
+        {
+            attackTime -= Time.deltaTime;
         }
         else
         {
-            if (attackTime > 0)
-            {
-                attackTime -= Time.deltaTime;
-            }
-            else
-            {
-                // attackTime = 3f;
-                // int attack = Random.Range(0, 2);
-                // this.GetComponent<animationScript>().chooseAttack(attack);
-                // this.GetComponent<attackScript>().attackChoice(attack);
-            }
+            attackTime = 10f;
+            this.GetComponent<attackTod>().StartAttack();
         }
     }
 

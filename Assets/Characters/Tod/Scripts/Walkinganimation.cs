@@ -8,7 +8,7 @@ public class Walkinganimation : MonoBehaviour
     Vector2 dir;
     public Rigidbody2D rb;
     private bool sh;
-    private bool slash;
+    private bool slash = true;
     private string animationChoice;
     public Sprite idle;
     public SpriteRenderer sr;
@@ -30,7 +30,7 @@ public class Walkinganimation : MonoBehaviour
             {
                 if (slash)
                 {
-                    sr.sprite = idle;
+                    an.Play("TodIdle_NS");;
                 }
                 else
                 {
@@ -51,7 +51,8 @@ public class Walkinganimation : MonoBehaviour
             }
             else if (dir.y > 0)
             {
-                an.Play("Walking_Up");
+                animationChoice = slash ? "Walking_Up_NS" : "Walking_Up";
+                an.Play(animationChoice);
             }
             else if (dir.y < 0)
             {

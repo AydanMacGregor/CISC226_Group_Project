@@ -9,6 +9,8 @@ public class HealthSystem : MonoBehaviour
     private int defaultHealth = 100;
     private int eyeballDamageAmount = 50;
     private int chargeDamageAmount = 25;
+    private int beamDamageAmount = 25;
+    private float damageTime = 0f;
 
     public Sprite eyeball;
     public Sprite Charge;
@@ -49,6 +51,29 @@ public class HealthSystem : MonoBehaviour
                     damage(eyeballDamageAmount);
                 }
             }
+            
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+        {
+            damageTime -= Time.deltaTime;
+            if (damageTime <= 0)
+            {
+                damage(beamDamageAmount);
+                damageTime = 1f;
+            }
+            
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+        {
+            damageTime = 0;
         }
     }
 
@@ -56,9 +81,7 @@ public class HealthSystem : MonoBehaviour
     public void damage(int damageAmount)
     {
         currentHealth -= damageAmount;
-        Debug.Log(currentHealth);
-
-        if (currentHealth < minHealth)
+        if (currentHealth <= minHealth)
         {
             kill();
         }
