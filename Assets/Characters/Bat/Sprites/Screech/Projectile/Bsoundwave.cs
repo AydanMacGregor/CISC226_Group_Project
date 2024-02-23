@@ -12,7 +12,7 @@ public class Bsoundwave : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        tod = GameObject.FindGameObjectWithTag("Tod");
+        tod = GameObject.FindWithTag("Tod");
 
         dir = (tod.transform.position - transform.position);
         rb.velocity = new Vector2(dir.x, dir.y).normalized * Speed;

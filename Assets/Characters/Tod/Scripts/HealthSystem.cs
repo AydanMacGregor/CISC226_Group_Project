@@ -18,8 +18,6 @@ public class HealthSystem : MonoBehaviour
 
     public Sprite eyeball;
     public Sprite Charge;
-    public Sprite Screech;
-    public Sprite Bat;
 
 
     // Start is called before the first frame update
@@ -58,6 +56,14 @@ public class HealthSystem : MonoBehaviour
                     damage(eyeballDamageAmount);
                 }
             }
+            if (other.gameObject.name == "Bat" || other.gameObject.name == "Bat(Clone)")
+            {
+                damage(batDamageAmount);
+            }
+            if (other.gameObject.name == "ScreechSymbol(Clone)")
+            {
+                damage(screechDamageAmount);
+            }
             
         }
     }
@@ -81,17 +87,6 @@ public class HealthSystem : MonoBehaviour
         if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
         {
             damageTime = 0;
-        }
-        if (other.gameObject.name == "Bat")
-        {
-            if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Bat)
-            {
-                damage(batDamageAmount);
-            }
-            else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Screech)
-            {
-                damage(screechDamageAmount);
-            }
         }
     }
 

@@ -10,10 +10,6 @@ public class BHealth : MonoBehaviour
     private int defaultHealth = 150;
     private int defaultDamageAmount = 50;
 
-    public GameObject Slash;
-    public GameObject bat;
-    
-
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +33,7 @@ public class BHealth : MonoBehaviour
     // Check if the slash hit the bat
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == Slash)
+        if (collision.gameObject.name == "SlashAttack(Clone)")
         {
             damage(defaultDamageAmount);
         }
@@ -49,7 +45,7 @@ public class BHealth : MonoBehaviour
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
-            Destroy(bat);
+            Destroy(gameObject);
         }
     }
 }

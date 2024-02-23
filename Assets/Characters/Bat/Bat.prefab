@@ -1,78 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6268190417265673398
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 744823877117710272}
-  - component: {fileID: 700334064093034219}
-  - component: {fileID: 5879803542069341527}
-  m_Layer: 6
-  m_Name: screechOffset
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &744823877117710272
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268190417265673398}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: -0.23, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4990476943609280984}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &700334064093034219
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268190417265673398}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &5879803542069341527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6268190417265673398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a055ad4a5d0711a44a1cfea9689148dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 700334064093034219}
 --- !u!1 &7573728687409043104
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,7 +17,7 @@ GameObject:
   - component: {fileID: 5749353431154356032}
   - component: {fileID: 360390116046507445}
   - component: {fileID: 3330469272213099584}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,8 +36,7 @@ Transform:
   m_LocalPosition: {x: 13.61, y: -7.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 744823877117710272}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6369019050124596782
@@ -184,13 +110,13 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2039
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!60 &6817932703630424688
 PolygonCollider2D:
@@ -204,7 +130,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2039
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -259,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceeb2a7364dd6b48a418397e67cdc02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundwave: {fileID: 6268190417265673398}
+  soundwave: {fileID: 8320157650653596068, guid: caccb05cd999ff449a583066626a1cb6, type: 3}
 --- !u!114 &5050621313516679323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +218,6 @@ MonoBehaviour:
   maxHealth: 150
   minHealth: 0
   currentHealth: 150
-  bat: {fileID: 7573728687409043104}
 --- !u!95 &360390116046507445
 Animator:
   serializedVersion: 5
