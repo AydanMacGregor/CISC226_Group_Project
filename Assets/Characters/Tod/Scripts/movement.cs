@@ -10,6 +10,11 @@ public class movement : MonoBehaviour
     public Vector2 direction;
     public GameObject tod;
     public bool doneDialogue;
+
+    void Start()
+    {
+        doneDialogue = true;
+    }
     
     // Update is called once per frame
     void Update()

@@ -33,7 +33,6 @@ public class AttackDefend : MonoBehaviour
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
-                    Debug.Log("Fuck you");
                     this.GetComponent<NovelIdea>().blockInput = true;
                     s = true;
                     an.Play("Shield");

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NovelIdea : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class NovelIdea : MonoBehaviour
 
     void Start()
     {
+        CheckScene();
         blockInput = false;
         canStart = false;
     }
@@ -21,7 +23,6 @@ public class NovelIdea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(scoreTime);
         if (canStart)
         {
             if (timedRebel < 0)
@@ -52,5 +53,13 @@ public class NovelIdea : MonoBehaviour
             timedRebel -= Time.deltaTime;
         }
         
+    }
+
+    void CheckScene()
+    {
+        if (SceneManager.GetActiveScene().name == "DenialBossFloor")
+        {
+            blockInput = false;
+        }
     }
 }
