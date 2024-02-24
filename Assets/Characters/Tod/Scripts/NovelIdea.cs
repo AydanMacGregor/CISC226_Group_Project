@@ -27,7 +27,7 @@ public class NovelIdea : MonoBehaviour
         {
             if (timedRebel < 0)
             {
-                ran = Random.Range(0,2);
+                ran = 0;
                 if (flip)
                 {
                     flip = flip ? false : true;

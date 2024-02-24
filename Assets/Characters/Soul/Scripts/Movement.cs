@@ -30,6 +30,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Tod = GameObject.FindWithTag("Tod");
         // Cache the transform for quicker access
         thisTransform = this.transform;
         // Set a random time delay for taking a decision ( changing direction,or standing in place for a while )

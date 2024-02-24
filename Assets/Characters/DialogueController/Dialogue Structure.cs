@@ -92,6 +92,7 @@ public class DialogueStructure : MonoBehaviour
 
     void NextLine()
     {
+        Debug.Log(tod.GetComponent<movement>().doneDialogue = false);
         currentNode = currentNode.getNext();
         if (currentNode.ip)
         {

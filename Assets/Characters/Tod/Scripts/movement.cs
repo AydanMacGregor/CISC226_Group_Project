@@ -11,7 +11,7 @@ public class movement : MonoBehaviour
     public GameObject tod;
     public bool doneDialogue;
 
-    void Start()
+    void Awake()
     {
         doneDialogue = true;
     }

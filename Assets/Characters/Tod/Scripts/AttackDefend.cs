@@ -46,7 +46,6 @@ public class AttackDefend : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         StartCoroutine(EndShield());
-        
     }
 
     IEnumerator EndShield()
