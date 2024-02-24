@@ -31,6 +31,10 @@ public class Bsoundwave : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        if (collision.gameObject.name != "Bat")
+        {
+            Destroy(gameObject);
+        }
+        
     }
 }
