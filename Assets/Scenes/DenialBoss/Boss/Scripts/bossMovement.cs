@@ -26,14 +26,18 @@ public class bossMovement : MonoBehaviour
 
     void Update()
     {
-        if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 8)
+        if (!GameObject.FindWithTag("CheckPoint"))
         {
-            FollowTod();
+            if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 8)
+            {
+                FollowTod();
+            }
+            else
+            {
+                Move();
+            }
         }
-        else
-        {
-            Move();
-        }
+        
     }
 
     void FixedUpdate()

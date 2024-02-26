@@ -6,16 +6,14 @@ using UnityEngine.SceneManagement;
 public class NovelIdea : MonoBehaviour
 {
     private float timedRebel = 20f;
-    private bool flip = false;
     public Camera cam;
     public bool blockInput;
     private int ran;
     public bool canStart;
-    public int scoreTime;
+    public float scoreTime;
 
     void Start()
     {
-        CheckScene();
         blockInput = false;
         canStart = false;
     }
@@ -27,39 +25,46 @@ public class NovelIdea : MonoBehaviour
         {
             if (timedRebel < 0)
             {
-                ran = 0;
-                if (flip)
+                ran = Random.Range(0,3);  
+                if (ran == 0)
                 {
-                    flip = flip ? false : true;
-                    Vector3 scale = new Vector3(1, flip ? -1 : 1, 1);
-                    cam.projectionMatrix = cam.projectionMatrix * Matrix4x4.Scale(scale);
-                }
-                else if (blockInput)
-                {
-                    blockInput = false;
-                }
-                else if (ran == 0)
-                {
-                    flip = flip ? false : true;
-                    Vector3 scale = new Vector3(1, flip ? -1 : 1, 1);
+                    Vector3 scale = new Vector3(1, -1, 1);
                     cam.projectionMatrix = cam.projectionMatrix * Matrix4x4.Scale(scale);
                 }
                 else if (ran == 1)
                 {
-                    blockInput = blockInput ? false : true;
+                    blockInput = true;
                 }
-                timedRebel = scoreTime;
+                else if (ran == 2)
+                {
+                    this.GetComponent<movement>().xFlip = -1;
+                    this.GetComponent<movement>().yFlip = -1;
+                }
+                StartCoroutine(Finished(ran));
+                timedRebel = 20f;
             }
             timedRebel -= Time.deltaTime;
         }
         
     }
 
-    void CheckScene()
+    IEnumerator Finished(int r)
     {
-        if (SceneManager.GetActiveScene().name == "DenialBossFloor")
+        yield return new WaitForSeconds(5f);
+        if (r == 0)
+        {
+            Vector3 scale = new Vector3(1, -1, 1);
+            cam.projectionMatrix = cam.projectionMatrix * Matrix4x4.Scale(scale);
+        }
+        else if (r == 1)
         {
             blockInput = false;
         }
+        else if (r == 2)
+        {
+            this.GetComponent<movement>().xFlip = 1;
+            this.GetComponent<movement>().yFlip = 1;
+        }
+        timedRebel = scoreTime;
     }
 }

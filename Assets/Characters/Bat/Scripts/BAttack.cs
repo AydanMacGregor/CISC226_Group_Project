@@ -5,20 +5,9 @@ using UnityEngine;
 public class BAttack : MonoBehaviour
 {
     public GameObject soundwave;
+    public Animator an;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void attackChoice(short n)
+    public void attackChoice(int n)
     {
         switch (n){
             case 0:
@@ -27,8 +16,6 @@ public class BAttack : MonoBehaviour
             case 1:
                 StartCoroutine(screechAttackDelay());
                 break;
-            case 2:
-                break;
         }
         
     }
@@ -36,19 +23,30 @@ public class BAttack : MonoBehaviour
     IEnumerator biteAttackDelay()
     {
         yield return new WaitForSeconds(0.2f);
+        this.GetComponent<BMovement>().isBiting = true;
         StartCoroutine(biteAttack());
     }
+    
+
+    IEnumerator biteAttack()
+    {
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(MoveAway());
+    }
+
+    public IEnumerator MoveAway()
+    {
+        an.Play("UnDash_anim");
+        this.GetComponent<BMovement>().isMovingBack = true;
+        yield return new WaitForSeconds(0.5f);
+        this.GetComponent<BMovement>().isMovingBack = false;
+        this.GetComponent<BMovement>().isBiting = false;
+    }
+
     IEnumerator screechAttackDelay()
     {
         yield return new WaitForSeconds(0.2f);
         StartCoroutine(screechAttack());
-    }
-
-    IEnumerator biteAttack()
-    {
-        this.GetComponent<BMovement>().isBiting = true;
-        yield return new WaitForSeconds(2f);
-        this.GetComponent<BMovement>().isBiting = false;
     }
 
     IEnumerator screechAttack()

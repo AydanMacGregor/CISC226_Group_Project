@@ -22,10 +22,6 @@ public class Node
         {
             return text;
         }
-        if (extraNodes.Count > 0)
-        {
-            Debug.Log(extraNodes[0].getText() + " " + extraNodes[1].getText());
-        }
         return text + "<br>" + extraNodes[0].getText() + "<br>" + extraNodes[1].getText();
     }
 

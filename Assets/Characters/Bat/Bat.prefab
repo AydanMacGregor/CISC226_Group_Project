@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundwave: {fileID: 8320157650653596068, guid: caccb05cd999ff449a583066626a1cb6, type: 3}
+  an: {fileID: 360390116046507445}
 --- !u!114 &5050621313516679323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +203,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   rb: {fileID: 3077336506777984200}
   isBiting: 0
+  isMovingBack: 0
   isScreeching: 0
 --- !u!114 &5749353431154356032
 MonoBehaviour:

@@ -24,9 +24,12 @@ public class BMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     public bool isBiting = false;
+    public bool isMovingBack = false;
 
     public bool isScreeching = false;
     private Vector3 todDir;
+
+    private bool wallInWay = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,14 +47,68 @@ public class BMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 5)
+        
+    }
+
+    void FixedUpdate()
+    {
+        Vector2 todDir = ((Vector2)Tod.transform.position - (Vector2) thisTransform.position).normalized;
+        RaycastHit2D todRayCast = Physics2D.Raycast(thisTransform.position, todDir, 0.5f, LayerMask.GetMask("Confinment", "InnerWall"));
+        Debug.DrawLine(this.transform.position, todDir * 2f, Color.white);
+        if (todRayCast.collider != null)
+        {
+            if (todRayCast.collider.name == "OuterWallTileMap" || todRayCast.collider.name == "WallTileMap")
             {
+                wallInWay = true;
+            }
+        }
+        else
+        {
+            wallInWay = false;
+        }
+
+        RaycastHit2D hit = Physics2D.Raycast(thisTransform.position, new Vector2(direction.x, direction.y), 1f, LayerMask.GetMask("Confinment", "InnerWall"));
+        if (hit.collider != null)
+        {
+            if (hit.collider.name == "OuterWallTileMap" || hit.collider.name == "WallTileMap")
+            {
+                if (direction.x < 0)
+                {
+                    currentMoveDirection = 0;
+                }
+                else if (direction.x > 0)
+                {
+                    currentMoveDirection = 1;
+                }
+                else if (direction.y < 0)
+                {
+                    currentMoveDirection = 2;
+                }
+                else if (direction.y > 0)
+                {
+                    currentMoveDirection = 3;
+                }
+                decisionTimeCount = 1f;
+                Move();
+            }
+        }
+
+        if (!isBiting)
+        {
+            if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 5 && !wallInWay)
+            {
+                Debug.Log("FUCK YOU PUSSY");
                 FollowTod();
             }
-        else
+            else
             {
                 Move();
             }
+        }
+        else
+        {
+            AttackTod();
+        }
     }
 
     void Move()
@@ -96,22 +153,41 @@ public class BMovement : MonoBehaviour
                 }
                 else
                 {
-                    attackTime = 2f; 
-                    this.GetComponent<BAnimation>().chooseAttack(1);
-                    this.GetComponent<BAttack>().attackChoice(1);
+                    attackTime = 4f; 
+                    int attack = Random.Range(0, 2);
+                    this.GetComponent<BAnimation>().chooseAttack(0);
+                    this.GetComponent<BAttack>().attackChoice(0);
                 }
             }
     }
 
     void AttackTod()
     {
-        todDir = (Tod.transform.position - thisTransform.position).normalized;
-        transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
+        if (isMovingBack)
+        {
+            todDir = (thisTransform.position - Tod.transform.position).normalized;
+            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+        }
+        else
+        {
+            todDir = (Tod.transform.position - thisTransform.position).normalized;
+            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
+        }
     }
+    
 
     void ChooseMoveDirection()
     {
         // Choose whether to move sideways or up/down
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Tod")
+        {
+            this.GetComponent<BAttack>().StopAllCoroutines();
+            StartCoroutine(this.GetComponent<BAttack>().MoveAway());
+        }
     }
 }

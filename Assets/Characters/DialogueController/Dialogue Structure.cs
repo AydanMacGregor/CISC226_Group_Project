@@ -12,11 +12,12 @@ public class DialogueStructure : MonoBehaviour
     private Node currentNode;
     public GameObject tod;
     public bool done = false;
-    public int todScore;
-    private int[] timeScores = {3, 6, 9};
+    public float todScore;
+    private float[] timeScores = {3f, 6f, 9f};
     
     void Start()
     {
+        tod = GameObject.FindWithTag("Tod");
         textSpeed = .08f;
     }
 
@@ -63,7 +64,7 @@ public class DialogueStructure : MonoBehaviour
     public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
         todScore = 0;
-        tod.GetComponent<NovelIdea>().scoreTime = 0;
+        tod.GetComponent<NovelIdea>().scoreTime = 0f;
         tod.GetComponent<movement>().doneDialogue = false;
         dialogue = new List<Node>();
         for (int i = 0; i < d.Count; i ++)
@@ -92,7 +93,6 @@ public class DialogueStructure : MonoBehaviour
 
     void NextLine()
     {
-        Debug.Log(tod.GetComponent<movement>().doneDialogue = false);
         currentNode = currentNode.getNext();
         if (currentNode.ip)
         {

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2429372667404560216}
   - component: {fileID: 5408054812915185424}
   - component: {fileID: 3979733384987495921}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BlockEnemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 5632
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 503
@@ -139,7 +139,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4510774089583602676}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

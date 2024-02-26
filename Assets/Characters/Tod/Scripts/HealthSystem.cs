@@ -70,24 +70,30 @@ public class HealthSystem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+        if (!gameObject.GetComponent<AttackDefend>().s)
         {
-            damageTime -= Time.deltaTime;
-            if (damageTime <= 0)
+            if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
             {
-                damage(beamDamageAmount);
-                damageTime = 1f;
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
             }
-            
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+        if (!gameObject.GetComponent<AttackDefend>().s)
         {
-            damageTime = 0;
+            if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+            {
+                damageTime = 0;
+            }
         }
+        
     }
 
     // Damage Tod's health when the souls attack him

@@ -11,6 +11,11 @@ public class movement : MonoBehaviour
     public GameObject tod;
     public bool doneDialogue;
 
+    public int xFlip = 1;
+    public int yFlip = 1;
+    private float moveX;
+    private float moveY;
+
     void Awake()
     {
         doneDialogue = true;
@@ -37,8 +42,10 @@ public class movement : MonoBehaviour
 
     void ProcessInputs()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        moveX = Input.GetAxisRaw("Horizontal");
+        moveY = Input.GetAxisRaw("Vertical");
+        moveX *= xFlip;
+        moveY *= yFlip;
         if (moveX > 0)
         {
             direction = Vector2.right;

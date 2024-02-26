@@ -10,6 +10,7 @@ TagManager:
   - DenialBoss
   - Beam
   - BeamLine
+  - CheckPoint
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - BlockSoul
   - Boss
   - Bat
-  - 
+  - InnerWall
   - 
   - 
   - 

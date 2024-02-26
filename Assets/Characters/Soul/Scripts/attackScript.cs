@@ -15,9 +15,6 @@ public class attackScript : MonoBehaviour
             case 1:
                 StartCoroutine(DelayCharge());
                 break;
-            case 2:
-                // code block
-                break;
         }
         
     }

@@ -8,6 +8,7 @@ public class LevelHandling : MonoBehaviour
 {
     TextMeshProUGUI currentText;
     private GameObject ds;
+    private bool hit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,19 +18,40 @@ public class LevelHandling : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
+        string world = "";
         if (collider.gameObject.layer == LayerMask.NameToLayer("Tod"))
         {
+            string current = SceneManager.GetActiveScene().name;
             currentText.enabled = true;
             List<Node> l = new List<Node>();
-            l.Add(new Node("Where does this lead to?", false));
+            if (current == "DenialScene")
+            {
+                l.Add(new Node("Where does this lead to?", false));
+                world = "DenialBossFloor";
+                StartCoroutine(SwitchWorlds(world));
+            }
+            else if (current == "DenialBossFloor")
+            {
+                l.Add(new Node("Wow, hold on who is this?", false));
+                l.Add(new Node("Stop making me fight people!", false));
+                l[0].setNode(l[1]);
+            }
             ds.GetComponent<DialogueStructure>().initializeVar(l, currentText);
-            StartCoroutine(SwitchWorlds());
+            hit = true;
         }
     }
 
-    IEnumerator SwitchWorlds()
+    void Update()
+    {
+        if (!currentText.enabled && hit)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator SwitchWorlds(string w)
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("DenialBossFloor");
+        SceneManager.LoadScene(w);
     }
 }
