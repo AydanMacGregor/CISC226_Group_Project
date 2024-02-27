@@ -28,8 +28,11 @@ public class BMovement : MonoBehaviour
 
     public bool isScreeching = false;
     private Vector3 todDir;
-
-    private bool wallInWay = false;
+    private Vector2 prevDir;
+    private Vector2 batDir;
+    private RaycastHit2D wallCast;
+    private Vector2 currDir;
+    private RaycastHit2D todCast;
 
     // Start is called before the first frame update
     void Start()
@@ -52,62 +55,54 @@ public class BMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 todDir = ((Vector2)Tod.transform.position - (Vector2) thisTransform.position).normalized;
-        RaycastHit2D todRayCast = Physics2D.Raycast(thisTransform.position, todDir, 0.5f, LayerMask.GetMask("Confinment", "InnerWall"));
-        Debug.DrawLine(this.transform.position, todDir * 2f, Color.white);
-        if (todRayCast.collider != null)
+        currDir = ((Vector2) thisTransform.position - prevDir).normalized * 0.5f;
+        prevDir = (Vector2) thisTransform.position;
+        wallCast = Physics2D.Raycast(thisTransform.position, currDir, 1f, LayerMask.GetMask("Confinment", "InnerWall"));
+        
+        if (wallCast.collider != null && (wallCast.collider.name == "OuterWallTileMap" || wallCast.collider.name == "WallTileMap"))
         {
-            if (todRayCast.collider.name == "OuterWallTileMap" || todRayCast.collider.name == "WallTileMap")
+            if (direction.x < 0)
             {
-                wallInWay = true;
+                currentMoveDirection = 0;
             }
-        }
-        else
-        {
-            wallInWay = false;
-        }
-
-        RaycastHit2D hit = Physics2D.Raycast(thisTransform.position, new Vector2(direction.x, direction.y), 1f, LayerMask.GetMask("Confinment", "InnerWall"));
-        if (hit.collider != null)
-        {
-            if (hit.collider.name == "OuterWallTileMap" || hit.collider.name == "WallTileMap")
+            else if (direction.x > 0)
             {
-                if (direction.x < 0)
-                {
-                    currentMoveDirection = 0;
-                }
-                else if (direction.x > 0)
-                {
-                    currentMoveDirection = 1;
-                }
-                else if (direction.y < 0)
-                {
-                    currentMoveDirection = 2;
-                }
-                else if (direction.y > 0)
-                {
-                    currentMoveDirection = 3;
-                }
-                decisionTimeCount = 1f;
-                Move();
+                currentMoveDirection = 1;
             }
-        }
-
-        if (!isBiting)
-        {
-            if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 5 && !wallInWay)
+            else if (direction.y < 0)
             {
-                Debug.Log("FUCK YOU PUSSY");
-                FollowTod();
+                currentMoveDirection = 2;
+            }
+            else if (direction.y > 0)
+            {
+                currentMoveDirection = 3;
             }
             else
             {
-                Move();
+                currentMoveDirection = Random.Range(0,4);
             }
+            decisionTimeCount = 1f;
+            Move();
         }
         else
         {
-            AttackTod();
+            if (!isBiting)
+            {
+                batDir = ((Vector2) Tod.transform.position - (Vector2) thisTransform.position).normalized;
+                todCast = Physics2D.Raycast(thisTransform.position, batDir, 8f, LayerMask.GetMask("Confinment", "InnerWall", "Tod"));
+                if (todCast.collider != null && todCast.collider.name == "Tod")
+                {
+                    FollowTod();
+                }
+                else
+                {
+                    Move();
+                }
+            }
+            else
+            {
+                AttackTod();
+            }
         }
     }
 
