@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundwave: {fileID: 8320157650653596068, guid: caccb05cd999ff449a583066626a1cb6, type: 3}
+  BatBaby: {fileID: 1307890019624653674, guid: a9f0394c4bf64bb43b42c719b1569476, type: 3}
   an: {fileID: 360390116046507445}
 --- !u!114 &5050621313516679323
 MonoBehaviour:

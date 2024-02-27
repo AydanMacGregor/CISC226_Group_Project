@@ -5,6 +5,7 @@ using UnityEngine;
 public class BAttack : MonoBehaviour
 {
     public GameObject soundwave;
+    public GameObject BatBaby;
     public Animator an;
 
     public void attackChoice(int n)
@@ -16,6 +17,26 @@ public class BAttack : MonoBehaviour
             case 1:
                 StartCoroutine(screechAttackDelay());
                 break;
+            case 2:
+                StartCoroutine(StartSpread());
+                break;
+        }
+        
+    }
+
+    IEnumerator StartSpread()
+    {
+        an.Play("Dash_anim");
+        yield return new WaitForSeconds(1f);
+        Spread();
+    }
+
+    void Spread()
+    {
+        an.Play("UnDash_anim");
+        for (int i = 0; i < 6; i++)
+        {
+            Instantiate(BatBaby, this.transform.position, Quaternion.identity);
         }
         
     }

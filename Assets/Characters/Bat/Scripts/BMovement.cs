@@ -47,12 +47,6 @@ public class BMovement : MonoBehaviour
         ChooseMoveDirection();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void FixedUpdate()
     {
         currDir = ((Vector2) thisTransform.position - prevDir).normalized * 0.5f;
@@ -149,9 +143,16 @@ public class BMovement : MonoBehaviour
                 else
                 {
                     attackTime = 4f; 
-                    int attack = Random.Range(0, 2);
-                    this.GetComponent<BAnimation>().chooseAttack(0);
-                    this.GetComponent<BAttack>().attackChoice(0);
+                    int attack = Random.Range(0, 3);
+                    if (attack == 2)
+                    {
+                        this.GetComponent<BAttack>().attackChoice(attack);
+                    }
+                    else
+                    {
+                        this.GetComponent<BAttack>().attackChoice(attack);
+                        this.GetComponent<BAnimation>().chooseAttack(attack);
+                    }
                 }
             }
     }
