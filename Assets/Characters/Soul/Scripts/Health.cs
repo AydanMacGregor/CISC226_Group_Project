@@ -39,6 +39,10 @@ public class Health : MonoBehaviour
         {
             damage(defaultDamageAmount);
         }
+        else if (other.gameObject.name == "Raven(Clone)")
+        {
+            damage(defaultDamageAmount);
+        }
     }
 
     // Damage the soul when the slash hit into it

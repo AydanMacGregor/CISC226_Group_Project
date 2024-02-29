@@ -37,6 +37,10 @@ public class BHealth : MonoBehaviour
         {
             damage(defaultDamageAmount);
         }
+        else if (collision.gameObject.name == "Raven(Clone)")
+        {
+            damage(defaultDamageAmount);
+        }
     }
 
     // Damage the bat when the slash hit into it
