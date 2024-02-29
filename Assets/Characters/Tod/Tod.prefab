@@ -218,6 +218,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   tod: {fileID: 6207316408233641074}
   doneDialogue: 0
+  xFlip: 1
+  yFlip: 1
 --- !u!114 &1956514534477776163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,9 +234,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slash: {fileID: 4586270653272118301, guid: 4d9924d0ab2d4384b9f4b626cce6555f, type: 3}
   tod: {fileID: 6207316408233641074}
+  raven: {fileID: 8527616018505281005, guid: 810238c3b29a3734da036ad82a15b551, type: 3}
+  dir: {x: 0, y: 0}
   an: {fileID: 4437435298262432465}
   s: 0
   sl: 0
+  randFlip: {x: 1, y: 1}
 --- !u!95 &4437435298262432465
 Animator:
   serializedVersion: 5

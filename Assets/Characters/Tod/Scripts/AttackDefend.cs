@@ -6,11 +6,14 @@ public class AttackDefend : MonoBehaviour
 {
     public GameObject slash;
     public GameObject tod;
-    Vector2 dir;
+    public GameObject raven;
+    public Vector2 dir;
     private float attackTimer = 1f;
     public Animator an;
     public bool s = false;
     public bool sl = false;
+    public Vector2 randFlip = new Vector2(1,1);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,7 @@ public class AttackDefend : MonoBehaviour
                 {
                     attackTimer = 1f;
                     sl = true;
-                    Instantiate(slash, new Vector3(tod.transform.position.x + (0.5f * dir.x), tod.transform.position.y + (0.5f * dir.y), tod.transform.position.z), Quaternion.identity);
+                    Instantiate(slash, new Vector3(tod.transform.position.x + (0.5f * dir.x * randFlip.x), tod.transform.position.y + (0.5f * dir.y * randFlip.y), tod.transform.position.z), Quaternion.identity);
                 }
                 else if (Input.GetMouseButtonDown(1))
                 {
@@ -37,6 +40,10 @@ public class AttackDefend : MonoBehaviour
                     s = true;
                     an.Play("Shield");
                     StartCoroutine(StartShield());
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Instantiate(raven, this.transform.position, Quaternion.identity);
                 }
             }
         }
