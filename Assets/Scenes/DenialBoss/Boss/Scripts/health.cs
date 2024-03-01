@@ -6,9 +6,12 @@ public class health : MonoBehaviour
 {
     private float damage;
     private float bossHealth = 100f;
+    public bossHealthBar healthBar;
 
     void Update()
     {
+        healthBar.SetHealth(bossHealth);
+
         if (bossHealth <= 0)
         {
             Kill();
@@ -26,5 +29,7 @@ public class health : MonoBehaviour
         {
             bossHealth -= 10;
         }
+
+        healthBar.SetHealth(bossHealth);
     }
 }
