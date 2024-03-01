@@ -15,9 +15,9 @@ public class DenialDialogueSystem : MonoBehaviour
     {
         isprompts = new bool[] {false, false, true, false, true, true, true, false, false, false,
         true, true, true, true, true, true, true, true, true, false, false, false, true, true, true, false, false, false};
-        listoftext = new string[] {"Where... where am I? What happened? Am I dead?",
+        listoftext = new string[] {"Where... where am I? What happened? Am I dead?\n\nSpace to Continue",
         "No... no, that can't be, I can't be dead?! I'm the Grim Reaper God Dammit!",
-        "- Hello Tod.",
+        "- Hello Tod.\n\n\nClick Text to Continue",
         "Who is there? Where am I? What is happening!?",
         "- You're dead Tod.",
         "- Don't worry about who I am.",
