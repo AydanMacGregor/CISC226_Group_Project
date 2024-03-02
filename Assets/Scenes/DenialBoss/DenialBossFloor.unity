@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: Screech
       value: 
       objectReference: {fileID: 21300000, guid: eb4f32adb6abcc84daaa2bf0a850d748, type: 3}
+    - target: {fileID: 245716782362604562, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 660573623}
     - target: {fileID: 6207316408233641074, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
       propertyPath: m_Name
       value: Tod
@@ -445,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea293cb68934104daa8d43ca7d71503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 1638699953}
 --- !u!1 &167042495
 GameObject:
   m_ObjectHideFlags: 0
