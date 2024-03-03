@@ -37,6 +37,7 @@ public class guide : MonoBehaviour
 
     void Update()
     {
+        tod.GetComponent<NovelIdea>().canStart = false;
         if (start)
         {
             if (!currentText.enabled && i > 0)
@@ -86,6 +87,7 @@ public class guide : MonoBehaviour
                     {
                         currentText.enabled = false;
                         check = false;
+                        tod.GetComponent<NovelIdea>().canStart = true;
                         Destroy(gameObject);
                     }
                     break;

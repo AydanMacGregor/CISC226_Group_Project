@@ -20,7 +20,6 @@ public class move : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) 
     {
-        Debug.Log(other.gameObject.name);
         if (other.gameObject.name != "Bat" && other.gameObject.name != "BatBaby(Clone)")
         {
             Destroy(gameObject);
