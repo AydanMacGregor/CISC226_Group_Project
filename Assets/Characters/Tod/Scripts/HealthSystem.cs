@@ -45,16 +45,13 @@ public class HealthSystem : MonoBehaviour
     {
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
-            if (other.gameObject.name == "Soul")
+            if (other.gameObject.name == "Soul" && other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
             {
-                if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
-                {
-                    damage(chargeDamageAmount);
-                }
-                else if (other.gameObject.GetComponent<SpriteRenderer>().sprite == eyeball)
-                {
-                    damage(eyeballDamageAmount);
-                }
+                damage(chargeDamageAmount);
+            }
+            else if (other.gameObject.name == "projectile")
+            {
+                damage(eyeballDamageAmount);
             }
             if (other.gameObject.name == "Bat" || other.gameObject.name == "Bat(Clone)")
             {

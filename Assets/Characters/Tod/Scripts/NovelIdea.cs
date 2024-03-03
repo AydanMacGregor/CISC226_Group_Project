@@ -1,22 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class NovelIdea : MonoBehaviour
 {
     private float timedRebel = 20f;
     public Camera cam;
+    TextMeshProUGUI currentText;
     public bool blockInput;
     private int ran;
     public bool canStart;
     public float scoreTime;
+    private bool firstPushBack;
     
-
     void Start()
     {
         blockInput = false;
         canStart = false;
+        if (SceneManager.GetActiveScene().name == "DenialScene")
+        {
+            firstPushBack = true;
+        }
+        else
+        {
+            firstPushBack = false;
+        }
     }
 
     // Update is called once per frame
@@ -26,7 +36,24 @@ public class NovelIdea : MonoBehaviour
         {
             if (timedRebel < 0)
             {
-                ran = Random.Range(0,4);  
+                ran = Random.Range(0,4); 
+                if (firstPushBack)
+                {
+                    ran = 0;
+                    List<Node> d = new List<Node>();
+                    d.Add(new Node("Wait... are you doing that or am I?", false));
+                    d.Add(new Node("- ...", true));
+                    d.Add(new Node("ha! I can fight against you.", false));
+                    d.Add(new Node("Better not cross me", false));
+                    d[0].setNode(d[1]);
+                    d[1].setNode(d[2]);
+                    d[2].setNode(d[3]);
+                    GameObject dc = GameObject.FindWithTag("DialogueSystem");
+                    currentText = (TextMeshProUGUI)FindObjectOfType(typeof(TextMeshProUGUI));
+                    currentText.enabled = true;
+                    dc.GetComponent<DialogueStructure>().initializeVar(d, currentText);
+                    firstPushBack = false;
+                } 
                 if (ran == 0)
                 {
                     Vector3 scale = new Vector3(1, -1, 1);
@@ -57,7 +84,6 @@ public class NovelIdea : MonoBehaviour
             }
             timedRebel -= Time.deltaTime;
         }
-        
     }
 
     IEnumerator Finished(int r)

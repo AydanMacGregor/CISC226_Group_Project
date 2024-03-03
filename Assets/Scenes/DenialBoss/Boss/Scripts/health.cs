@@ -6,6 +6,7 @@ public class health : MonoBehaviour
 {
     private float damage;
     private float bossHealth = 100f;
+    public GameObject check;
 
     void Update()
     {
@@ -17,6 +18,7 @@ public class health : MonoBehaviour
 
     void Kill()
     {
+        Instantiate(check, new Vector3(-100, 0, 0), Quaternion.identity);
         Destroy(gameObject);
     }
 
