@@ -6411,7 +6411,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Tod Health :'
+  m_Text: 'Tod:'
 --- !u!222 &1522073170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6595,7 +6595,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Boss Health :'
+  m_Text: "ink\xE2r:"
 --- !u!222 &1645833655
 CanvasRenderer:
   m_ObjectHideFlags: 0
