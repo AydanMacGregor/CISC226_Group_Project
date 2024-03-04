@@ -10,11 +10,15 @@ public class BHealth : MonoBehaviour
     private int defaultHealth = 150;
     private int defaultDamageAmount = 50;
 
+    SpriteRenderer sprite;
+
     // Start is called before the first frame update
     void Start()
     {
         maxHealth = setDefaultHealth(maxHealth);
         currentHealth = maxHealth; 
+
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Set a default health for the bat
@@ -28,6 +32,14 @@ public class BHealth : MonoBehaviour
         {
             return defaultHealth;
         }
+    }
+
+    // Makes the bat red
+    public IEnumerator FlashRed()
+    {
+        sprite.color = new Color (1, 0, 0, 1);
+        yield return new WaitForSeconds(0.2f);
+        sprite.color = new Color (1, 1, 1, 1);
     }
 
     // Check if the slash hit the bat
@@ -46,6 +58,7 @@ public class BHealth : MonoBehaviour
     // Damage the bat when the slash hit into it
     public void damage(int damageAmount)
     {
+        StartCoroutine(FlashRed());
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Cinemachine;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -18,13 +19,18 @@ public class HealthSystem : MonoBehaviour
 
     public Sprite eyeball;
     public Sprite Charge;
-
+    SpriteRenderer sprite;
+    private CinemachineImpulseSource impulseSource;
 
     // Start is called before the first frame update
     void Start()
     {
         maxHealth = setDefaultHealth(maxHealth);
         currentHealth = maxHealth;
+
+        sprite = GetComponent<SpriteRenderer>();
+
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     // Set a default health for Tod
@@ -38,6 +44,14 @@ public class HealthSystem : MonoBehaviour
         {
             return defaultHealth;
         }
+    }
+
+    // Makes tod red
+    public IEnumerator FlashRed()
+    {
+        sprite.color = new Color (1, 0, 0, 1);
+        yield return new WaitForSeconds(0.2f);
+        sprite.color = new Color (1, 1, 1, 1);
     }
 
     // Check which attack hit Tod
@@ -96,6 +110,8 @@ public class HealthSystem : MonoBehaviour
     // Damage Tod's health when the souls attack him
     public void damage(int damageAmount)
     {
+        StartCoroutine(FlashRed());
+        CameraShakeManager.instance.CameraShake(impulseSource);
         currentHealth -= damageAmount;
         if (currentHealth <= minHealth)
         {
