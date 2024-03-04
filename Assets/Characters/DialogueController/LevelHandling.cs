@@ -47,7 +47,7 @@ public class LevelHandling : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (GameObject.Find("Boss") == null && !bossDead)
+        if (GameObject.Find("Boss") == null && !bossDead && current == "DenialBossFloor")
         {
             bossDead = true;
             StartCoroutine(SwitchWorlds("BargainingScene"));
