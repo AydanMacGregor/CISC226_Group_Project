@@ -18,17 +18,19 @@ public class HealthSystem : MonoBehaviour
 
     public Sprite eyeball;
     public Sprite Charge;
-
+    public TodHealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
         maxHealth = setDefaultHealth(maxHealth);
         currentHealth = maxHealth;
+
+        healthBar.SetMaxHealth(currentHealth);
     }
 
     // Set a default health for Tod
-    private int setDefaultHealth(int curMaxVal)
+    public int setDefaultHealth(int curMaxVal)
     {
         if (curMaxVal > 0)
         {
@@ -97,6 +99,9 @@ public class HealthSystem : MonoBehaviour
     public void damage(int damageAmount)
     {
         currentHealth -= damageAmount;
+
+        healthBar.SetHealth(currentHealth);
+
         if (currentHealth <= minHealth)
         {
             kill();
