@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueStructure : MonoBehaviour
 {
@@ -14,11 +15,16 @@ public class DialogueStructure : MonoBehaviour
     public bool done = false;
     public float todScore;
     private float[] timeScores = {3f, 6f, 9f};
+    private GameObject tutorial;
     
     void Start()
     {
         tod = GameObject.FindWithTag("Tod");
         textSpeed = .08f;
+        if (SceneManager.GetActiveScene().name == "DenialScene")
+        {
+            tutorial = GameObject.FindWithTag("Tutorial");
+        }
     }
 
     // Update is called once per frame
@@ -44,9 +50,15 @@ public class DialogueStructure : MonoBehaviour
         {
             if (currentNode.getNext() == null)
             {
+                StopAllCoroutines();
+                textComponent.text = string.Empty;
                 textComponent.enabled = false;
                 tod.GetComponent<NovelIdea>().scoreTime = todScore;
                 tod.GetComponent<movement>().doneDialogue = true;
+                if (tutorial != null)
+                {
+                    tutorial.GetComponent<guide>().start = true;
+                }
             }
             else if (textComponent.text == currentNode.getText())
             {

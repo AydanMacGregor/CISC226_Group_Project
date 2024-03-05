@@ -11,6 +11,7 @@ TagManager:
   - Beam
   - BeamLine
   - CheckPoint
+  - Tutorial
   layers:
   - Default
   - TransparentFX

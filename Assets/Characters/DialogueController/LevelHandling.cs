@@ -9,26 +9,26 @@ public class LevelHandling : MonoBehaviour
     TextMeshProUGUI currentText;
     private GameObject ds;
     private bool hit = false;
+    private string current;
+    private bool bossDead = false;
     // Start is called before the first frame update
     void Start()
     {
+        current = SceneManager.GetActiveScene().name;
         currentText = (TextMeshProUGUI)FindObjectOfType(typeof(TextMeshProUGUI));
         ds = GameObject.FindWithTag("DialogueSystem");
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        string world = "";
         if (collider.gameObject.layer == LayerMask.NameToLayer("Tod"))
         {
-            string current = SceneManager.GetActiveScene().name;
             currentText.enabled = true;
             List<Node> l = new List<Node>();
             if (current == "DenialScene")
             {
                 l.Add(new Node("Where does this lead to?", false));
-                world = "DenialBossFloor";
-                StartCoroutine(SwitchWorlds(world));
+                StartCoroutine(SwitchWorlds(current));
             }
             else if (current == "DenialBossFloor")
             {
@@ -47,11 +47,16 @@ public class LevelHandling : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (GameObject.Find("Boss") == null && !bossDead && current == "DenialBossFloor")
+        {
+            bossDead = true;
+            StartCoroutine(SwitchWorlds("BargainingScene"));
+        }
     }
 
     IEnumerator SwitchWorlds(string w)
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(w);
     }
 }
