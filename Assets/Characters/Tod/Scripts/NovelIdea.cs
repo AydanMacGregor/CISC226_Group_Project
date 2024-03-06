@@ -32,7 +32,6 @@ public class NovelIdea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        canStart = false;
         if (canStart)
         {
             if (timedRebel < 0)
