@@ -12,6 +12,12 @@ TagManager:
   - BeamLine
   - CheckPoint
   - Tutorial
+  - RoomController
+  - Soul
+  - Bat
+  - RoomOne
+  - RoomTwo
+  - RoomThree
   layers:
   - Default
   - TransparentFX

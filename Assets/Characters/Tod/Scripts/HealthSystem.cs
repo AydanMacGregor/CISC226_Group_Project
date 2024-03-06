@@ -26,7 +26,7 @@ public class HealthSystem : MonoBehaviour
         maxHealth = setDefaultHealth(maxHealth);
         currentHealth = maxHealth;
 
-        healthBar.SetMaxHealth(currentHealth);
+        //healthBar.SetMaxHealth(currentHealth);
     }
 
     // Set a default health for Tod
@@ -100,7 +100,7 @@ public class HealthSystem : MonoBehaviour
     {
         currentHealth -= damageAmount;
 
-        healthBar.SetHealth(currentHealth);
+        //healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= minHealth)
         {
