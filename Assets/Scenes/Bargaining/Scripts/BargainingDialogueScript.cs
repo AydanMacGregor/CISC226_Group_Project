@@ -111,8 +111,8 @@ public class BargainingDialogueScript : MonoBehaviour
         prompts[23].setNode(prompts[28]);
         prompts[28].setPrompt(prompts[29], prompts[30]);
         prompts[28].setNode(prompts[60]);
+        prompts[29].setNode(prompts[60]);
         prompts[30].setNode(prompts[60]);
-        prompts[31].setNode(prompts[60]);
 
         prompts[24].setNode(prompts[31]);
         prompts[31].setPrompt(prompts[32], prompts[33]);

@@ -9,6 +9,7 @@ public class RoomControl : MonoBehaviour
     private bool checkEn = false;
     private int numGameObjects;
 
+    private int[] numOfEn = {8, 6, 10};
     private GameObject[] rooms;
     // Start is called before the first frame update
     public void Block(int n)
@@ -29,6 +30,7 @@ public class RoomControl : MonoBehaviour
                 rooms = GameObject.FindGameObjectsWithTag("RoomThree");
                 break;
         }
+        numGameObjects = numOfEn[n];
         foreach (GameObject i in rooms)
         {
             Destroy(i);

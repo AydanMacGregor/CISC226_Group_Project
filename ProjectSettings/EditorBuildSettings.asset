@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bargaining/BargainingScene.unity
     guid: 42f49e78d6521ad41b0d2f80950064aa
+  - enabled: 1
+    path: Assets/Scenes/BargainingBoss/BargainingBossFloor.unity
+    guid: 74c2f2149c45c22428477bdf9beffd73
+  - enabled: 1
+    path: Assets/Scenes/Anger/AngerScene.unity
+    guid: fe3024efe8cc36f448a2f0efb34cc66a
+  - enabled: 1
+    path: Assets/Scenes/AngerBoss/AngerBossFloor.unity
+    guid: c180ddef7817f424a8cfaf65525e8a53
   m_configObjects: {}

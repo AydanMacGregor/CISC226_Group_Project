@@ -36,6 +36,15 @@ public class LevelHandling : MonoBehaviour
                 l.Add(new Node("Stop making me fight people!", false));
                 l[0].setNode(l[1]);
             }
+            else if (current == "BargainingScene")
+            {
+                l.Add(new Node("Please not again, anything but this!", false));
+                StartCoroutine(SwitchWorlds(current));
+            }
+            else if (current == "BargainingBossFloor")
+            {
+                l.Add(new Node("I hate you.", false));
+            }
             ds.GetComponent<DialogueStructure>().initializeVar(l, currentText);
             hit = true;
         }
@@ -51,6 +60,11 @@ public class LevelHandling : MonoBehaviour
         {
             bossDead = true;
             StartCoroutine(SwitchWorlds("BargainingScene"));
+        }
+        if (GameObject.Find("Boss") == null && !bossDead && current == "BargainingBossFloor")
+        {
+            bossDead = true;
+            StartCoroutine(SwitchWorlds("AngerScene"));
         }
     }
 
