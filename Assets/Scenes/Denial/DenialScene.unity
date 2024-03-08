@@ -494,8 +494,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 312.31, y: -99.992}
-  m_SizeDelta: {x: 594.091, y: 55.497}
+  m_AnchoredPosition: {x: 320, y: -50}
+  m_SizeDelta: {x: 600, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &335927444
 MonoBehaviour:
@@ -510,7 +510,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 335927445}
-  fill: {fileID: 1406404594}
 --- !u!114 &335927445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1225,8 +1224,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.6399994, y: 0.8800001}
+  m_AnchoredPosition: {x: -0.08999634, y: 0}
+  m_SizeDelta: {x: 0.8200035, y: 0.8800001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &913313380
 MonoBehaviour:
@@ -1248,7 +1247,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8b6ee463d55484a5ea3b6767613c9005, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f04932c2e1cc06d42af8d22ac6742a0f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1538,6 +1537,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8947285784463414411, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
   m_PrefabInstance: {fileID: 7067811893197500173}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1225087274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225087259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587d64f6913374cabb283f3c0ef9da3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 335927445}
 --- !u!1001 &1392393465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1645,7 +1657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.07623219, b: 0, a: 1}
+  m_Color: {r: 0.7735849, g: 0.058130655, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -38511,7 +38523,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6207316408233641074, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1225087274}
   m_SourcePrefab: {fileID: 100100000, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
 --- !u!1001 &7271612397760343125
 PrefabInstance:

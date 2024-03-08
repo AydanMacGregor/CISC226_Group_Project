@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 639506784}
   - component: {fileID: 639506783}
   - component: {fileID: 639506782}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: InnerWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}

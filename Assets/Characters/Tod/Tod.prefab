@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 486470272222347524}
   - component: {fileID: 245716782362604562}
   - component: {fileID: 7111556100648401284}
+  - component: {fileID: -3403326207658580444}
   m_Layer: 6
   m_Name: Tod
   m_TagString: Tod
@@ -310,3 +311,17 @@ MonoBehaviour:
   blockInput: 0
   canStart: 0
   scoreTime: 0
+--- !u!114 &-3403326207658580444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6207316408233641074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587d64f6913374cabb283f3c0ef9da3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  fill: {fileID: 0}

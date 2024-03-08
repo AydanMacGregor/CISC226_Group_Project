@@ -27,6 +27,12 @@ public class Movement : MonoBehaviour
     public bool isMovingBack = false;
     private Vector3 todDir;
     public bool touchingTod = false;
+
+    private Vector2 prevDir;
+    private Vector2 batDir;
+    private RaycastHit2D wallCast;
+    private Vector2 currDir;
+    private RaycastHit2D todCast;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,46 +49,83 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isCharging)
+
+        currDir = ((Vector2) thisTransform.position - prevDir).normalized * 0.5f;
+        prevDir = (Vector2) thisTransform.position;
+        wallCast = Physics2D.Raycast(thisTransform.position, currDir, 1f, LayerMask.GetMask("Confinment", "InnerWall"));
+
+        if (wallCast.collider != null && wallCast.collider.name == "OuterWallTileMap")
         {
-            if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 8)
+            if (direction.x < 0)
             {
-                FollowTod();
+                currentMoveDirection = 0;
+            }
+            else if (direction.x > 0)
+            {
+                currentMoveDirection = 1;
+            }
+            else if (direction.y < 0)
+            {
+                currentMoveDirection = 2;
+            }
+            else if (direction.y > 0)
+            {
+                currentMoveDirection = 3;
             }
             else
             {
-                Move();
+                currentMoveDirection = Random.Range(0,4);
             }
+            decisionTimeCount = 1f;
+            Move();
         }
         else
         {
-            AttackTod();
+            if (!isCharging)
+            {
+                batDir = ((Vector2) Tod.transform.position - (Vector2) thisTransform.position).normalized;
+                todCast = Physics2D.Raycast(thisTransform.position, batDir, 8f, LayerMask.GetMask("Confinment", "InnerWall", "Tod"));
+                if (todCast.collider != null && todCast.collider.name == "Tod")
+                {
+                    FollowTod();
+                }
+                else
+                {
+                    Move();
+                }
+            }
+            else
+            {
+                AttackTod();
+            }
         }
+
+        
         
     }
 
     public void Move()
     {
         // Move the object in the chosen direction at the set speed
-            direction = moveDirections[currentMoveDirection];
-            float xDir = direction.x;
-            float yDir = direction.y;
+        direction = moveDirections[currentMoveDirection];
+        float xDir = direction.x;
+        float yDir = direction.y;
 
-            thisTransform.position += direction * Time.deltaTime * moveSpeed;
+        thisTransform.position += direction * Time.deltaTime * moveSpeed;
 
-            if (decisionTimeCount > 0)
-            {
-                decisionTimeCount -= Time.deltaTime;
-            } 
-            else
-            {
-                // Choose a random time delay for taking a decision
-                // (changing direction, or standing in place for a while )
-                decisionTimeCount = Random.Range(decisionTime.x, decisionTime.y);
+        if (decisionTimeCount > 0)
+        {
+            decisionTimeCount -= Time.deltaTime;
+        } 
+        else
+        {
+            // Choose a random time delay for taking a decision
+            // (changing direction, or standing in place for a while )
+            decisionTimeCount = Random.Range(decisionTime.x, decisionTime.y);
 
-                // Choose a movement direction, or stay in place
-                ChooseMoveDirection();
-            }
+            // Choose a movement direction, or stay in place
+            ChooseMoveDirection();
+        }
     }
 
     void FollowTod()

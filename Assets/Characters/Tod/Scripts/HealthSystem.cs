@@ -18,7 +18,6 @@ public class HealthSystem : MonoBehaviour
 
     public Sprite eyeball;
     public Sprite Charge;
-    public TodHealthBar healthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +25,7 @@ public class HealthSystem : MonoBehaviour
         maxHealth = setDefaultHealth(maxHealth);
         currentHealth = maxHealth;
 
-        //healthBar.SetMaxHealth(currentHealth);
+        this.GetComponent<TodHealthBar>().SetMaxHealth(currentHealth);
     }
 
     // Set a default health for Tod
@@ -47,21 +46,30 @@ public class HealthSystem : MonoBehaviour
     {
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
-            if (other.gameObject.name == "Soul" && other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
+            if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
             {
+                Debug.Log("Charge!");
                 damage(chargeDamageAmount);
             }
-            else if (other.gameObject.name == "projectile")
+            else if (other.gameObject.name == "projectile(Clone)")
             {
+                Debug.Log("Throw!");
                 damage(eyeballDamageAmount);
             }
-            if (other.gameObject.name == "Bat" || other.gameObject.name == "Bat(Clone)")
+            else if (other.gameObject.name == "Bat" || other.gameObject.name == "Bat(Clone)")
             {
+                Debug.Log("Bite!");
                 damage(batDamageAmount);
             }
-            if (other.gameObject.name == "ScreechSymbol(Clone)")
+            else if (other.gameObject.name == "ScreechSymbol(Clone)")
             {
+                Debug.Log("Screech!");
                 damage(screechDamageAmount);
+            }
+            else if (other.gameObject.name == "BatBaby" || other.gameObject.name == "BatBaby(Clone)")
+            {
+                Debug.Log("BatBaby!");
+                damage(batDamageAmount);
             }
             
         }
@@ -100,7 +108,7 @@ public class HealthSystem : MonoBehaviour
     {
         currentHealth -= damageAmount;
 
-        //healthBar.SetHealth(currentHealth);
+        this.GetComponent<TodHealthBar>().SetHealth(currentHealth);
 
         if (currentHealth <= minHealth)
         {

@@ -7,7 +7,12 @@ public class TodHealthBar : MonoBehaviour
 {
 
     public Slider slider;
-    public Image fill;
+
+    void Start()
+    {
+        slider = (Slider)FindObjectOfType(typeof(Slider));
+    }
+
 
     public void SetMaxHealth(int health)
     {

@@ -18,6 +18,8 @@ TagManager:
   - RoomOne
   - RoomTwo
   - RoomThree
+  - BabyBat
+  - Screech
   layers:
   - Default
   - TransparentFX

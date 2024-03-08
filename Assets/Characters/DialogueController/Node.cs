@@ -7,7 +7,7 @@ public class Node
     public string text;
     public bool ip;
     private Node next;
-    private List<Node> extraNodes = new List<Node>();
+    public List<Node> extraNodes = new List<Node>();
 
     public Node(string t, bool p) 
     {

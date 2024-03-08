@@ -35,14 +35,19 @@ public class DialogueStructure : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, null);
-                if (wordIndex != -1)
+                if (wordIndex >= 0 && wordIndex < 3)
                 {
-                    if (wordIndex >= 0)
+                    if (currentNode.extraNodes.Count < 1 && wordIndex == 0)
+                    {
+                        currentNode = currentNode.nextPrompt(wordIndex);
+                        NextLine();
+                    }
+                    else if (currentNode.extraNodes.Count >= 1)
                     {
                         todScore += timeScores[wordIndex];
+                        currentNode = currentNode.nextPrompt(wordIndex);
+                        NextLine();
                     }
-                    currentNode = currentNode.nextPrompt(wordIndex);
-                    NextLine();
                 }
             }
         }
