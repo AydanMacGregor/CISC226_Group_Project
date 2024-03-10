@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using System.Threading;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -119,7 +121,8 @@ public class HealthSystem : MonoBehaviour
     // Destroy Tod if health >= minHealth
     public void kill()
     {
-        Destroy(this.gameObject);
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 
