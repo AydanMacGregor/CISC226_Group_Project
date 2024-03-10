@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
         prevDir = (Vector2) thisTransform.position;
         wallCast = Physics2D.Raycast(thisTransform.position, currDir, 1f, LayerMask.GetMask("Confinment", "InnerWall"));
 
-        if (wallCast.collider != null && wallCast.collider.name == "OuterWallTileMap")
+        if (wallCast.collider != null && wallCast.collider.gameObject.layer == 7)
         {
             if (direction.x < 0)
             {

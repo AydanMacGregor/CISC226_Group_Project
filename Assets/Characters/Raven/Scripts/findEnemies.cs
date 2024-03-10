@@ -9,17 +9,34 @@ public class findEnemies : MonoBehaviour
     private bool hit;
     private GameObject en;
     public SpriteRenderer r;
+    private float timer = 2f;
+    Collider2D[] results;
     // Start is called before the first frame update
     void Start()
     {
-        Collider2D hitColliders = Physics2D.OverlapCircle(transform.transform.localPosition, 5f, LayerMask.GetMask("Bat", "Soul"));
-        if (hitColliders != null)
-            en = hitColliders.gameObject;
+        results = Physics2D.OverlapCircleAll(transform.transform.localPosition, 5f, LayerMask.GetMask("Bat", "Soul"));
+        if (results.Length > 0)
+        {
+            for (int i = 0; i < results.Length; i++)
+            {
+                Vector2 currDir = (Vector2)(this.transform.position - results[i].gameObject.transform.position);
+                RaycastHit2D wallCast = Physics2D.Raycast(this.transform.position, currDir, 5f, LayerMask.GetMask("Confinment", "InnerWall"));
+                if (wallCast == false)
+                {
+                    en = results[i].gameObject;
+                    break;
+                }
+            }
+        }
         todPos = GameObject.FindWithTag("Tod");
     }
 
     void Update()
     {
+        if (timer < 0)
+        {
+            hit = true;
+        }
         if (en != null && !hit)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, en.transform.position, 3f * Time.deltaTime);
@@ -48,6 +65,7 @@ public class findEnemies : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        timer -= Time.deltaTime;
     }
 
     void OnCollisionEnter2D(Collision2D col)
