@@ -32,6 +32,10 @@ public class health : MonoBehaviour
         {
             bossHealth -= 10;
         }
+        else if(other.gameObject.name == "Raven(Clone)")
+        {
+            bossHealth -= 25;
+        }
 
         healthBar.SetHealth(bossHealth);
     }

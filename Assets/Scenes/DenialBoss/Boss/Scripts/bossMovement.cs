@@ -14,6 +14,11 @@ public class bossMovement : MonoBehaviour
     internal Vector3[] moveDirections = new Vector3[] {Vector3.right, Vector3.left, Vector3.up, Vector3.down, Vector3.zero };
     internal int currentMoveDirection;
 
+    // New edit
+    public bool chargeFlag = false;
+    public bool isMovingBack = false;
+    private Vector3 todDir;
+
     void Start()
     {
         thisTransform = this.transform;
@@ -36,6 +41,11 @@ public class bossMovement : MonoBehaviour
             {
                 Move();
             }
+        }
+        // New edit
+        else if (chargeFlag)
+        {
+            AttackTod();
         }
         
     }
@@ -112,7 +122,23 @@ public class bossMovement : MonoBehaviour
         else
         {
             attackTime = 10f;
-            this.GetComponent<attackTod>().StartAttack();
+            int attackChoice = Random.Range(0, 2);
+            this.GetComponent<attackTod>().StartAttack(attackChoice);
+        }
+    }
+
+    // Copy from Soul Movement
+    public void AttackTod()
+    {
+        if (isMovingBack)
+        {
+            todDir = (thisTransform.position - Tod.transform.position).normalized;
+            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+        }
+        else
+        {
+            todDir = (Tod.transform.position - thisTransform.position).normalized;
+            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
         }
     }
 

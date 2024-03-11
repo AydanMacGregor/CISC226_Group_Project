@@ -43,4 +43,15 @@ public class animationMovement : MonoBehaviour
     {
         an.Play("Idle");
     }
+
+    // New edit
+    public void Charge()
+    {
+        an.Play("MaskChangeSad");
+    }
+
+    public void UnCharge()
+    {
+        an.Play("MaskChangeHappy");
+    }
 }

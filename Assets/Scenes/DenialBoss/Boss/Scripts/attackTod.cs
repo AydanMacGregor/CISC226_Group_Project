@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,23 @@ public class attackTod : MonoBehaviour
     private GameObject[] beamLines;
     
 
-    public void StartAttack()
+    public void StartAttack(int n)
     {
-        StartCoroutine(Attack());
+        switch(n){
+            case 0:
+                StartCoroutine(Attack());
+                break;
+            case 1:
+                StartCoroutine(Charge());
+                break;
+
+        }
+        
+    }
+
+    private void StartCoroutine(IEnumerable enumerable)
+    {
+        throw new NotImplementedException();
     }
 
     public IEnumerator Attack()
@@ -44,5 +59,31 @@ public class attackTod : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<animationMovement>().Idle();
+    }
+
+    // New edit
+    IEnumerable Charge()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<bossMovement>().chargeFlag = true;
+        gameObject.GetComponent<animationMovement>().Charge();
+        StartCoroutine(MoveTowardsTod());
+
+    }
+
+    IEnumerable MoveTowardsTod()
+    {
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(MoveAwayTod());
+    }
+
+    IEnumerable MoveAwayTod()
+    {
+        gameObject.GetComponent<animationMovement>().UnCharge();
+        gameObject.GetComponent<bossMovement>().isMovingBack = true;
+        yield return new WaitForSeconds(1f);
+        gameObject.GetComponent<bossMovement>().chargeFlag = false;
+        gameObject.GetComponent<bossMovement>().isMovingBack = false;
+
     }
 }
