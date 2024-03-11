@@ -61,6 +61,7 @@ public class NovelIdea : MonoBehaviour
                 }
                 else if (ran == 1)
                 {
+                    this.GetComponent<AttackDefend>().s = true;
                     blockInput = true;
                 }
                 else if (ran == 2)
@@ -96,6 +97,7 @@ public class NovelIdea : MonoBehaviour
         }
         else if (r == 1)
         {
+            this.GetComponent<AttackDefend>().s = false;
             blockInput = false;
         }
         else if (r == 2)

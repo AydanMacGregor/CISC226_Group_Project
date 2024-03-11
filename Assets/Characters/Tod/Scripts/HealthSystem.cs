@@ -48,7 +48,7 @@ public class HealthSystem : MonoBehaviour
     {
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
-            if (other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
+            if (other.gameObject.tag == "Soul" && other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
             {
                 Debug.Log("Charge!");
                 damage(chargeDamageAmount);

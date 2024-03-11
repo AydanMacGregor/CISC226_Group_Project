@@ -9,10 +9,20 @@ public class MoveChoiceOne : MonoBehaviour
     bool chosen = false;
     private int[] numOfEn = {4, 5, 10, 6};
     private int numGameObjects;
+    private GameObject th;
+    private bool onceOver = true;
 
     void OnTriggerExit2D(Collider2D other)
     {
-        chosen = true;
+        if (other.gameObject.name == "Tod")
+        {
+            if (onceOver)
+            {
+                chosen = true;
+                th = Instantiate(bt, new Vector3(11.5f, 37.5f, 0f), Quaternion.identity);
+                moveBlockers();
+            }
+        }
     }
 
     void Update()
@@ -20,33 +30,37 @@ public class MoveChoiceOne : MonoBehaviour
         if (chosen)
         {
             int check = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
+            Debug.Log(numGameObjects - check);
             if ((numGameObjects - check) == numOfEn[path])
             {
                 path++;
                 moveBlockers();
+            }
+            if (path == 4)
+            {
+                Destroy(th);
+                Destroy(this);
             }
         }
     }
 
     void moveBlockers()
     {
-        GameObject th;
         switch(path)
         {
             case 0:
-                th = Instantiate(bt, new Vector3(11.5f, 37.5f, 0f), Quaternion.identity);
                 th.transform.Rotate(0, 0, 90);
                 break;
             case 1:
-                Instantiate(bt, new Vector3(11.5f, 37.5f, 0f), Quaternion.identity);
+                th.transform.position =  new Vector3(7.5f, 25.5f, 0f);
+                th.transform.Rotate(0, 0, -90);
                 break;
             case 2:
-                th = Instantiate(bt, new Vector3(11.5f, 37.5f, 0f), Quaternion.identity);
+                th.transform.position =  new Vector3(32.5f, 38.5f, 0f);
                 th.transform.Rotate(0, 0, 90);
                 break;
             case 3:
-                th = Instantiate(bt, new Vector3(11.5f, 37.5f, 0f), Quaternion.identity);
-                th.transform.Rotate(0, 0, 90);
+                th.transform.position =  new Vector3(20.5f, 11.5f, 0f);
                 break;
         }
         numGameObjects = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
