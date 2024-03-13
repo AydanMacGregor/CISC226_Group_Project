@@ -28,7 +28,7 @@ public class LevelHandling : MonoBehaviour
             if (current == "DenialScene")
             {
                 l.Add(new Node("Where does this lead to?", false));
-                StartCoroutine(SwitchWorlds(current));
+                StartCoroutine(SwitchWorlds("DenialBossFloor"));
             }
             else if (current == "DenialBossFloor")
             {
@@ -39,7 +39,7 @@ public class LevelHandling : MonoBehaviour
             else if (current == "BargainingScene")
             {
                 l.Add(new Node("Please not again, anything but this!", false));
-                StartCoroutine(SwitchWorlds(current));
+                StartCoroutine(SwitchWorlds("BargainingBossFloor"));
             }
             else if (current == "BargainingBossFloor")
             {

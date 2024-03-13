@@ -13,7 +13,7 @@ public class DialogueStructure : MonoBehaviour
     private Node currentNode;
     public GameObject tod;
     public bool done = false;
-    public float todScore;
+    public float todScore = 0;
     private float[] timeScores = {3f, 6f, 9f};
     private GameObject tutorial;
     
@@ -80,7 +80,6 @@ public class DialogueStructure : MonoBehaviour
 
     public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
-        todScore = 0;
         tod.GetComponent<NovelIdea>().scoreTime = 0f;
         tod.GetComponent<movement>().doneDialogue = false;
         dialogue = new List<Node>();
