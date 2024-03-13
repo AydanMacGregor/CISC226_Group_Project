@@ -18,15 +18,10 @@ public class attackTod : MonoBehaviour
             case 1:
                 StartCoroutine(Charge());
                 break;
-
         }
         
     }
 
-    private void StartCoroutine(IEnumerable enumerable)
-    {
-        throw new NotImplementedException();
-    }
 
     public IEnumerator Attack()
     {
@@ -62,26 +57,25 @@ public class attackTod : MonoBehaviour
     }
 
     // New edit
-    IEnumerable Charge()
+    IEnumerator Charge()
     {
         yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<bossMovement>().chargeFlag = true;
         gameObject.GetComponent<animationMovement>().Charge();
         StartCoroutine(MoveTowardsTod());
-
     }
 
-    IEnumerable MoveTowardsTod()
+    IEnumerator MoveTowardsTod()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         StartCoroutine(MoveAwayTod());
     }
 
-    IEnumerable MoveAwayTod()
+    public IEnumerator MoveAwayTod()
     {
         gameObject.GetComponent<animationMovement>().UnCharge();
         gameObject.GetComponent<bossMovement>().isMovingBack = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<bossMovement>().chargeFlag = false;
         gameObject.GetComponent<bossMovement>().isMovingBack = false;
 

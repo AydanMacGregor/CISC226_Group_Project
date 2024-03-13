@@ -31,7 +31,11 @@ public class bossMovement : MonoBehaviour
 
     void Update()
     {
-        if (!GameObject.FindWithTag("CheckPoint"))
+        if (chargeFlag)
+        {
+            AttackTod();
+        }
+        else if (!GameObject.FindWithTag("CheckPoint"))
         {
             if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 8)
             {
@@ -42,11 +46,7 @@ public class bossMovement : MonoBehaviour
                 Move();
             }
         }
-        // New edit
-        else if (chargeFlag)
-        {
-            AttackTod();
-        }
+        
         
     }
 
@@ -123,7 +123,7 @@ public class bossMovement : MonoBehaviour
         {
             attackTime = 10f;
             int attackChoice = Random.Range(0, 2);
-            this.GetComponent<attackTod>().StartAttack(attackChoice);
+            this.GetComponent<attackTod>().StartAttack(1);
         }
     }
 
@@ -146,5 +146,14 @@ public class bossMovement : MonoBehaviour
     {
         // Choose whether to move sideways or up/down
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Tod" && chargeFlag)
+        {
+            this.GetComponent<attackTod>().StopAllCoroutines();
+            StartCoroutine(this.GetComponent<attackTod>().MoveAwayTod());
+        }
     }
 }
