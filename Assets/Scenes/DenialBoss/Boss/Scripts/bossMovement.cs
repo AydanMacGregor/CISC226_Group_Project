@@ -123,7 +123,7 @@ public class bossMovement : MonoBehaviour
         {
             attackTime = 10f;
             int attackChoice = Random.Range(0, 2);
-            this.GetComponent<attackTod>().StartAttack(1);
+            this.GetComponent<attackTod>().StartAttack(attackChoice);
         }
     }
 
