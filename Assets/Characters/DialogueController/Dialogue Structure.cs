@@ -14,7 +14,7 @@ public class DialogueStructure : MonoBehaviour
     public GameObject tod;
     public bool done = false;
     public float todScore = 0;
-    private float[] timeScores = {3f, 6f, 9f};
+    private float[] timeScores = {14f, 12f, 10f};
     private GameObject tutorial;
     
     void Start()
@@ -64,6 +64,7 @@ public class DialogueStructure : MonoBehaviour
                 {
                     tutorial.GetComponent<guide>().start = true;
                 }
+                Debug.Log(todScore);
             }
             else if (textComponent.text == currentNode.getText())
             {

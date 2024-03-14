@@ -32,6 +32,7 @@ public class LevelHandling : MonoBehaviour
             }
             else if (current == "DenialBossFloor")
             {
+                hit = true;
                 l.Add(new Node("Wow, hold on who is this?", false));
                 l.Add(new Node("Stop making me fight people!", false));
                 l[0].setNode(l[1]);
@@ -43,10 +44,11 @@ public class LevelHandling : MonoBehaviour
             }
             else if (current == "BargainingBossFloor")
             {
+                hit = true;
                 l.Add(new Node("I hate you.", false));
             }
             ds.GetComponent<DialogueStructure>().initializeVar(l, currentText);
-            hit = true;
+            
         }
     }
 
@@ -70,6 +72,10 @@ public class LevelHandling : MonoBehaviour
 
     IEnumerator SwitchWorlds(string w)
     {
+        if (!currentText.enabled)
+        {
+            SceneManager.LoadScene(w);
+        }
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(w);
     }
