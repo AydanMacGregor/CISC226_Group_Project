@@ -29,7 +29,7 @@ public class DenialDialogueSystem : MonoBehaviour
         "- You're here to ammend your grief.",
         "- That information is of no importance.",
         "- Do not be afraid, I am here to help.",
-        "- You are in a new relm.",
+        "- You are in a new realm.",
         "- Stop asking questions.",
         "- You are here to make amens.",
         "- I am you, Tod.",
