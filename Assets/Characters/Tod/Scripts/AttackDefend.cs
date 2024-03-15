@@ -13,7 +13,7 @@ public class AttackDefend : MonoBehaviour
     public bool s = false;
     public bool sl = false;
     public Vector2 randFlip = new Vector2(1,1);
-    private List<GameObject> ravens = new List<GameObject>();
+    public List<GameObject> ravens = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +48,6 @@ public class AttackDefend : MonoBehaviour
                     {
                         ravens.Add(Instantiate(raven, this.transform.position, Quaternion.identity));
                     }
-                    
                 }
             }
         }

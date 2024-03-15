@@ -11,9 +11,11 @@ public class findEnemies : MonoBehaviour
     public SpriteRenderer r;
     private float timer = 2f;
     Collider2D[] results;
+    GameObject tod;
     // Start is called before the first frame update
     void Start()
     {
+        tod = GameObject.FindWithTag("Tod");
         results = Physics2D.OverlapCircleAll(transform.transform.localPosition, 5f, LayerMask.GetMask("Bat", "Soul"));
         if (results.Length > 0)
         {
@@ -77,5 +79,10 @@ public class findEnemies : MonoBehaviour
                 hit = true;
             }
         }
+    }
+
+    void OnDestroy()
+    {
+        tod.GetComponent<AttackDefend>().ravens.Remove(this.gameObject);
     }
 }

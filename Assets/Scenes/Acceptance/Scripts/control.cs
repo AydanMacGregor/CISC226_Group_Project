@@ -20,7 +20,7 @@ public class control : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (tod.transform.position.y >= check)
         {
@@ -29,6 +29,8 @@ public class control : MonoBehaviour
             Destroy(obj[0]);
             obj.RemoveAt(0);
             obj.Add(Instantiate(acceptance, new Vector3(0f,(float)counter,0f), Quaternion.identity));
+            
+            tod.transform.position = new Vector3(tod.transform.position.x, 0f, -1f);
         }
     }
 }
