@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelHandling : MonoBehaviour
 {
-    TextMeshProUGUI currentText;
+    public TextMeshProUGUI currentText;
     private GameObject ds;
     private bool hit = false;
     private string current;
     private bool bossDead = false;
-    // Start is called before the first frame update
+    
     void Start()
     {
         current = SceneManager.GetActiveScene().name;
@@ -48,7 +48,6 @@ public class LevelHandling : MonoBehaviour
                 l.Add(new Node("I hate you.", false));
             }
             ds.GetComponent<DialogueStructure>().initializeVar(l, currentText);
-            
         }
     }
 

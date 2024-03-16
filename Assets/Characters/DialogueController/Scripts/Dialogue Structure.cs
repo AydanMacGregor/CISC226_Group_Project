@@ -16,6 +16,7 @@ public class DialogueStructure : MonoBehaviour
     public float todScore = 0;
     private float[] timeScores = {14f, 12f, 10f};
     private GameObject tutorial;
+    public GameObject background;
     
     void Start()
     {
@@ -56,6 +57,7 @@ public class DialogueStructure : MonoBehaviour
             if (currentNode.getNext() == null)
             {
                 StopAllCoroutines();
+                background.SetActive(false);
                 textComponent.text = string.Empty;
                 textComponent.enabled = false;
                 tod.GetComponent<NovelIdea>().scoreTime = todScore;
@@ -64,7 +66,6 @@ public class DialogueStructure : MonoBehaviour
                 {
                     tutorial.GetComponent<guide>().start = true;
                 }
-                Debug.Log(todScore);
             }
             else if (textComponent.text == currentNode.getText())
             {
@@ -81,6 +82,7 @@ public class DialogueStructure : MonoBehaviour
 
     public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
+        background.SetActive(true);
         tod.GetComponent<NovelIdea>().scoreTime = 0f;
         tod.GetComponent<movement>().doneDialogue = false;
         dialogue = new List<Node>();

@@ -30,7 +30,6 @@ public class MoveChoiceTwo : MonoBehaviour
         if (chosen)
         {
             int check = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
-            Debug.Log(numGameObjects - check);
             if ((numGameObjects - check) == numOfEn[path])
             {
                 path++;
