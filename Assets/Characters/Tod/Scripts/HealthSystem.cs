@@ -85,6 +85,24 @@ public class HealthSystem : MonoBehaviour
                     damageTime = 1f;
                 }
             }
+            if (other.gameObject.name == "DevineLine" || other.gameObject.name == "DevineLine(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
+            }
+            if (other.gameObject.name == "DevineCenter" || other.gameObject.name == "DevineCenter(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
+            }
         }
     }
 
@@ -93,6 +111,14 @@ public class HealthSystem : MonoBehaviour
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
             if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+            {
+                damageTime = 0;
+            }
+            if (other.gameObject.name == "DevineLine" || other.gameObject.name == "DevineLine(Clone)")
+            {
+                damageTime = 0;
+            }
+            if (other.gameObject.name == "DevineCenter" || other.gameObject.name == "DevineCenter(Clone)")
             {
                 damageTime = 0;
             }
