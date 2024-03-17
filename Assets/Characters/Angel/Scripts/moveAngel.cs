@@ -128,33 +128,26 @@ public class moveAngel : MonoBehaviour
     void FollowTod()
     {
         if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 2f)
+        {
+            todDir = (Tod.transform.position - thisTransform.position).normalized;
+            rb.velocity = new Vector3(todDir.x * moveSpeed, todDir.y * moveSpeed, 0.0f);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+
+            if (attackTime > 0)
             {
-                todDir = (Tod.transform.position - thisTransform.position).normalized;
-                rb.velocity = new Vector3(todDir.x * moveSpeed, todDir.y * moveSpeed, 0.0f);
+                attackTime -= Time.deltaTime;
             }
             else
             {
-                rb.velocity = Vector2.zero;
-
-                if (attackTime > 0)
-                {
-                    attackTime -= Time.deltaTime;
-                }
-                else
-                {
-                    attackTime = 4f; 
-                    int attack = Random.Range(0, 2);
-                    if (attack == 2)
-                    {
-                        this.GetComponent<AAttack>().attackChoice(attack);
-                    }
-                    else
-                    {
-                        this.GetComponent<AAttack>().attackChoice(attack);
-                        this.GetComponent<AAnimation>().chooseAttack(attack);
-                    }
-                }
+                attackTime = 4f; 
+                int attack = Random.Range(0, 2);
+                this.GetComponent<AAttack>().attackChoice(1);
+                this.GetComponent<AAnimation>().chooseAttack(1);
             }
+        }
     }
     
     void ChooseMoveDirection()

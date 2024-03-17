@@ -23,7 +23,7 @@ public class AAttack : MonoBehaviour
 
     IEnumerator DevineDelay()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.7f);
         this.GetComponent<moveAngel>().isDevine = true;
         StartCoroutine(devineAttack());
     }
@@ -45,15 +45,24 @@ public class AAttack : MonoBehaviour
     IEnumerator SummonAttackDelay()
     {
         this.GetComponent<moveAngel>().isDevine = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.7f);
+        Vector3 ran = new Vector3(Random.Range(-3,3), Random.Range(-3,3), 0f);
+        Vector2 Dir = ((Vector2) this.transform.position + (Vector2)ran - (Vector2) this.transform.position).normalized;
+        RaycastHit2D cast = Physics2D.Raycast(this.transform.position, Dir, 3f, LayerMask.GetMask("Confinment", "InnerWall"));
+        while (cast.collider != null && (cast.collider.name == "Confinment" || cast.collider.name == "InnerWall"))
+        {
+            ran = new Vector3(Random.Range(-3,3), Random.Range(-3,3), 0f);
+            Dir = ((Vector2) this.transform.position + (Vector2)ran - (Vector2) this.transform.position).normalized;
+            cast = Physics2D.Raycast(this.transform.position, Dir, 3f, LayerMask.GetMask("Confinment", "InnerWall"));
+        }
         int r = Random.Range(0,2);
         if (r == 0)
         {
-            Instantiate(soul, this.transform.position + new Vector3(Random.Range(-3,3), Random.Range(-3,3), 1f), Quaternion.identity);
+            Instantiate(soul, this.transform.position + ran, Quaternion.identity);
         }
         else
         {
-            Instantiate(bat, this.transform.position + new Vector3(Random.Range(-3,3), Random.Range(-3,3), 1f), Quaternion.identity);
+            Instantiate(bat, this.transform.position + ran, Quaternion.identity);
         }
         this.GetComponent<moveAngel>().isDevine = false;
     }

@@ -9,15 +9,15 @@ public class constructDevine : MonoBehaviour
     
     void Start()
     {
-        Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject, 2f);
         t = this.transform;
         for (float i = 0.7f; i < 30; i+=0.7f)
         {
             GameObject up = GameObject.Instantiate(devineLine, new Vector3(t.position.x, t.position.y + i, -2), Quaternion.identity);
             GameObject down = GameObject.Instantiate(devineLine, new Vector3(t.position.x, t.position.y - i, -2), Quaternion.identity);
-            GameObject right = GameObject.Instantiate(devineLine, new Vector3(t.position.x + i, t.position.y, -2), Quaternion.identity);
+            GameObject right = GameObject.Instantiate(devineLine, new Vector3(t.position.x + i, t.position.y + 0.187f, -2), Quaternion.identity);
             right.GetComponent<Transform>().Rotate(0,0,90);
-            GameObject left = GameObject.Instantiate(devineLine, new Vector3(t.position.x - i, t.position.y, -2), Quaternion.identity);
+            GameObject left = GameObject.Instantiate(devineLine, new Vector3(t.position.x - i, t.position.y + 0.187f, -2), Quaternion.identity);
             left.GetComponent<Transform>().Rotate(0,0,90);
         }
     }
