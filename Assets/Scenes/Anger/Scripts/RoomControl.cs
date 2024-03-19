@@ -8,8 +8,8 @@ public class RoomControl : MonoBehaviour
     private List<GameObject> blockers = new List<GameObject>();
     private bool checkEn = false;
     private int numGameObjects;
-
-    private int[] numOfEn = {8, 6, 10};
+    private int current;
+    private int[] numOfEn = {8, 5, 9};
     private GameObject[] rooms;
     // Start is called before the first frame update
     public void Block(int n)
@@ -30,7 +30,7 @@ public class RoomControl : MonoBehaviour
                 rooms = GameObject.FindGameObjectsWithTag("RoomThree");
                 break;
         }
-        numGameObjects = numOfEn[n];
+        current = n;
         foreach (GameObject i in rooms)
         {
             Destroy(i);
@@ -41,8 +41,8 @@ public class RoomControl : MonoBehaviour
     {
         if (checkEn)
         {
-            int check = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
-            if ((numGameObjects - check) == 5)
+            int check = getEnemies();
+            if ((numGameObjects - check) == numOfEn[current])
             {
                 checkEn = false;
                 foreach (GameObject i in blockers)
@@ -51,6 +51,14 @@ public class RoomControl : MonoBehaviour
                 }
                 blockers.Clear();
             }
+        }
+    }
+
+    public void addEn()
+    {
+        if (checkEn)
+        {
+            numOfEn[current] += 1;
         }
     }
 
@@ -66,7 +74,7 @@ public class RoomControl : MonoBehaviour
         blockers.Add(two);
         blockers.Add(three);
 
-        numGameObjects = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
+        numGameObjects = getEnemies();
     }
 
     void roomtwo()
@@ -79,7 +87,7 @@ public class RoomControl : MonoBehaviour
         blockers.Add(one);
         blockers.Add(two);
 
-        numGameObjects = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
+        numGameObjects = getEnemies();
     }
 
     void roomthree()
@@ -91,6 +99,11 @@ public class RoomControl : MonoBehaviour
         blockers.Add(one);
         blockers.Add(two);
 
-        numGameObjects = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
+        numGameObjects = getEnemies();
+    }
+
+    int getEnemies()
+    {
+        return GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length + GameObject.FindGameObjectsWithTag("Angel").Length;
     }
 }

@@ -7,19 +7,7 @@ public class BAnimation : MonoBehaviour
     public Animator an;
 
     public Rigidbody2D rb;
-    private string[] attackAnimations = {"Dash_anim", "Screech_Anim"};
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    private string[] attackAnimations = {"Screech_Anim", "Dash_anim"};
     public void chooseAttack(int n)
     {
         an.Play(attackAnimations[n]);

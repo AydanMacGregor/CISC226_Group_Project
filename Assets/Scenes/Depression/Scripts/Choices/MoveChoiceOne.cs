@@ -7,7 +7,7 @@ public class MoveChoiceOne : MonoBehaviour
     int path = 0;
     public GameObject bt;
     bool chosen = false;
-    private int[] numOfEn = {4, 5, 10, 6};
+    private int[] numOfEn = {4, 4, 10, 7};
     private int numGameObjects;
     private GameObject th;
     private bool onceOver = true;
@@ -29,7 +29,7 @@ public class MoveChoiceOne : MonoBehaviour
     {
         if (chosen)
         {
-            int check = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
+            int check = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length + GameObject.FindGameObjectsWithTag("Angel").Length;
             if ((numGameObjects - check) == numOfEn[path])
             {
                 path++;
@@ -40,6 +40,14 @@ public class MoveChoiceOne : MonoBehaviour
                 Destroy(th);
                 Destroy(this);
             }
+        }
+    }
+
+    public void addEn()
+    {
+        if (chosen)
+        {
+            numOfEn[path] += 1;
         }
     }
 
@@ -62,6 +70,6 @@ public class MoveChoiceOne : MonoBehaviour
                 th.transform.position =  new Vector3(20.5f, 11.5f, 0f);
                 break;
         }
-        numGameObjects = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
+        numGameObjects = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length + GameObject.FindGameObjectsWithTag("Angel").Length;
     }
 }

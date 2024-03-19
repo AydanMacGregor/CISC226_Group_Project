@@ -25,6 +25,7 @@ public class moveAngel : MonoBehaviour
 
     public bool isDevine = false;
     public bool isMovingBack = false;
+    public bool isAttacking = false;
 
     public bool isScreeching = false;
     private Vector3 todDir;
@@ -127,27 +128,31 @@ public class moveAngel : MonoBehaviour
 
     void FollowTod()
     {
-        if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 2f)
-        {
-            todDir = (Tod.transform.position - thisTransform.position).normalized;
-            rb.velocity = new Vector3(todDir.x * moveSpeed, todDir.y * moveSpeed, 0.0f);
-        }
-        else
+        float distance = Vector2.Distance(Tod.transform.position, thisTransform.position);
+        if (distance < 2f)
         {
             rb.velocity = Vector2.zero;
-
-            if (attackTime > 0)
+        }
+        if (!isAttacking)
+        {
+            this.transform.position = Vector2.MoveTowards(thisTransform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
+        }
+        if (attackTime < 0)
+        {
+            isAttacking = true;
+            int attack = Random.Range(0, 2);
+            if (attack == 0)
             {
-                attackTime -= Time.deltaTime;
+                attackTime = 3f; 
             }
             else
             {
-                attackTime = 4f; 
-                int attack = Random.Range(0, 2);
-                this.GetComponent<AAttack>().attackChoice(1);
-                this.GetComponent<AAnimation>().chooseAttack(1);
+                attackTime = 2f; 
             }
+            this.GetComponent<AAttack>().attackChoice(attack);
+            this.GetComponent<AAnimation>().chooseAttack(attack);
         }
+        attackTime -= Time.deltaTime;
     }
     
     void ChooseMoveDirection()

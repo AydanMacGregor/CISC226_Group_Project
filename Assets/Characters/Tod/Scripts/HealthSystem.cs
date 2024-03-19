@@ -60,6 +60,10 @@ public class HealthSystem : MonoBehaviour
             {
                 damage(batDamageAmount);
             }
+            else if (other.gameObject.name == "Bat" && other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
+            {
+                damage(chargeDamageAmount);
+            }
             else if (other.gameObject.name == "ScreechSymbol(Clone)")
             {
                 damage(screechDamageAmount);

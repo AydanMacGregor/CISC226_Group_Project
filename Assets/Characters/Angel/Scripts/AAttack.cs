@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AAttack : MonoBehaviour
 {
@@ -40,10 +41,23 @@ public class AAttack : MonoBehaviour
         an.Play("UnDevine");
         yield return new WaitForSeconds(0.5f);
         this.GetComponent<moveAngel>().isDevine = false;
+        this.GetComponent<moveAngel>().isAttacking = false;
     }
 
     IEnumerator SummonAttackDelay()
     {
+        if (SceneManager.GetActiveScene().name == "AngerScene")
+        {
+            GameObject c = GameObject.Find("Controller");
+            c.GetComponent<RoomControl>().addEn();
+        }
+        else if (SceneManager.GetActiveScene().name == "DepressionScene")
+        {
+            GameObject cOne = GameObject.Find("ChoiceOne");
+            GameObject cTwo = GameObject.Find("ChoiceTwo");
+            cOne.GetComponent<RoomControl>().addEn();
+            cTwo.GetComponent<RoomControl>().addEn();
+        }
         this.GetComponent<moveAngel>().isDevine = true;
         yield return new WaitForSeconds(0.7f);
         Vector3 ran = new Vector3(Random.Range(-3,3), Random.Range(-3,3), 0f);
@@ -65,5 +79,6 @@ public class AAttack : MonoBehaviour
             Instantiate(bat, this.transform.position + ran, Quaternion.identity);
         }
         this.GetComponent<moveAngel>().isDevine = false;
+        this.GetComponent<moveAngel>().isAttacking = false;
     }
 }

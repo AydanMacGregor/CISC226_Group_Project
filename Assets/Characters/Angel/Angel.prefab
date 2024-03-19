@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6397963225731915033}
   m_Layer: 14
   m_Name: Angel
-  m_TagString: Untagged
+  m_TagString: Angel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

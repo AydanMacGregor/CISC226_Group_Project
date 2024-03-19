@@ -47,6 +47,18 @@ public class LevelHandling : MonoBehaviour
                 hit = true;
                 l.Add(new Node("I hate you.", false));
             }
+            else if (current == "AngerScene")
+            {
+                hit = true;
+                l.Add(new Node("Once I'm done with this person you're next you hear me!", false));
+                StartCoroutine(SwitchWorlds("AngerBossFloor"));
+            }
+            else if (current == "DepressionScene")
+            {
+                hit = true;
+                l.Add(new Node("I don't think I can take another.", false));
+                StartCoroutine(SwitchWorlds("DepressionBossFloor"));
+            }
             ds.GetComponent<DialogueStructure>().initializeVar(l, currentText);
         }
     }
@@ -71,11 +83,16 @@ public class LevelHandling : MonoBehaviour
 
     IEnumerator SwitchWorlds(string w)
     {
+        float waitTime = 4f;
         if (!currentText.enabled)
         {
             SceneManager.LoadScene(w);
         }
-        yield return new WaitForSeconds(3f);
+        if (current == "AngerScene")
+        {
+            waitTime = 5f;
+        }
+        yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(w);
     }
 }

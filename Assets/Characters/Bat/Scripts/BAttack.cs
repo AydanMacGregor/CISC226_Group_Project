@@ -10,12 +10,13 @@ public class BAttack : MonoBehaviour
 
     public void attackChoice(int n)
     {
-        switch (n){
+        switch (n)
+        {
             case 0:
-                StartCoroutine(biteAttackDelay());
+                StartCoroutine(screechAttackDelay());
                 break;
             case 1:
-                StartCoroutine(screechAttackDelay());
+                StartCoroutine(biteAttackDelay());
                 break;
             case 2:
                 StartCoroutine(StartSpread());
