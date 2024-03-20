@@ -13,9 +13,10 @@ public class DialogueStructure : MonoBehaviour
     private Node currentNode;
     public GameObject tod;
     public bool done = false;
-    public float todScore;
-    private float[] timeScores = {3f, 6f, 9f};
+    public float todScore = 0;
+    private float[] timeScores = {14f, 12f, 10f};
     private GameObject tutorial;
+    public GameObject background;
     
     void Start()
     {
@@ -30,6 +31,10 @@ public class DialogueStructure : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (tod.GetComponent<NovelIdea>().getTime() > 0f && Input.GetMouseButtonDown(1))
+        {
+            endText();
+        }
         if (currentNode.getPrompt())
         {
             if (Input.GetMouseButtonDown(0))
@@ -55,15 +60,7 @@ public class DialogueStructure : MonoBehaviour
         {
             if (currentNode.getNext() == null)
             {
-                StopAllCoroutines();
-                textComponent.text = string.Empty;
-                textComponent.enabled = false;
-                tod.GetComponent<NovelIdea>().scoreTime = todScore;
-                tod.GetComponent<movement>().doneDialogue = true;
-                if (tutorial != null)
-                {
-                    tutorial.GetComponent<guide>().start = true;
-                }
+                endText();
             }
             else if (textComponent.text == currentNode.getText())
             {
@@ -78,10 +75,27 @@ public class DialogueStructure : MonoBehaviour
         
     }
 
+    void endText()
+    {
+        StopAllCoroutines();
+        background.SetActive(false);
+        textComponent.text = string.Empty;
+        textComponent.enabled = false;
+        tod.GetComponent<NovelIdea>().setTime(todScore);
+        tod.GetComponent<movement>().doneDialogue = true;
+        if (tutorial != null)
+        {
+            tutorial.GetComponent<guide>().start = true;
+        }
+    }
+
     public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
-        todScore = 0;
-        tod.GetComponent<NovelIdea>().scoreTime = 0f;
+        if (GameObject.Find("Tutorial") != null && tod.GetComponent<NovelIdea>().getTime() > 0f)
+        {
+            Destroy(GameObject.Find("Tutorial"));
+        }
+        background.SetActive(true);
         tod.GetComponent<movement>().doneDialogue = false;
         dialogue = new List<Node>();
         for (int i = 0; i < d.Count; i ++)

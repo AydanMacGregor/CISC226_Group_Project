@@ -23,6 +23,7 @@ TagManager:
   - ExtendLine
   - Extend
   - BargainingBoss
+  - Angel
   layers:
   - Default
   - TransparentFX
@@ -38,7 +39,7 @@ TagManager:
   - Boss
   - Bat
   - InnerWall
-  - 
+  - Angel
   - 
   - 
   - 

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6475974289645573621}
   - component: {fileID: 3301262124194014285}
   - component: {fileID: 2033242030331094036}
+  - component: {fileID: 8125524485755525096}
   m_Layer: 7
   m_Name: BlockTod
   m_TagString: Untagged
@@ -158,3 +159,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &8125524485755525096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5638252886140759959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c6f9ad0863e9649a8a53f3c28589eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blue: {fileID: 21300000, guid: 012361286480b2a4d933824037f639d9, type: 3}

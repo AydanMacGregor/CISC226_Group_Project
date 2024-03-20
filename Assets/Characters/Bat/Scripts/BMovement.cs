@@ -25,6 +25,7 @@ public class BMovement : MonoBehaviour
 
     public bool isBiting = false;
     public bool isMovingBack = false;
+    public bool isAttack = false;
 
     public bool isScreeching = false;
     private Vector3 todDir;
@@ -127,42 +128,45 @@ public class BMovement : MonoBehaviour
 
     void FollowTod()
     {
-        if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 2f)
+        float distance = Vector2.Distance(Tod.transform.position, thisTransform.position);
+        
+        if (distance < 2f)
+        {
+            rb.velocity = Vector2.zero;
+        }
+        else if (!isAttack)
+        {
+            todDir = (Tod.transform.position - thisTransform.position).normalized;
+            rb.velocity = new Vector3(todDir.x * moveSpeed, todDir.y * moveSpeed, 0.0f);
+        }
+        if (attackTime < 0)
+        {
+            attackTime = 4f; 
+            int attack = Random.Range(0, 3);
+            attackTime = 3f + ((float)attack * 1.5f);
+            if (attack == 2)
             {
-                todDir = (Tod.transform.position - thisTransform.position).normalized;
-                rb.velocity = new Vector3(todDir.x * moveSpeed, todDir.y * moveSpeed, 0.0f);
+                this.GetComponent<BAttack>().attackChoice(attack);
             }
             else
             {
-                rb.velocity = Vector2.zero;
-
-                if (attackTime > 0)
-                {
-                    attackTime -= Time.deltaTime;
-                }
-                else
-                {
-                    attackTime = 4f; 
-                    int attack = Random.Range(0, 3);
-                    if (attack == 2)
-                    {
-                        this.GetComponent<BAttack>().attackChoice(attack);
-                    }
-                    else
-                    {
-                        this.GetComponent<BAttack>().attackChoice(attack);
-                        this.GetComponent<BAnimation>().chooseAttack(attack);
-                    }
-                }
+                this.GetComponent<BAttack>().attackChoice(attack);
+                this.GetComponent<BAnimation>().chooseAttack(attack);
             }
+        }
+        attackTime -= Time.deltaTime;
     }
 
     void AttackTod()
     {
         if (isMovingBack)
         {
-            todDir = (thisTransform.position - Tod.transform.position).normalized;
-            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+            float distance = Vector2.Distance(Tod.transform.position, thisTransform.position);
+            if (distance < 1.5f)
+            {
+                todDir = (thisTransform.position - Tod.transform.position).normalized;
+                transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+            }
         }
         else
         {

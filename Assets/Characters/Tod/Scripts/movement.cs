@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class movement : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class movement : MonoBehaviour
     public int yFlip = 1;
     private float moveX;
     private float moveY;
+    public bool finalScene = false;
 
     void Awake()
     {
@@ -24,7 +26,21 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!this.GetComponent<NovelIdea>().blockInput && doneDialogue)
+        if (SceneManager.GetActiveScene().name == "Acceptance" && !finalScene)
+        {
+            direction = Vector2.up;
+            moveX = Input.GetAxisRaw("Horizontal");
+            moveY = Input.GetAxisRaw("Vertical");
+            if (moveY > 0)
+            {
+                move = new Vector2(moveX, moveY).normalized;
+            }
+            else
+            {
+                move = Vector2.zero;
+            }
+        }
+        else if (!this.GetComponent<NovelIdea>().blockInput && doneDialogue)
         {
             ProcessInputs();
         }

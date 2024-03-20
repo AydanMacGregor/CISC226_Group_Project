@@ -27,6 +27,7 @@ public class attackScript : MonoBehaviour
 
     IEnumerator DelayCharge()
     {
+        this.GetComponent<Movement>().isAttacking = true;
         yield return new WaitForSeconds(0.2f);
         this.GetComponent<Movement>().isCharging = true;
         StartCoroutine(MoveTowardsTod());
@@ -45,5 +46,6 @@ public class attackScript : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         this.GetComponent<Movement>().isCharging = false;
         this.GetComponent<Movement>().isMovingBack = false;
+        this.GetComponent<Movement>().isAttacking = false;
     }
 }

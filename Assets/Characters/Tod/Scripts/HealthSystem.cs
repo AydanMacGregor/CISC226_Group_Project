@@ -50,27 +50,26 @@ public class HealthSystem : MonoBehaviour
         {
             if (other.gameObject.tag == "Soul" && other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
             {
-                Debug.Log("Charge!");
                 damage(chargeDamageAmount);
             }
             else if (other.gameObject.name == "projectile(Clone)")
             {
-                Debug.Log("Throw!");
                 damage(eyeballDamageAmount);
             }
             else if (other.gameObject.name == "Bat" || other.gameObject.name == "Bat(Clone)")
             {
-                Debug.Log("Bite!");
                 damage(batDamageAmount);
+            }
+            else if (other.gameObject.name == "Bat" && other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
+            {
+                damage(chargeDamageAmount);
             }
             else if (other.gameObject.name == "ScreechSymbol(Clone)")
             {
-                Debug.Log("Screech!");
                 damage(screechDamageAmount);
             }
             else if (other.gameObject.name == "BatBaby" || other.gameObject.name == "BatBaby(Clone)")
             {
-                Debug.Log("BatBaby!");
                 damage(batDamageAmount);
             }
             
@@ -90,6 +89,24 @@ public class HealthSystem : MonoBehaviour
                     damageTime = 1f;
                 }
             }
+            if (other.gameObject.name == "DevineLine" || other.gameObject.name == "DevineLine(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
+            }
+            if (other.gameObject.name == "DevineCenter" || other.gameObject.name == "DevineCenter(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
+            }
         }
     }
 
@@ -98,6 +115,14 @@ public class HealthSystem : MonoBehaviour
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
             if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+            {
+                damageTime = 0;
+            }
+            if (other.gameObject.name == "DevineLine" || other.gameObject.name == "DevineLine(Clone)")
+            {
+                damageTime = 0;
+            }
+            if (other.gameObject.name == "DevineCenter" || other.gameObject.name == "DevineCenter(Clone)")
             {
                 damageTime = 0;
             }
@@ -121,7 +146,6 @@ public class HealthSystem : MonoBehaviour
     // Destroy Tod if health >= minHealth
     public void kill()
     {
-        
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

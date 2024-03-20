@@ -27,12 +27,14 @@ public class Movement : MonoBehaviour
     public bool isMovingBack = false;
     private Vector3 todDir;
     public bool touchingTod = false;
+    public bool isAttacking = false;
 
     private Vector2 prevDir;
     private Vector2 batDir;
     private RaycastHit2D wallCast;
     private Vector2 currDir;
     private RaycastHit2D todCast;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -130,32 +132,35 @@ public class Movement : MonoBehaviour
 
     void FollowTod()
     {
-        if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 4f)
+        float distance = Vector2.Distance(Tod.transform.position, thisTransform.position);
+        if (distance < 2f)
+        {
+            rb.velocity = Vector2.zero;
+        }
+        else if(!isAttacking)
         {
             transform.position = Vector2.MoveTowards(thisTransform.position, Tod.transform.position, moveSpeed * Time.deltaTime);
         }
-        else
+        if (attackTime < 0)
         {
-            if (attackTime > 0)
-            {
-                attackTime -= Time.deltaTime;
-            }
-            else
-            {
-                attackTime = 3f;
-                int attack = Random.Range(0, 2);
-                this.GetComponent<animationScript>().chooseAttack(attack);
-                this.GetComponent<attackScript>().attackChoice(attack);
-            }
+            int attack = Random.Range(0, 2);
+            attackTime = 1f + ((float)attack * 3.5f);
+            this.GetComponent<animationScript>().chooseAttack(attack);
+            this.GetComponent<attackScript>().attackChoice(attack);
         }
+        attackTime -= Time.deltaTime;
     }
 
     public void AttackTod()
     {
         if (isMovingBack)
         {
-            todDir = (thisTransform.position - Tod.transform.position).normalized;
-            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+            float distance = Vector2.Distance(Tod.transform.position, thisTransform.position);
+            if (distance < 1.5f)
+            {
+                todDir = (thisTransform.position - Tod.transform.position).normalized;
+                transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+            }
         }
         else
         {

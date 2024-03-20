@@ -13,6 +13,7 @@ public class AttackDefend : MonoBehaviour
     public bool s = false;
     public bool sl = false;
     public Vector2 randFlip = new Vector2(1,1);
+    public List<GameObject> ravens = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class AttackDefend : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    attackTimer = 1f;
+                    attackTimer = 0.5f;
                     sl = true;
                     Instantiate(slash, new Vector3(tod.transform.position.x + (0.5f * dir.x * randFlip.x), tod.transform.position.y + (0.5f * dir.y * randFlip.y), tod.transform.position.z), Quaternion.identity);
                 }
@@ -43,7 +44,10 @@ public class AttackDefend : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.E))
                 {
-                    Instantiate(raven, this.transform.position, Quaternion.identity);
+                    if (ravens.Count < 3)
+                    {
+                        ravens.Add(Instantiate(raven, this.transform.position, Quaternion.identity));
+                    }
                 }
             }
         }
@@ -61,6 +65,6 @@ public class AttackDefend : MonoBehaviour
         yield return new WaitForSeconds(1f);
         this.GetComponent<NovelIdea>().blockInput = false;
         s = false;
-        attackTimer = 1f;
+        attackTimer = 0.5f;
     }
 }

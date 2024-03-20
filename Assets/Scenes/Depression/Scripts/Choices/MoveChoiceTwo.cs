@@ -7,7 +7,7 @@ public class MoveChoiceTwo : MonoBehaviour
     int path = 0;
     public GameObject bt;
     bool chosen = false;
-    private int[] numOfEn = {8, 6};
+    private int[] numOfEn = {7, 6};
     private int numGameObjects;
     private GameObject th;
     private bool onceOver = true;
@@ -29,8 +29,7 @@ public class MoveChoiceTwo : MonoBehaviour
     {
         if (chosen)
         {
-            int check = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
-            Debug.Log(numGameObjects - check);
+            int check = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length + GameObject.FindGameObjectsWithTag("Angel").Length;
             if ((numGameObjects - check) == numOfEn[path])
             {
                 path++;
@@ -41,6 +40,14 @@ public class MoveChoiceTwo : MonoBehaviour
                 Destroy(th);
                 Destroy(this);
             }
+        }
+    }
+
+    public void addEn()
+    {
+        if (chosen)
+        {
+            numOfEn[path] += 1;
         }
     }
 
@@ -56,6 +63,6 @@ public class MoveChoiceTwo : MonoBehaviour
                 th.transform.Rotate(0, 0, -90);
                 break;
         }
-        numGameObjects = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length;
+        numGameObjects = GameObject.FindGameObjectsWithTag("Soul").Length + GameObject.FindGameObjectsWithTag("Bat").Length + GameObject.FindGameObjectsWithTag("Angel").Length;
     }
 }
