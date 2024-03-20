@@ -17,6 +17,8 @@ public class control : MonoBehaviour
     public TextMeshProUGUI currentText;
     private bool final = false;
     public GameObject todblockers;
+    public GameObject finalTrigger;
+    public bool finalBlocker = false;
 
     void Start()
     {
@@ -38,23 +40,33 @@ public class control : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (finalBlocker)
+        {
+            objTod.Add(Instantiate(todblockers, new Vector3(0f,(float)counter + acceptanceFinalOffset-4f,0f), Quaternion.identity));
+            objTod[objTod.Count-1].transform.localScale = new Vector3(1,20,1);
+            objTod[objTod.Count-1].transform.Rotate(0, 0, -90);
+            Destroy(this.gameObject);
+        }
         if (!currentText.enabled && !final)
         {
             final = true;
             objTod.Add(Instantiate(todblockers, new Vector3(7.5f,(float)counter + acceptanceFinalOffset,0f), Quaternion.identity));
             objTod.Add(Instantiate(todblockers, new Vector3(-7.5f,(float)counter + acceptanceFinalOffset,0f), Quaternion.identity));
 
-            objTod.Add(Instantiate(todblockers, new Vector3(0f,(float)counter + acceptanceFinalOffset-4f,0f), Quaternion.identity));
+            Instantiate(finalTrigger, new Vector3(0f,(float)counter + acceptanceFinalOffset-4f,0f), Quaternion.identity);
+
+            objTod.Add(Instantiate(todblockers, new Vector3(-6f,(float)counter + acceptanceFinalOffset-4f,0f), Quaternion.identity));
+            objTod.Add(Instantiate(todblockers, new Vector3(6f,(float)counter + acceptanceFinalOffset-4f,0f), Quaternion.identity));
             objTod.Add(Instantiate(todblockers, new Vector3(0f,(float)counter + acceptanceFinalOffset+4f,0f), Quaternion.identity));
-            objTod[objTod.Count-2].transform.localScale = new Vector3(1,20,1);
+            objTod[objTod.Count-3].transform.localScale = new Vector3(1,4,1);
+            objTod[objTod.Count-2].transform.localScale = new Vector3(1,4,1);
             objTod[objTod.Count-1].transform.localScale = new Vector3(1,20,1);
+            objTod[objTod.Count-3].transform.Rotate(0, 0, -90);
             objTod[objTod.Count-2].transform.Rotate(0, 0, -90);
             objTod[objTod.Count-1].transform.Rotate(0, 0, -90);
             
-
-
             obj.Add(Instantiate(acceptanceFinal, new Vector3(0f,(float)counter + acceptanceFinalOffset,0f), Quaternion.identity));
-            Destroy(this.gameObject);
+            
         }
         else if (tod.transform.position.y >= check && !final)
         {

@@ -16,6 +16,7 @@ public class movement : MonoBehaviour
     public int yFlip = 1;
     private float moveX;
     private float moveY;
+    public bool finalScene = false;
 
     void Awake()
     {
@@ -25,7 +26,7 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "Acceptance")
+        if (SceneManager.GetActiveScene().name == "Acceptance" && !finalScene)
         {
             direction = Vector2.up;
             moveX = Input.GetAxisRaw("Horizontal");

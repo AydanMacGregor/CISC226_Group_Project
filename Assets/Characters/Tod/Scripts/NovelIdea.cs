@@ -12,7 +12,7 @@ public class NovelIdea : MonoBehaviour
     public bool blockInput;
     private int ran;
     public bool canStart;
-    public float scoreTime;
+    public static float scoreTime;
     private bool firstPushBack;
     private bool idc = true;
     
@@ -28,6 +28,19 @@ public class NovelIdea : MonoBehaviour
         {
             firstPushBack = false;
         }
+    }
+
+    public void setTime(float t)
+    {
+        if (t > 0)
+        {
+            scoreTime = t;
+        }
+    }
+
+    public float getTime()
+    {
+        return scoreTime;
     }
 
     // Update is called once per frame
@@ -47,7 +60,7 @@ public class NovelIdea : MonoBehaviour
                         d.Add(new Node("Wait... are you doing that or am I?", false));
                         d.Add(new Node("- ...", true));
                         d.Add(new Node("ha! I can fight against you.", false));
-                        d.Add(new Node("Better not cross me", false));
+                        d.Add(new Node("Better be nice me, I don't always have to listen to you now.", false));
                         d[0].setNode(d[1]);
                         d[1].setNode(d[2]);
                         d[2].setNode(d[3]);

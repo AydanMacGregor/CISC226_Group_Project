@@ -384,7 +384,7 @@ PrefabInstance:
     - target: {fileID: 2477302924352562530, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
       propertyPath: background
       value: 
-      objectReference: {fileID: 7352735413381215690, guid: c7923ec8f258da84dba8cdb8f3037826, type: 3}
+      objectReference: {fileID: 738865332}
     - target: {fileID: 2477302924352562530, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
       propertyPath: textComponent
       value: 
@@ -466,6 +466,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &738865332 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7352735413381215690, guid: c7923ec8f258da84dba8cdb8f3037826, type: 3}
+  m_PrefabInstance: {fileID: 1867260709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &793688669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,6 +1170,8 @@ MonoBehaviour:
   acceptanceFinal: {fileID: 5416518062116147653, guid: 909e03bbf8d0a9945ab42d0fff884f29, type: 3}
   currentText: {fileID: 1370533158}
   todblockers: {fileID: 2284653041662577133, guid: c9bb87f0a5223a14f8c9c5a356828a5e, type: 3}
+  finalTrigger: {fileID: 7848726902277882854, guid: 1b9cb8bdf879213469cf43c2c8c767c2, type: 3}
+  finalBlocker: 0
 --- !u!212 &2010868623
 SpriteRenderer:
   m_ObjectHideFlags: 0

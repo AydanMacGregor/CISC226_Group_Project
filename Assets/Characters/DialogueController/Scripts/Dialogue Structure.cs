@@ -31,6 +31,10 @@ public class DialogueStructure : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (tod.GetComponent<NovelIdea>().getTime() > 0f && Input.GetMouseButtonDown(1))
+        {
+            endText();
+        }
         if (currentNode.getPrompt())
         {
             if (Input.GetMouseButtonDown(0))
@@ -56,16 +60,7 @@ public class DialogueStructure : MonoBehaviour
         {
             if (currentNode.getNext() == null)
             {
-                StopAllCoroutines();
-                background.SetActive(false);
-                textComponent.text = string.Empty;
-                textComponent.enabled = false;
-                tod.GetComponent<NovelIdea>().scoreTime = todScore;
-                tod.GetComponent<movement>().doneDialogue = true;
-                if (tutorial != null)
-                {
-                    tutorial.GetComponent<guide>().start = true;
-                }
+                endText();
             }
             else if (textComponent.text == currentNode.getText())
             {
@@ -80,10 +75,27 @@ public class DialogueStructure : MonoBehaviour
         
     }
 
+    void endText()
+    {
+        StopAllCoroutines();
+        background.SetActive(false);
+        textComponent.text = string.Empty;
+        textComponent.enabled = false;
+        tod.GetComponent<NovelIdea>().setTime(todScore);
+        tod.GetComponent<movement>().doneDialogue = true;
+        if (tutorial != null)
+        {
+            tutorial.GetComponent<guide>().start = true;
+        }
+    }
+
     public void initializeVar(List<Node> d, TextMeshProUGUI t) 
     {
+        if (GameObject.Find("Tutorial") != null && tod.GetComponent<NovelIdea>().getTime() > 0f)
+        {
+            Destroy(GameObject.Find("Tutorial"));
+        }
         background.SetActive(true);
-        tod.GetComponent<NovelIdea>().scoreTime = 0f;
         tod.GetComponent<movement>().doneDialogue = false;
         dialogue = new List<Node>();
         for (int i = 0; i < d.Count; i ++)

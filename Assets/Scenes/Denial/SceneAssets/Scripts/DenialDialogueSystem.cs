@@ -10,6 +10,7 @@ public class DenialDialogueSystem : MonoBehaviour
     private GameObject ds;
     public TextMeshProUGUI tmpro;
     public List<Node> prompts = new List<Node>();
+    public GameObject tod;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +44,12 @@ public class DenialDialogueSystem : MonoBehaviour
         "If you won't answer me, I guess I'll have to find answers myself.",
         "How about I seek you?",
         "I have to get out of here."};
+
+        if (tod.GetComponent<NovelIdea>().getTime() > 0f)
+        {
+            listoftext[0] = "Where... where am I? What happened? Am I dead?\n\nRight Click to Skip Dialogue";
+            listoftext[2] = "- Hello Tod.";
+        }
 
 
         ds = GameObject.FindWithTag("DialogueSystem");

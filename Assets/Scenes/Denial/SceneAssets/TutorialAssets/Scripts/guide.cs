@@ -75,7 +75,7 @@ public class guide : MonoBehaviour
                     }
                     break;
                 case 2:
-                    if (Input.GetKeyDown(KeyCode.E))
+                    if (GameObject.Find("Raven(Clone)"))
                     {
                         currentText.enabled = false;
                         check = false;
