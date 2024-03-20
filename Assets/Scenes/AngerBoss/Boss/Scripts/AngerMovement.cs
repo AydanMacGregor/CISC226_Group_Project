@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bossMovement : MonoBehaviour
+public class AngerMovement : MonoBehaviour
 {
+
     internal Transform thisTransform;
     public GameObject Tod;
     private float attackTime = 2f;
@@ -11,16 +12,16 @@ public class bossMovement : MonoBehaviour
     private Vector2 decisionTime = new Vector2(1, 6);
     public Vector3 direction;
     internal float decisionTimeCount = 0;
-    internal Vector3[] moveDirections = new Vector3[] {Vector3.right, Vector3.left, Vector3.up, Vector3.down, Vector3.zero };
+    internal Vector3[] moveDirections = new Vector3[] { Vector3.right, Vector3.left, Vector3.up, Vector3.down, Vector3.zero };
     internal int currentMoveDirection;
 
     // New edit
-    public bool chargeFlag = false;
     public bool isMovingBack = false;
     private Vector3 todDir;
 
     void Start()
     {
+        // Cache the transform for quicker access
         thisTransform = this.transform;
         // Set a random time delay for taking a decision ( changing direction,or standing in place for a while )
         decisionTimeCount = Random.Range(decisionTime.x, decisionTime.y);
@@ -29,13 +30,10 @@ public class bossMovement : MonoBehaviour
         ChooseMoveDirection();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        if (chargeFlag)
-        {
-            AttackTod();
-        }
-        else if (!GameObject.FindWithTag("CheckPoint"))
+        if (!GameObject.FindWithTag("CheckPoint"))
         {
             if (Vector2.Distance(Tod.transform.position, thisTransform.position) <= 8)
             {
@@ -46,8 +44,6 @@ public class bossMovement : MonoBehaviour
                 Move();
             }
         }
-        
-        
     }
 
     void FixedUpdate()
@@ -79,7 +75,7 @@ public class bossMovement : MonoBehaviour
                 Move();
             }
         }
-        
+
     }
 
     public void Move()
@@ -94,7 +90,7 @@ public class bossMovement : MonoBehaviour
         if (decisionTimeCount > 0)
         {
             decisionTimeCount -= Time.deltaTime;
-        } 
+        }
         else
         {
             // Choose a random time delay for taking a decision
@@ -127,7 +123,6 @@ public class bossMovement : MonoBehaviour
         }
     }
 
-    // Copy from Soul Movement
     public void AttackTod()
     {
         if (isMovingBack)
@@ -150,7 +145,7 @@ public class bossMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Tod" && chargeFlag)
+        if (collision.gameObject.name == "Tod")
         {
             this.GetComponent<attackTod>().StopAllCoroutines();
             StartCoroutine(this.GetComponent<attackTod>().MoveAwayTod());

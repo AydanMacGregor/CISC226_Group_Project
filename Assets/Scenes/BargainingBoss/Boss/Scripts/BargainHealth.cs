@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class health : MonoBehaviour
+public class BargainHealth : MonoBehaviour
 {
-    private float damage;
-    private float bossHealth = 100f;
+    private float bargainBossHealth = 100f;
     public bossHealthBar healthBar;
     public GameObject check;
 
-
     void Update()
     {
-        healthBar.SetHealth(bossHealth);
+        healthBar.SetHealth(bargainBossHealth);
 
-        if (bossHealth <= 0)
+        if (bargainBossHealth <= 0)
         {
             Kill();
         }
@@ -26,17 +24,17 @@ public class health : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter2D(Collision2D other) 
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.name == "SlashAttack(Clone)")
         {
-            bossHealth -= 10;
+            bargainBossHealth -= 10;
         }
-        else if(other.gameObject.name == "Raven(Clone)")
+        else if (other.gameObject.name == "Raven(Clone)")
         {
-            bossHealth -= 25;
+            bargainBossHealth -= 25;
         }
 
-        healthBar.SetHealth(bossHealth);
+        healthBar.SetHealth(bargainBossHealth);
     }
 }

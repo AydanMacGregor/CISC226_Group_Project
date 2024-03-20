@@ -231,7 +231,7 @@ PolygonCollider2D:
     m_Bits: 4023
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -381,6 +381,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tod: {fileID: 509506743}
   direction: {x: 0, y: 0, z: 0}
+  chargeFlag: 0
+  isMovingBack: 0
 --- !u!50 &110111635
 Rigidbody2D:
   serializedVersion: 4

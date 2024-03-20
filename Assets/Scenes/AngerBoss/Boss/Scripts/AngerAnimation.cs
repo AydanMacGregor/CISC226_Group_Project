@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class animationMovement : MonoBehaviour
+public class AngerAnimation : MonoBehaviour
 {
     public Animator an;
-    public Sprite idleHappy;
-    public Sprite idleSad;
+    public Sprite Anger;
+    public Sprite Flame;
+    public Sprite Expand;
     private Vector3 dir;
     public SpriteRenderer sr;
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -18,7 +19,7 @@ public class animationMovement : MonoBehaviour
 
     void Flip()
     {
-        dir = this.GetComponent<bossMovement>().direction;
+        dir = this.GetComponent<AngerMovement>().direction;
         if (dir.x < 0)
         {
             sr.flipX = true;
@@ -29,29 +30,18 @@ public class animationMovement : MonoBehaviour
         }
     }
 
-    public void Beam()
+    public void FirePong()
     {
-        an.Play("MaskChangeSad");
+        an.Play("FirePong");
     }
 
-    public void UnBeam()
+    public void FlameExpand()
     {
-        an.Play("MaskChangeHappy");
+        an.Play("FlameExpand");
     }
 
     public void Idle()
     {
         an.Play("Idle");
-    }
-
-    // New edit
-    public void Charge()
-    {
-        an.Play("MaskChangeSad");
-    }
-
-    public void UnCharge()
-    {
-        an.Play("MaskChangeHappy");
     }
 }
