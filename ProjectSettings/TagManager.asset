@@ -20,6 +20,9 @@ TagManager:
   - RoomThree
   - BabyBat
   - Screech
+  - ExtendLine
+  - Extend
+  - BargainingBoss
   layers:
   - Default
   - TransparentFX
