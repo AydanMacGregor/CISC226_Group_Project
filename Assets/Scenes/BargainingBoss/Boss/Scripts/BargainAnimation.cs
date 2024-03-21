@@ -7,7 +7,7 @@ public class BargainAnimation : MonoBehaviour
     public Animator an;
     public Sprite Bargaining;
     public Sprite Clap;
-    public Sprite Extend;
+    public Sprite ExtendSprite;
     private Vector3 dir;
     public SpriteRenderer sr;
 
@@ -35,7 +35,7 @@ public class BargainAnimation : MonoBehaviour
         an.Play("ChainClap");
     }
 
-    public void Extend()
+    public void ExtendArms()
     {
         an.Play("ChainExtend");
     }

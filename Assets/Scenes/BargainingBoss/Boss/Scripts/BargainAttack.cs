@@ -17,7 +17,7 @@ public class BargainAttack : MonoBehaviour
                 StartCoroutine(Clap());
                 break;
             case 1:
-                StartCoroutine(Extend());
+                StartCoroutine(ExtendA());
                 break;
         }
 
@@ -32,9 +32,9 @@ public class BargainAttack : MonoBehaviour
         gameObject.GetComponent<BargainMovement>().isClaping = false;
     }
 
-    IEnumerator Extend()
+    IEnumerator ExtendA()
     {
-        gameObject.GetComponent<BargainAnimation>().ChainExtend();
+        gameObject.GetComponent<BargainAnimation>().ExtendArms();
         yield return new WaitForSeconds(0.5f);
         Instantiate(extend, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2f);
@@ -44,7 +44,7 @@ public class BargainAttack : MonoBehaviour
             Destroy(el);
         }
         Destroy(GameObject.FindWithTag("Beam"));
-        StartCoroutine(EndAttack());
+        StartCoroutine(EndExtend());
     }
 
     IEnumerator EndExtend()
