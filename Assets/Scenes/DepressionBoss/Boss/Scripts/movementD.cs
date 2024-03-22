@@ -134,7 +134,6 @@ public class movementD : MonoBehaviour
             {
                 attackTime = 3f;
             }
-            Debug.Log(attackTime);
             this.GetComponent<attacking>().StartAttack(attackChoice);
         }
     }

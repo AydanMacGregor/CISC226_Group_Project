@@ -28,7 +28,7 @@ public class LevelHandling : MonoBehaviour
             if (current == "DenialScene")
             {
                 l.Add(new Node("Where does this lead to?", false));
-                StartCoroutine(SwitchWorlds("DenialBossFloor"));
+                StartCoroutine(SwitchWorlds("DenialBossFloor", 3f));
             }
             else if (current == "DenialBossFloor")
             {
@@ -40,7 +40,7 @@ public class LevelHandling : MonoBehaviour
             else if (current == "BargainingScene")
             {
                 l.Add(new Node("Please not again, anything but this!", false));
-                StartCoroutine(SwitchWorlds("BargainingBossFloor"));
+                StartCoroutine(SwitchWorlds("BargainingBossFloor", 3f));
             }
             else if (current == "BargainingBossFloor")
             {
@@ -51,13 +51,13 @@ public class LevelHandling : MonoBehaviour
             {
                 hit = true;
                 l.Add(new Node("Once I'm done with this person you're next you hear me!", false));
-                StartCoroutine(SwitchWorlds("AngerBossFloor"));
+                StartCoroutine(SwitchWorlds("AngerBossFloor", 5f));
             }
             else if (current == "DepressionScene")
             {
                 hit = true;
                 l.Add(new Node("I don't think I can take another.", false));
-                StartCoroutine(SwitchWorlds("DepressionBossFloor"));
+                StartCoroutine(SwitchWorlds("DepressionBossFloor", 3f));
             }
             else if (current == "DepressionBossFloor")
             {
@@ -77,31 +77,22 @@ public class LevelHandling : MonoBehaviour
         if (GameObject.Find("Boss") == null && !bossDead && current == "DenialBossFloor")
         {
             bossDead = true;
-            StartCoroutine(SwitchWorlds("BargainingScene"));
+            StartCoroutine(SwitchWorlds("BargainingScene", 3f));
         }
         if (GameObject.Find("Boss") == null && !bossDead && current == "BargainingBossFloor")
         {
             bossDead = true;
-            StartCoroutine(SwitchWorlds("AngerScene"));
+            StartCoroutine(SwitchWorlds("AngerScene", 3f));
         }
         if (GameObject.Find("DepressionBoss") == null && !bossDead && current == "DepressionBossFloor")
         {
             bossDead = true;
-            StartCoroutine(SwitchWorlds("Acceptance"));
+            StartCoroutine(SwitchWorlds("Acceptance", 3f));
         }
     }
 
-    IEnumerator SwitchWorlds(string w)
+    IEnumerator SwitchWorlds(string w, float waitTime)
     {
-        float waitTime = 4f;
-        if (!currentText.enabled)
-        {
-            SceneManager.LoadScene(w);
-        }
-        if (current == "AngerScene")
-        {
-            waitTime = 5f;
-        }
         yield return new WaitForSeconds(waitTime);
         SceneManager.LoadScene(w);
     }

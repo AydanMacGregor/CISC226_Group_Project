@@ -23,7 +23,7 @@ public class healthD : MonoBehaviour
     void Kill()
     {
         Instantiate(check, new Vector3(-100, 0, 0), Quaternion.identity);
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D other) 
@@ -36,7 +36,6 @@ public class healthD : MonoBehaviour
         {
             bossHealth -= 25;
         }
-        Debug.Log("FUCK");
         healthBar.SetHealth(bossHealth);
     }
 }
