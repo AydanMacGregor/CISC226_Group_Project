@@ -9,6 +9,7 @@ public class constructBeam : MonoBehaviour
     
     void Start()
     {
+        Destroy(this.gameObject, 3f);
         t = this.transform;
         for (int i = 1; i < 30; i++)
         {

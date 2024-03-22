@@ -26,7 +26,7 @@ public class attacking : MonoBehaviour
 
     IEnumerator StressBallDelay()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         Instantiate(sb, this.transform.position, Quaternion.identity);
         a.Play("unstressball");
     }
@@ -70,7 +70,6 @@ public class attacking : MonoBehaviour
         Vector3 location = (tod.transform.position - this.transform.position).normalized;
         float angleDegrees = Mathf.Atan2(location.x, location.z);
         int finalAngle = (int)angleDegrees;
-        Debug.Log(finalAngle);
         switch(finalAngle){
             case 0:
                 if (location.y < 0)

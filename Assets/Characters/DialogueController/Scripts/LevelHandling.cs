@@ -59,6 +59,11 @@ public class LevelHandling : MonoBehaviour
                 l.Add(new Node("I don't think I can take another.", false));
                 StartCoroutine(SwitchWorlds("DepressionBossFloor"));
             }
+            else if (current == "DepressionBossFloor")
+            {
+                hit = true;
+                l.Add(new Node("Maybe I just stop fighting all together now.", false));
+            }
             ds.GetComponent<DialogueStructure>().initializeVar(l, currentText);
         }
     }
@@ -78,6 +83,11 @@ public class LevelHandling : MonoBehaviour
         {
             bossDead = true;
             StartCoroutine(SwitchWorlds("AngerScene"));
+        }
+        if (GameObject.Find("DepressionBoss") == null && !bossDead && current == "DepressionBossFloor")
+        {
+            bossDead = true;
+            StartCoroutine(SwitchWorlds("Acceptance"));
         }
     }
 

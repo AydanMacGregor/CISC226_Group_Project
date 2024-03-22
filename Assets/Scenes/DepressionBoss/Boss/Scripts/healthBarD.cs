@@ -3,26 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TodHealthBar : MonoBehaviour
+public class healthBarD : MonoBehaviour
 {
-
     public Slider slider;
 
-    void Start()
-    {
-        slider = (Slider)FindObjectOfType(typeof(Slider));
-    }
-
-
-    public void SetMaxHealth(int health)
+    public void SetMaxHealth(float health)
     {
         slider.maxValue = health;
         slider.value = health;
     }
 
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
-        Debug.Log("a");
         slider.value = health;
     }
+    
 }

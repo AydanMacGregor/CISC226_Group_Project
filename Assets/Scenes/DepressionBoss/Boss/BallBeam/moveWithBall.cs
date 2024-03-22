@@ -10,7 +10,8 @@ public class moveWithBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ball = GameObject.Find("StressBallProjectile");
+        Destroy(this.gameObject, 3f);
+        ball = GameObject.Find("StressBallProjectile(Clone)");
         t = this.transform;
     }
 

@@ -19,6 +19,8 @@ public class movementD : MonoBehaviour
     public bool isMovingBack = false;
     private Vector3 todDir;
 
+    private int attackChoice;
+
     void Start()
     {
         thisTransform = this.transform;
@@ -46,8 +48,6 @@ public class movementD : MonoBehaviour
                 Move();
             }
         }
-        
-        
     }
 
     void FixedUpdate()
@@ -57,8 +57,6 @@ public class movementD : MonoBehaviour
         {
             if (hit.collider.name == "OuterWall")
             {
-                Debug.Log(direction);
-
                 if (direction.x < 0)
                 {
                     currentMoveDirection = 0;
@@ -121,9 +119,23 @@ public class movementD : MonoBehaviour
         }
         else
         {
-            attackTime = 2f;
-            int attackChoice = Random.Range(0, 2);
-            this.GetComponent<attacking>().StartAttack(2);
+            attackChoice = Random.Range(0, 3);
+            if (attackChoice == 0)
+            {
+                attackTime = 6f;
+                this.GetComponent<animationD>().chooseAn(attackChoice);
+            }
+            else if (attackChoice == 1)
+            {
+                attackTime = 4f;
+                this.GetComponent<animationD>().chooseAn(attackChoice);
+            }
+            else
+            {
+                attackTime = 3f;
+            }
+            Debug.Log(attackTime);
+            this.GetComponent<attacking>().StartAttack(attackChoice);
         }
     }
 

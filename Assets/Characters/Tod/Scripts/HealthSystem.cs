@@ -89,6 +89,15 @@ public class HealthSystem : MonoBehaviour
                     damageTime = 1f;
                 }
             }
+            if (other.gameObject.name == "BeamOfBall" || other.gameObject.name == "BeamOfBall(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(10);
+                    damageTime = 2f;
+                }
+            }
             if (other.gameObject.name == "DevineLine" || other.gameObject.name == "DevineLine(Clone)")
             {
                 damageTime -= Time.deltaTime;
@@ -115,6 +124,10 @@ public class HealthSystem : MonoBehaviour
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
             if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
+            {
+                damageTime = 0;
+            }
+            if (other.gameObject.name == "BeamOfBall" || other.gameObject.name == "BeamOfBall(Clone)")
             {
                 damageTime = 0;
             }
