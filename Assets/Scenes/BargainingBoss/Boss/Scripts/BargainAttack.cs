@@ -38,13 +38,13 @@ public class BargainAttack : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Instantiate(extend, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2f);
-        extendLines = GameObject.FindGameObjectsWithTag("BeamLine");
+        extendLines = GameObject.FindGameObjectsWithTag("ExtendLine");
         foreach (GameObject el in extendLines)
         {
             Destroy(el);
         }
-        Destroy(GameObject.FindWithTag("Beam"));
-        StartCoroutine(EndAttack());
+        Destroy(GameObject.FindWithTag("Extend"));
+        StartCoroutine(EndExtend());
     }
 
     IEnumerator EndExtend()

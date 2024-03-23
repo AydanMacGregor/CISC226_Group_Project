@@ -125,7 +125,7 @@ public class BargainMovement : MonoBehaviour
         {
             attackTime = 10f;
             int attackChoice = Random.Range(0, 2);
-            this.GetComponent<attackTod>().StartAttack(attackChoice);
+            this.GetComponent<BargainAttack>().StartAttack(attackChoice);
         }
     }
 
@@ -149,12 +149,4 @@ public class BargainMovement : MonoBehaviour
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Tod" && isClaping)
-        {
-            this.GetComponent<attackTod>().StopAllCoroutines();
-            StartCoroutine(this.GetComponent<attackTod>().MoveAwayTod());
-        }
-    }
 }

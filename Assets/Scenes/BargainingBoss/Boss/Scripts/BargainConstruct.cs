@@ -15,10 +15,12 @@ public class BargainConstruct : MonoBehaviour
         t = this.transform;
         for (int i = 2; i < 30; i += 2)
         {
-            GameObject up = GameObject.Instantiate(ExtendLine, new Vector3(t.position.x, t.position.y + i, -2), Quaternion.identity);
-            up.GetComponent<moveWithBoss>().rotation = new Vector2(0, i);
-            GameObject down = GameObject.Instantiate(ExtendLine, new Vector3(t.position.x, t.position.y - i, -2), Quaternion.identity);
-            down.GetComponent<moveWithBoss>().rotation = new Vector2(0, i * -1);
+            GameObject right = GameObject.Instantiate(ExtendLine, new Vector3(t.position.x + i, t.position.y, -2), Quaternion.identity);
+            right.GetComponent<Transform>().Rotate(0, 0, 90);
+            right.GetComponent<moveWithBoss>().rotation = new Vector2(i, 0);
+            GameObject left = GameObject.Instantiate(ExtendLine, new Vector3(t.position.x - i, t.position.y, -2), Quaternion.identity);
+            left.GetComponent<Transform>().Rotate(0, 0, 90);
+            left.GetComponent<moveWithBoss>().rotation = new Vector2(i * -1, 0);
         }
     }
 

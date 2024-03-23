@@ -35,7 +35,7 @@ public class BargainAnimation : MonoBehaviour
         an.Play("ChainClap");
     }
 
-    public void Extend()
+    public void ChainExtend()
     {
         an.Play("ChainExtend");
     }
