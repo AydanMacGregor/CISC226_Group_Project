@@ -20,6 +20,11 @@ public class AngerHealth : MonoBehaviour
 
     void Kill()
     {
+        for (int i = 0; i < this.GetComponent<AngerAttack>().flames.Count; i++)
+        {
+            Destroy(this.GetComponent<AngerAttack>().flames[i].gameObject);
+        }
+        this.GetComponent<AngerAttack>().flames.Clear();
         Instantiate(check, new Vector3(-100, 0, 0), Quaternion.identity);
         Destroy(gameObject);
     }

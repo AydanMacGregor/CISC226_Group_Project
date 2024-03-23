@@ -24,6 +24,8 @@ TagManager:
   - Extend
   - BargainingBoss
   - Angel
+  - Flame
+  - AngerBoss
   layers:
   - Default
   - TransparentFX
@@ -40,7 +42,7 @@ TagManager:
   - Bat
   - InnerWall
   - Angel
-  - 
+  - PauseMenuLayer
   - 
   - 
   - 

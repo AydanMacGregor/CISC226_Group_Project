@@ -72,7 +72,14 @@ public class HealthSystem : MonoBehaviour
             {
                 damage(batDamageAmount);
             }
-            
+            else if (other.gameObject.tag == "Flame")
+            {
+                damage(chargeDamageAmount);
+            }
+            else if (other.gameObject.tag == "AngerBoss" && other.gameObject.GetComponent<AngerAttack>().damage)
+            {
+                damage(chargeDamageAmount);
+            }
         }
     }
 

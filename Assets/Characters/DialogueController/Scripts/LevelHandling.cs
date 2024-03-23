@@ -53,6 +53,11 @@ public class LevelHandling : MonoBehaviour
                 l.Add(new Node("Once I'm done with this person you're next you hear me!", false));
                 StartCoroutine(SwitchWorlds("AngerBossFloor", 5f));
             }
+            else if (current == "AngerBossFloor")
+            {
+                hit = true;
+                l.Add(new Node("You're finished you asshole!", false));
+            }
             else if (current == "DepressionScene")
             {
                 hit = true;
@@ -83,6 +88,11 @@ public class LevelHandling : MonoBehaviour
         {
             bossDead = true;
             StartCoroutine(SwitchWorlds("AngerScene", 3f));
+        }
+        if (GameObject.Find("Boss") == null && !bossDead && current == "AngerBossFloor")
+        {
+            bossDead = true;
+            StartCoroutine(SwitchWorlds("DepressionScene", 3f));
         }
         if (GameObject.Find("DepressionBoss") == null && !bossDead && current == "DepressionBossFloor")
         {
