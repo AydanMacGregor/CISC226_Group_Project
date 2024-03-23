@@ -35619,6 +35619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 3942077997503792635, guid: 3c784a32e38d68f43abd4b94532be966, type: 3}
+      propertyPath: currentText
+      value: 
+      objectReference: {fileID: 1624798335}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -35924,6 +35928,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: tod
+      value: 
+      objectReference: {fileID: 204645823}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 403736096}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: textComponent
+      value: 
+      objectReference: {fileID: 1624798335}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

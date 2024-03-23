@@ -2973,6 +2973,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: tod
+      value: 
+      objectReference: {fileID: 1756492743}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 770275729}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: textComponent
+      value: 
+      objectReference: {fileID: 1427534377}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

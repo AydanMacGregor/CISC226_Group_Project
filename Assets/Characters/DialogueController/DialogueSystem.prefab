@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1640158014858183422}
   - component: {fileID: 4713513442432309329}
-  - component: {fileID: 2477302924352562530}
+  - component: {fileID: 7647407032323950217}
   m_Layer: 0
   m_Name: DialogueSystem
   m_TagString: DialogueSystem
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2477302924352562530
+--- !u!114 &7647407032323950217
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,8 +94,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2924044315811269583}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b21e82598b81646af1b4adb2b33fe9, type: 3}
+  m_Script: {fileID: 11500000, guid: 258a1ccf89a454f4a8c4c675f9e4b3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 0}
   tod: {fileID: 0}
+  done: 0
+  todScore: 0
+  background: {fileID: 0}
