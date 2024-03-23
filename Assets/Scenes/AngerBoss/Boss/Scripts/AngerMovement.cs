@@ -53,8 +53,6 @@ public class AngerMovement : MonoBehaviour
         {
             if (hit.collider.name == "OuterWall")
             {
-                Debug.Log(direction);
-
                 if (direction.x < 0)
                 {
                     currentMoveDirection = 0;
@@ -117,23 +115,9 @@ public class AngerMovement : MonoBehaviour
         }
         else
         {
-            attackTime = 10f;
+            attackTime = 5f;
             int attackChoice = Random.Range(0, 2);
-            this.GetComponent<attackTod>().StartAttack(attackChoice);
-        }
-    }
-
-    public void AttackTod()
-    {
-        if (isMovingBack)
-        {
-            todDir = (thisTransform.position - Tod.transform.position).normalized;
-            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
-        }
-        else
-        {
-            todDir = (Tod.transform.position - thisTransform.position).normalized;
-            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
+            this.GetComponent<AngerAttack>().StartAttack(attackChoice);
         }
     }
 
@@ -141,14 +125,5 @@ public class AngerMovement : MonoBehaviour
     {
         // Choose whether to move sideways or up/down
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Tod")
-        {
-            this.GetComponent<attackTod>().StopAllCoroutines();
-            StartCoroutine(this.GetComponent<attackTod>().MoveAwayTod());
-        }
     }
 }

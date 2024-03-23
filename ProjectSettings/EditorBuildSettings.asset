@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AngerBoss/AngerBossFloor.unity
     guid: c180ddef7817f424a8cfaf65525e8a53
+  - enabled: 1
+    path: Assets/Scenes/Depression/DepressionScene.unity
+    guid: a0582f6bfacde734198f929709df01e5
+  - enabled: 1
+    path: Assets/Scenes/DepressionBoss/DepressionBossFloor.unity
+    guid: b67fced877f173a44860c9feff153f96
+  - enabled: 1
+    path: Assets/Scenes/Acceptance/Acceptance.unity
+    guid: a7ab7f7534c31d740acaac849dff12fe
   m_configObjects: {}

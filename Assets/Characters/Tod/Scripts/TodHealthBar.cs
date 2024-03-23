@@ -10,14 +10,14 @@ public class TodHealthBar : MonoBehaviour
 
     void Start()
     {
-        slider = (Slider)FindObjectOfType(typeof(Slider));
+        //slider = (Slider)FindObjectOfType(typeof(Slider));
     }
 
 
     public void SetMaxHealth(int health)
     {
-        slider.maxValue = health;
-        slider.value = health;
+        slider.maxValue = 100f;
+        slider.value = 100f;
     }
 
     public void SetHealth(int health)

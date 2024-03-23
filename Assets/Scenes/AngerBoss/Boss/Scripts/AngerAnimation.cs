@@ -5,11 +5,9 @@ using UnityEngine;
 public class AngerAnimation : MonoBehaviour
 {
     public Animator an;
-    public Sprite Anger;
-    public Sprite Flame;
-    public Sprite Expand;
     private Vector3 dir;
     public SpriteRenderer sr;
+    private float timer = 0.25f;
 
     // Update is called once per frame
     void Update()
@@ -19,20 +17,27 @@ public class AngerAnimation : MonoBehaviour
 
     void Flip()
     {
-        dir = this.GetComponent<AngerMovement>().direction;
-        if (dir.x < 0)
+        if (timer < 0)
         {
-            sr.flipX = true;
+            timer = 0.25f;
+            sr.flipX = sr.flipX ? false : true;
         }
-        else if (dir.x > 0)
-        {
-            sr.flipX = false;
-        }
+        timer -= Time.deltaTime;
     }
 
     public void FirePong()
     {
         an.Play("FirePong");
+    }
+
+    public void UnFirePong()
+    {
+        an.Play("UnFirePong");
+    }
+
+    public void UnFlameExpand()
+    {
+        an.Play("UnFlameExpand");
     }
 
     public void FlameExpand()
