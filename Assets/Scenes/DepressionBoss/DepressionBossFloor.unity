@@ -2262,6 +2262,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss Health Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 5485768592055019533, guid: 606ac618aa73ff04183fd3ca9e66ad65, type: 3}
+      propertyPath: m_Value
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485768592055019533, guid: 606ac618aa73ff04183fd3ca9e66ad65, type: 3}
+      propertyPath: m_MaxValue
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 6670593650441099499, guid: 606ac618aa73ff04183fd3ca9e66ad65, type: 3}
       propertyPath: m_Text
       value: "M\xF8rke:"

@@ -837,6 +837,7 @@ GameObject:
   - component: {fileID: 1370533159}
   - component: {fileID: 1370533158}
   - component: {fileID: 1370533160}
+  - component: {fileID: 1370533161}
   m_Layer: 5
   m_Name: Dialogue
   m_TagString: Untagged
@@ -973,6 +974,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tmpro: {fileID: 1370533158}
+--- !u!114 &1370533161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370533156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c30af330f384cc4e90062258d15bbf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tmpro: {fileID: 1370533158}
+  canStart: 0
 --- !u!1 &1511335945
 GameObject:
   m_ObjectHideFlags: 3
@@ -1322,6 +1337,8 @@ MonoBehaviour:
   todblockers: {fileID: 2284653041662577133, guid: c9bb87f0a5223a14f8c9c5a356828a5e, type: 3}
   finalTrigger: {fileID: 7848726902277882854, guid: 1b9cb8bdf879213469cf43c2c8c767c2, type: 3}
   finalBlocker: 0
+  grave: {fileID: 2296303771004755303, guid: 3982a6738bd94d8448ec905de703249e, type: 3}
+  checkP: {fileID: 2693013753459037131, guid: 3c784a32e38d68f43abd4b94532be966, type: 3}
 --- !u!212 &2010868623
 SpriteRenderer:
   m_ObjectHideFlags: 0

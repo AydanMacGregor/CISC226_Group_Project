@@ -9,8 +9,8 @@ public class healthBarD : MonoBehaviour
 
     public void SetMaxHealth(float health)
     {
-        slider.maxValue = health;
-        slider.value = health;
+        slider.maxValue = 300f;
+        slider.value = 300f;
     }
 
     public void SetHealth(float health)

@@ -2029,7 +2029,7 @@ GameObject:
   - component: {fileID: 1115427388}
   - component: {fileID: 1115427395}
   - component: {fileID: 1115427396}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boss
   m_TagString: BargainingBoss
   m_Icon: {fileID: 0}

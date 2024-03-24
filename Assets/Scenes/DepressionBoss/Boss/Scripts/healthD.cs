@@ -5,7 +5,7 @@ using UnityEngine;
 public class healthD : MonoBehaviour
 {
     private float damage;
-    private float bossHealth = 100f;
+    private float bossHealth = 300f;
     public bossHealthBar healthBar;
     public GameObject check;
 
@@ -30,11 +30,18 @@ public class healthD : MonoBehaviour
     {
         if (other.gameObject.name == "SlashAttack(Clone)")
         {
-            bossHealth -= 10;
+            bossHealth -= 15;
+            Debug.Log(bossHealth);
         }
-        else if(other.gameObject.name == "Raven(Clone)")
+        healthBar.SetHealth(bossHealth);
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if(other.gameObject.name == "Raven(Clone)")
         {
-            bossHealth -= 25;
+            bossHealth -= 5;
+            Debug.Log(bossHealth);
         }
         healthBar.SetHealth(bossHealth);
     }

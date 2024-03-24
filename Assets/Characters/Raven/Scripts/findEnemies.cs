@@ -16,7 +16,7 @@ public class findEnemies : MonoBehaviour
     void Start()
     {
         tod = GameObject.FindWithTag("Tod");
-        results = Physics2D.OverlapCircleAll(transform.transform.localPosition, 5f, LayerMask.GetMask("Bat", "Soul"));
+        results = Physics2D.OverlapCircleAll(transform.transform.localPosition, 5f, LayerMask.GetMask("Bat", "Soul", "Boss"));
         if (results.Length > 0)
         {
             for (int i = 0; i < results.Length; i++)
