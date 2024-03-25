@@ -6,7 +6,6 @@ public class finalCheck : MonoBehaviour
 {
     void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.gameObject.name == "Tod")
         {
             GameObject b = GameObject.Find("FloorController");

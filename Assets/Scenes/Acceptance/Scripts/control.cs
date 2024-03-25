@@ -19,6 +19,8 @@ public class control : MonoBehaviour
     public GameObject todblockers;
     public GameObject finalTrigger;
     public bool finalBlocker = false;
+    public GameObject grave;
+    public GameObject checkP;
 
     void Start()
     {
@@ -66,7 +68,8 @@ public class control : MonoBehaviour
             objTod[objTod.Count-1].transform.Rotate(0, 0, -90);
             
             obj.Add(Instantiate(acceptanceFinal, new Vector3(0f,(float)counter + acceptanceFinalOffset,0f), Quaternion.identity));
-            
+            obj.Add(Instantiate(grave, new Vector3(0f,(float)counter + acceptanceFinalOffset,-1f), Quaternion.identity));
+            obj.Add(Instantiate(checkP, new Vector3(0f,(float)counter + acceptanceFinalOffset,-1f), Quaternion.identity));
         }
         else if (tod.transform.position.y >= check && !final)
         {

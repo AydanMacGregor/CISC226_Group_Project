@@ -1804,7 +1804,7 @@ GameObject:
   - component: {fileID: 1115427398}
   - component: {fileID: 1115427397}
   - component: {fileID: 1115427396}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boss
   m_TagString: BargainingBoss
   m_Icon: {fileID: 0}

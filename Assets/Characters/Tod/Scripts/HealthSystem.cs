@@ -12,6 +12,7 @@ public class HealthSystem : MonoBehaviour
     private int eyeballDamageAmount = 50;
     private int chargeDamageAmount = 25;
     private int beamDamageAmount = 25;
+    private int flameDamageAmount = 50;
     private float damageTime = 0f;
 
     private int screechDamageAmount = 50;
@@ -21,6 +22,8 @@ public class HealthSystem : MonoBehaviour
     public Sprite eyeball;
     public Sprite Charge;
 
+    private float regenTimer = 8f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,11 @@ public class HealthSystem : MonoBehaviour
         currentHealth = maxHealth;
 
         this.GetComponent<TodHealthBar>().SetMaxHealth(currentHealth);
+    }
+
+    void Update()
+    {
+        regen();
     }
 
     // Set a default health for Tod
@@ -74,7 +82,7 @@ public class HealthSystem : MonoBehaviour
             }
             else if (other.gameObject.tag == "Flame")
             {
-                damage(chargeDamageAmount);
+                damage(flameDamageAmount);
             }
             else if (other.gameObject.tag == "AngerBoss" && other.gameObject.GetComponent<AngerAttack>().damage)
             {
@@ -154,13 +162,24 @@ public class HealthSystem : MonoBehaviour
     public void damage(int damageAmount)
     {
         currentHealth -= damageAmount;
-
+        regenTimer = 8f;
         this.GetComponent<TodHealthBar>().SetHealth(currentHealth);
 
         if (currentHealth <= minHealth)
         {
             kill();
         }
+    }
+
+    void regen()
+    {
+        if (regenTimer < 0 && currentHealth < 100)
+        {
+            currentHealth += 1;
+            this.GetComponent<TodHealthBar>().SetHealth(currentHealth);
+            regenTimer = 0.05f;
+        }
+        regenTimer -= Time.deltaTime;
     }
 
     // Destroy Tod if health >= minHealth

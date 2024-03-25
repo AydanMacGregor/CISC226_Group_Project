@@ -11,6 +11,7 @@ public class LevelHandling : MonoBehaviour
     private bool hit = false;
     private string current;
     private bool bossDead = false;
+    private bool call = false;
     
     void Start()
     {
@@ -69,15 +70,29 @@ public class LevelHandling : MonoBehaviour
                 hit = true;
                 l.Add(new Node("Maybe I just stop fighting all together now.", false));
             }
-            ds.GetComponent<DialogueStructure>().initializeVar(l, currentText);
+            else if (current == "Acceptance")
+            {
+                hit = true;
+                GameObject c = GameObject.Find("Dialogue");
+                c.GetComponent<FinalDialogue>().canStart = true;
+                call = true;
+            }
+            if (!call)
+            {
+                ds.GetComponent<DialogueStructure>().initializeVar(l, currentText);
+            }
         }
     }
 
     void Update()
     {
-        if (!currentText.enabled && hit)
+        if (!currentText.enabled && hit && current != "Acceptance")
         {
             Destroy(gameObject);
+        }
+        if (!currentText.enabled && hit && current == "Acceptance")
+        {
+            StartCoroutine(SwitchWorlds("MainMenuScene", 3f));
         }
         if (GameObject.Find("Boss") == null && !bossDead && current == "DenialBossFloor")
         {
