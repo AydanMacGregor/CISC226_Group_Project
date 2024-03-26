@@ -31,12 +31,12 @@ public class animationMovement : MonoBehaviour
 
     public void Beam()
     {
-        an.Play("MaskChangeSad");
+        an.Play("MaskChangeEye");
     }
 
     public void UnBeam()
     {
-        an.Play("MaskChangeHappy");
+        an.Play("UnMaskChangeEye");
     }
 
     public void Idle()

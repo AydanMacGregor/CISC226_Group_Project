@@ -88,6 +88,10 @@ public class HealthSystem : MonoBehaviour
             {
                 damage(chargeDamageAmount);
             }
+            else if (other.gameObject.tag == "DenialBoss" && other.gameObject.GetComponent<bossMovement>().chargeFlag)
+            {
+                damage(chargeDamageAmount);
+            }
         }
     }
 
@@ -185,7 +189,8 @@ public class HealthSystem : MonoBehaviour
     // Destroy Tod if health >= minHealth
     public void kill()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameObject.Find("GameM").GetComponent<Manager>().prevScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("DeathScene");
     }
 }
 

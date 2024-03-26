@@ -6,7 +6,7 @@ public class bossMovement : MonoBehaviour
 {
     internal Transform thisTransform;
     public GameObject Tod;
-    private float attackTime = 2f;
+    public float attackTime = 2f;
     private float moveSpeed = 2f;
     private Vector2 decisionTime = new Vector2(1, 6);
     public Vector3 direction;
@@ -57,8 +57,6 @@ public class bossMovement : MonoBehaviour
         {
             if (hit.collider.name == "OuterWall")
             {
-                Debug.Log(direction);
-
                 if (direction.x < 0)
                 {
                     currentMoveDirection = 0;
@@ -121,8 +119,8 @@ public class bossMovement : MonoBehaviour
         }
         else
         {
-            attackTime = 10f;
             int attackChoice = Random.Range(0, 2);
+            attackTime = 8f;
             this.GetComponent<attackTod>().StartAttack(attackChoice);
         }
     }

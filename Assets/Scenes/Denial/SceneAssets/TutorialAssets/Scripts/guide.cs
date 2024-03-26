@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class guide : MonoBehaviour
 {
-    TextMeshProUGUI currentText;
+    public TextMeshProUGUI currentText;
     private GameObject ds;
     int i = 0;
     List<Node> l = new List<Node>();
@@ -19,7 +19,6 @@ public class guide : MonoBehaviour
     void Start()
     {
         current = SceneManager.GetActiveScene().name;
-        currentText = (TextMeshProUGUI)FindObjectOfType(typeof(TextMeshProUGUI));
         ds = GameObject.FindWithTag("DialogueSystem");
         tod = GameObject.FindWithTag("Tod");
         l.Add(new Node("WASD to Move", false));

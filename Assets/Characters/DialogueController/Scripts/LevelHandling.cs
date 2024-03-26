@@ -86,6 +86,10 @@ public class LevelHandling : MonoBehaviour
 
     void Update()
     {
+        if (current == "Intro" && Input.GetKeyDown("space"))
+        {
+            StartCoroutine(SwitchWorlds("DenialScene", 0f));
+        }
         if (!currentText.enabled && hit && current != "Acceptance")
         {
             Destroy(gameObject);

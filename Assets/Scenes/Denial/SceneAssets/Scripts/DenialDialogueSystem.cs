@@ -18,7 +18,7 @@ public class DenialDialogueSystem : MonoBehaviour
         true, true, true, true, true, true, true, true, true, false, false, false, true, true, true, false, false, false};
         listoftext = new string[] {"Where... where am I? What happened? Am I dead?\n\nSpace to Continue",
         "No... no, that can't be, I can't be dead?! I'm the Grim Reaper God Dammit!",
-        "- Hello Tod.\n\n\nClick Text to Continue",
+        "- Hello Tod. +1\n(+1) Time it will take for Tod to fight back.\nClick Text to Continue",
         "Who is there? Where am I? What is happening!?",
         "- You're dead Tod.",
         "- Don't worry about who I am.",
@@ -28,7 +28,7 @@ public class DenialDialogueSystem : MonoBehaviour
         "Why? Who are you? How did I get here?",
         "- You have reached the end.",
         "- You're here to ammend your grief.",
-        "- That information is of no importance.",
+        "- Not important.",
         "- Do not be afraid, I am here to help.",
         "- You are in a new realm.",
         "- Stop asking questions.",
