@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void LoadGame() {
-
-        Debug.Log("Pressed Load");
-        string name = "DenialScene";
+    public void LoadGame()
+    {
+        string name = "Intro";
         SceneManager.LoadScene(name);
     }
 
@@ -16,6 +15,5 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Pressed Exit");
         Application.Quit(); 
-
     }
 }
