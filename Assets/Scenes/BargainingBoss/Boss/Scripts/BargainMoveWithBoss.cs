@@ -10,7 +10,7 @@ public class BargainMoveWithBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boss = GameObject.FindWithTag("DenialBoss");
+        boss = GameObject.FindWithTag("BargainingBoss");
         t = this.transform;
     }
 

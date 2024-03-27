@@ -15,7 +15,6 @@ public class BargainMovement : MonoBehaviour
     internal Vector3[] moveDirections = new Vector3[] { Vector3.right, Vector3.left, Vector3.up, Vector3.down, Vector3.zero };
     internal int currentMoveDirection;
 
-    // New edit
     public bool isClaping = false;
     public bool isMovingBack = false;
     private Vector3 todDir;
@@ -123,9 +122,9 @@ public class BargainMovement : MonoBehaviour
         }
         else
         {
-            attackTime = 10f;
+            attackTime = 5f;
             int attackChoice = Random.Range(0, 2);
-            this.GetComponent<attackTod>().StartAttack(attackChoice);
+            this.GetComponent<BargainAttack>().StartAttack(0);
         }
     }
 
@@ -149,12 +148,4 @@ public class BargainMovement : MonoBehaviour
         currentMoveDirection = Mathf.FloorToInt(Random.Range(0, moveDirections.Length));
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Tod" && isClaping)
-        {
-            this.GetComponent<attackTod>().StopAllCoroutines();
-            StartCoroutine(this.GetComponent<attackTod>().MoveAwayTod());
-        }
-    }
 }

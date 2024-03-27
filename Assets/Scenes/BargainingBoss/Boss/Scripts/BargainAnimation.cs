@@ -5,9 +5,6 @@ using UnityEngine;
 public class BargainAnimation : MonoBehaviour
 {
     public Animator an;
-    public Sprite Bargaining;
-    public Sprite Clap;
-    public Sprite ExtendSprite;
     private Vector3 dir;
     public SpriteRenderer sr;
 
@@ -35,7 +32,12 @@ public class BargainAnimation : MonoBehaviour
         an.Play("ChainClap");
     }
 
-    public void ExtendArms()
+    public void UnClap()
+    {
+        an.Play("ChainUnClap");
+    }
+
+    public void ChainExtend()
     {
         an.Play("ChainExtend");
     }

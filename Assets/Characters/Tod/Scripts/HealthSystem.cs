@@ -54,6 +54,7 @@ public class HealthSystem : MonoBehaviour
     // Check which attack hit Tod
     void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log(other.gameObject.name);
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
             if (other.gameObject.tag == "Soul" && other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
@@ -88,6 +89,10 @@ public class HealthSystem : MonoBehaviour
             {
                 damage(chargeDamageAmount);
             }
+            else if (other.gameObject.name == "ChainClap(Clone)")
+            {
+                damage(screechDamageAmount);
+            }
             else if (other.gameObject.tag == "DenialBoss" && other.gameObject.GetComponent<bossMovement>().chargeFlag)
             {
                 damage(chargeDamageAmount);
@@ -97,8 +102,10 @@ public class HealthSystem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.gameObject.name);
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
+            
             if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
             {
                 damageTime -= Time.deltaTime;
@@ -135,11 +142,30 @@ public class HealthSystem : MonoBehaviour
                     damageTime = 1f;
                 }
             }
+            if (other.gameObject.name == "Extend" || other.gameObject.name == "Extend(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
+            }
+            if (other.gameObject.name == "ExtendLines" || other.gameObject.name == "ExtendLines(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
+            }
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
+        Debug.Log(other.gameObject.name);
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
             if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
@@ -155,6 +181,14 @@ public class HealthSystem : MonoBehaviour
                 damageTime = 0;
             }
             if (other.gameObject.name == "DevineCenter" || other.gameObject.name == "DevineCenter(Clone)")
+            {
+                damageTime = 0;
+            }
+            if (other.gameObject.name == "Extend" || other.gameObject.name == "Extend(Clone)")
+            {
+                damageTime = 0;
+            }
+            if (other.gameObject.name == "ExtendLines" || other.gameObject.name == "ExtendLines(Clone)")
             {
                 damageTime = 0;
             }

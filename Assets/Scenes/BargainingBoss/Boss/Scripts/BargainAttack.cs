@@ -17,7 +17,7 @@ public class BargainAttack : MonoBehaviour
                 StartCoroutine(Clap());
                 break;
             case 1:
-                StartCoroutine(ExtendA());
+                StartCoroutine(Extend());
                 break;
         }
 
@@ -26,33 +26,28 @@ public class BargainAttack : MonoBehaviour
     IEnumerator Clap()
     {
         gameObject.GetComponent<BargainMovement>().isClaping = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<BargainAnimation>().ChainClap();
         Instantiate(soundwave, this.transform.position, Quaternion.identity);
         gameObject.GetComponent<BargainMovement>().isClaping = false;
+        StartCoroutine(BackToIdle());
     }
 
-    IEnumerator ExtendA()
+    IEnumerator Extend()
     {
-        gameObject.GetComponent<BargainAnimation>().ExtendArms();
+        gameObject.GetComponent<BargainAnimation>().ChainExtend();
         yield return new WaitForSeconds(0.5f);
         Instantiate(extend, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2f);
-        extendLines = GameObject.FindGameObjectsWithTag("BeamLine");
+        extendLines = GameObject.FindGameObjectsWithTag("ExtendLine");
         foreach (GameObject el in extendLines)
         {
             Destroy(el);
         }
-        Destroy(GameObject.FindWithTag("Beam"));
-        StartCoroutine(EndExtend());
-    }
-
-    IEnumerator EndExtend()
-    {
-        yield return new WaitForSeconds(0.5f);
-        gameObject.GetComponent<BargainAnimation>().UnExtend();
+        Destroy(GameObject.FindWithTag("Extend"));
         StartCoroutine(BackToIdle());
     }
+
 
     IEnumerator BackToIdle()
     {
