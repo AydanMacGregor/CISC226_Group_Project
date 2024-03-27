@@ -15,7 +15,6 @@ public class BargainMovement : MonoBehaviour
     internal Vector3[] moveDirections = new Vector3[] { Vector3.right, Vector3.left, Vector3.up, Vector3.down, Vector3.zero };
     internal int currentMoveDirection;
 
-    // New edit
     public bool isClaping = false;
     public bool isMovingBack = false;
     private Vector3 todDir;

@@ -26,7 +26,7 @@ public class BargainAttack : MonoBehaviour
     IEnumerator Clap()
     {
         gameObject.GetComponent<BargainMovement>().isClaping = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<BargainAnimation>().ChainClap();
         Instantiate(soundwave, this.transform.position, Quaternion.identity);
         gameObject.GetComponent<BargainMovement>().isClaping = false;
