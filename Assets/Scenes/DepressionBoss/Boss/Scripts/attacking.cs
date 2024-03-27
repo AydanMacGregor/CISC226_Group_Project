@@ -9,6 +9,8 @@ public class attacking : MonoBehaviour
 
     public GameObject soul;
     public GameObject bat;
+    public PolygonCollider2D one;
+    public PolygonCollider2D two;
     public void StartAttack(int n)
     {
         switch(n){
@@ -75,10 +77,12 @@ public class attacking : MonoBehaviour
                 if (location.y < 0)
                 {
                     this.transform.GetChild(3).GetComponent<Animator>().Play("swipe");
+                    this.transform.GetChild(3).GetComponent<switchCollider>().UpdateCollider();
                 }   
                 else
                 {
                     this.transform.GetChild(2).GetComponent<Animator>().Play("swipe");
+                    this.transform.GetChild(2).GetComponent<switchCollider>().UpdateCollider();
                 }
                 break;
             case -1:
@@ -89,5 +93,23 @@ public class attacking : MonoBehaviour
                 break;
         }
         yield return new WaitForSeconds(2f);
+        switch(finalAngle){
+            case 0:
+                if (location.y < 0)
+                {
+                    this.transform.GetChild(3).GetComponent<switchCollider>().UpdateCollider();
+                }   
+                else
+                {
+                    this.transform.GetChild(2).GetComponent<switchCollider>().UpdateCollider();
+                }
+                break;
+            case -1:
+                this.transform.GetChild(1).GetComponent<switchCollider>().UpdateCollider();
+                break;
+            case 1:
+                this.transform.GetChild(0).GetComponent<switchCollider>().UpdateCollider();
+                break;
+        }
     }
 }

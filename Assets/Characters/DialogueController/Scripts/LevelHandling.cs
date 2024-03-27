@@ -29,6 +29,9 @@ public class LevelHandling : MonoBehaviour
             if (current == "DenialScene")
             {
                 l.Add(new Node("Where does this lead to?", false));
+                GameObject c = GameObject.Find("Dialogue");
+                currentText = c.GetComponent<TextMeshProUGUI>();
+                currentText.enabled = true;
                 StartCoroutine(SwitchWorlds("DenialBossFloor", 3f));
             }
             else if (current == "DenialBossFloor")
@@ -41,6 +44,9 @@ public class LevelHandling : MonoBehaviour
             else if (current == "BargainingScene")
             {
                 l.Add(new Node("Please not again, anything but this!", false));
+                GameObject c = GameObject.Find("Dialogue");
+                currentText = c.GetComponent<TextMeshProUGUI>();
+                currentText.enabled = true;
                 StartCoroutine(SwitchWorlds("BargainingBossFloor", 3f));
             }
             else if (current == "BargainingBossFloor")
@@ -52,6 +58,9 @@ public class LevelHandling : MonoBehaviour
             {
                 hit = true;
                 l.Add(new Node("Once I'm done with this person you're next you hear me!", false));
+                GameObject c = GameObject.Find("Dialogue");
+                currentText = c.GetComponent<TextMeshProUGUI>();
+                currentText.enabled = true;
                 StartCoroutine(SwitchWorlds("AngerBossFloor", 5f));
             }
             else if (current == "AngerBossFloor")
@@ -63,6 +72,9 @@ public class LevelHandling : MonoBehaviour
             {
                 hit = true;
                 l.Add(new Node("I don't think I can take another.", false));
+                GameObject c = GameObject.Find("Dialogue");
+                currentText = c.GetComponent<TextMeshProUGUI>();
+                currentText.enabled = true;
                 StartCoroutine(SwitchWorlds("DepressionBossFloor", 3f));
             }
             else if (current == "DepressionBossFloor")
@@ -75,6 +87,7 @@ public class LevelHandling : MonoBehaviour
                 hit = true;
                 GameObject c = GameObject.Find("Dialogue");
                 c.GetComponent<FinalDialogue>().canStart = true;
+                c.GetComponent<TextMeshProUGUI>().enabled = true;
                 call = true;
             }
             if (!call)
