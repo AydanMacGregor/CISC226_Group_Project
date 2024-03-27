@@ -1624,7 +1624,7 @@ PrefabInstance:
     - target: {fileID: -3403326207658580444, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
       propertyPath: slider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1014704388}
     - target: {fileID: 6207316408233641074, guid: 957c27dd12070db408cb7f2d27e22ad6, type: 3}
       propertyPath: m_Name
       value: Tod
@@ -2058,9 +2058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   an: {fileID: 1115427389}
-  Bargaining: {fileID: 21300000, guid: 9666d30c600ea574fa64ed17bb60be42, type: 3}
-  Clap: {fileID: 21300000, guid: 73167350b8af3b645b4c9007d8a088dd, type: 3}
-  Extend: {fileID: 21300000, guid: cbf902679bbe431438726bab69d578d4, type: 3}
   sr: {fileID: 1115427390}
 --- !u!1001 &1173431945
 PrefabInstance:
@@ -2652,7 +2649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
+  m_AnchoredPosition: {x: 0, y: -340}
   m_SizeDelta: {x: 1500, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1828848757
@@ -2779,7 +2776,7 @@ Transform:
   m_GameObject: {fileID: 1842523425}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6579,6 +6576,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: tod
+      value: 
+      objectReference: {fileID: 991402634}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 1173431946}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: textComponent
+      value: 
+      objectReference: {fileID: 1828848757}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
