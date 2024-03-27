@@ -30,6 +30,7 @@ public class BargainAttack : MonoBehaviour
         gameObject.GetComponent<BargainAnimation>().ChainClap();
         Instantiate(soundwave, this.transform.position, Quaternion.identity);
         gameObject.GetComponent<BargainMovement>().isClaping = false;
+        StartCoroutine(BackToIdle());
     }
 
     IEnumerator Extend()

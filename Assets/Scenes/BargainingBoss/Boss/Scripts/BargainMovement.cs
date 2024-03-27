@@ -122,7 +122,7 @@ public class BargainMovement : MonoBehaviour
         }
         else
         {
-            attackTime = 10f;
+            attackTime = 5f;
             int attackChoice = Random.Range(0, 2);
             this.GetComponent<BargainAttack>().StartAttack(attackChoice);
         }

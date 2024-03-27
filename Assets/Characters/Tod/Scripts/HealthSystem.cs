@@ -88,6 +88,10 @@ public class HealthSystem : MonoBehaviour
             {
                 damage(chargeDamageAmount);
             }
+            else if (other.gameObject.name == "ChainClap(Clone)")
+            {
+                damage(screechDamageAmount);
+            }
         }
     }
 
@@ -131,6 +135,15 @@ public class HealthSystem : MonoBehaviour
                     damageTime = 1f;
                 }
             }
+            if (other.gameObject.name == "Extend" || other.gameObject.name == "ExtendLine(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
+            }
         }
     }
 
@@ -151,6 +164,10 @@ public class HealthSystem : MonoBehaviour
                 damageTime = 0;
             }
             if (other.gameObject.name == "DevineCenter" || other.gameObject.name == "DevineCenter(Clone)")
+            {
+                damageTime = 0;
+            }
+            if (other.gameObject.name == "Extend" || other.gameObject.name == "ExtendLine(Clone)")
             {
                 damageTime = 0;
             }

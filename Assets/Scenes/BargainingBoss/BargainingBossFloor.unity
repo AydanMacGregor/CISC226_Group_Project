@@ -2043,7 +2043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundwave: {fileID: 1118070087864619206, guid: 27a8c487057ab4650839104d868e9be0, type: 3}
-  extend: {fileID: 5917191652665089617, guid: e7527cfef4a904d5e86a304a28392a21, type: 3}
+  extend: {fileID: 4943612032314425329, guid: 46d1f15d131484b12b82f26698e19a13, type: 3}
   an: {fileID: 1115427389}
 --- !u!114 &1115427399
 MonoBehaviour:
