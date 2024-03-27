@@ -22,7 +22,7 @@ public class Node
         {
             return text;
         }
-        return text + "<br>" + extraNodes[0].getText() + "<br>" + extraNodes[1].getText();
+        return text + " +14<br>" + extraNodes[0].getText() + " +12<br>" + extraNodes[1].getText() + " +10";
     }
 
     public bool getPrompt()

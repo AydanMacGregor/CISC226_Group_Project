@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 1661038171616414823}
   - component: {fileID: 3236565478735018162}
   - component: {fileID: 2122765863558785334}
-  - component: {fileID: 634935826621949330}
+  - component: {fileID: 5393308443024464759}
+  - component: {fileID: 8190625225309368770}
+  - component: {fileID: 5887138787699071266}
   m_Layer: 0
   m_Name: Tentacle
   m_TagString: Untagged
@@ -107,7 +109,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!60 &634935826621949330
+--- !u!60 &5393308443024464759
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,10 +121,10 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 67968
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -151,13 +153,91 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.21875, y: 0.6875}
-      - {x: -0.09375, y: 0.1875}
+    - - {x: 0.3313005, y: 0.63872814}
+      - {x: -0.0037096739, y: 0.1612382}
+      - {x: -0.73133206, y: 0.1890502}
       - {x: -0.96875, y: 0.4375}
       - {x: -1, y: 0.4375}
-      - {x: -1, y: -0.625}
-      - {x: -0.9375, y: -0.875}
-      - {x: 0.40625, y: -0.875}
-      - {x: 0.75, y: -0.59375}
-      - {x: 0.75, y: 0.6875}
+      - {x: -1.011255, y: -0.49744272}
+      - {x: -0.76117104, y: -0.7249327}
+      - {x: -0.5084901, y: -0.8288965}
+      - {x: -0.0653913, y: -0.8290005}
+      - {x: 0.29296076, y: -0.63635397}
+      - {x: 0.4775319, y: -0.46231556}
+      - {x: 0.6974766, y: -0.068514824}
+      - {x: 0.69854105, y: 0.3390813}
+      - {x: 0.6711744, y: 0.44080782}
+      - {x: 0.46862388, y: 0.63872814}
   m_UseDelaunayMesh: 0
+--- !u!60 &8190625225309368770
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3410447121071608394}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.9126469, y: -0.6262317}
+      - {x: 0.04617262, y: -0.40048742}
+      - {x: -0.2892909, y: -0.3073039}
+      - {x: -0.43890476, y: -0.17641306}
+      - {x: -0.92372984, y: 0.29493618}
+      - {x: -1.0037518, y: 0.321198}
+      - {x: -1.0111268, y: -0.51710176}
+      - {x: -0.71487224, y: -0.78257084}
+      - {x: -0.5360701, y: -0.8487387}
+      - {x: -0.088199735, y: -0.9185834}
+      - {x: 0.4587736, y: -0.91626835}
+      - {x: 0.7049799, y: -0.8376093}
+      - {x: 0.9150741, y: -0.72313213}
+  m_UseDelaunayMesh: 0
+--- !u!114 &5887138787699071266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3410447121071608394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b952650259ab7b47bd1983f288c2757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  one: {fileID: 5393308443024464759}
+  two: {fileID: 8190625225309368770}

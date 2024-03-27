@@ -19,7 +19,6 @@ public class attackTod : MonoBehaviour
                 StartCoroutine(Charge());
                 break;
         }
-        
     }
 
 
@@ -45,23 +44,15 @@ public class attackTod : MonoBehaviour
 
     IEnumerator EndAttack()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         gameObject.GetComponent<animationMovement>().UnBeam();
-        StartCoroutine(BackToIdle());
     }
 
-    IEnumerator BackToIdle()
-    {
-        yield return new WaitForSeconds(0.5f);
-        gameObject.GetComponent<animationMovement>().Idle();
-    }
-
-    // New edit
     IEnumerator Charge()
     {
-        yield return new WaitForSeconds(0.5f);
-        gameObject.GetComponent<bossMovement>().chargeFlag = true;
         gameObject.GetComponent<animationMovement>().Charge();
+        yield return new WaitForSeconds(1.5f);
+        gameObject.GetComponent<bossMovement>().chargeFlag = true;
         StartCoroutine(MoveTowardsTod());
     }
 
@@ -75,9 +66,9 @@ public class attackTod : MonoBehaviour
     {
         gameObject.GetComponent<animationMovement>().UnCharge();
         gameObject.GetComponent<bossMovement>().isMovingBack = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         gameObject.GetComponent<bossMovement>().chargeFlag = false;
         gameObject.GetComponent<bossMovement>().isMovingBack = false;
-
+        gameObject.GetComponent<bossMovement>().attackTime = 4f;
     }
 }
