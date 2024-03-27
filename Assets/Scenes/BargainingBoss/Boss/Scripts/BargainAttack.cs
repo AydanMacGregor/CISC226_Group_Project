@@ -45,15 +45,9 @@ public class BargainAttack : MonoBehaviour
             Destroy(el);
         }
         Destroy(GameObject.FindWithTag("Extend"));
-        StartCoroutine(EndExtend());
-    }
-
-    IEnumerator EndExtend()
-    {
-        yield return new WaitForSeconds(0.5f);
-        gameObject.GetComponent<BargainAnimation>().UnExtend();
         StartCoroutine(BackToIdle());
     }
+
 
     IEnumerator BackToIdle()
     {
