@@ -12,6 +12,7 @@ public class LevelHandling : MonoBehaviour
     private string current;
     private bool bossDead = false;
     private bool call = false;
+    GameObject tod;
     
     void Start()
     {
@@ -107,28 +108,41 @@ public class LevelHandling : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if (!currentText.enabled && hit && current == "Acceptance")
+        if (hit && current == "Acceptance")
         {
-            StartCoroutine(SwitchWorlds("MainMenuScene", 3f));
+            GameObject c = GameObject.Find("Dialogue");
+            if (!c.GetComponent<TextMeshProUGUI>().enabled)
+            {
+                Debug.Log("ah");
+                StartCoroutine(SwitchWorlds("MainMenuScene", 3f));
+            }
         }
         if (GameObject.Find("Boss") == null && !bossDead && current == "DenialBossFloor")
         {
             bossDead = true;
+            tod = GameObject.Find("Tod");
+            tod.GetComponent<NovelIdea>().resetTime();
             StartCoroutine(SwitchWorlds("BargainingScene", 3f));
         }
         if (GameObject.Find("Boss") == null && !bossDead && current == "BargainingBossFloor")
         {
             bossDead = true;
+            tod = GameObject.Find("Tod");
+            tod.GetComponent<NovelIdea>().resetTime();
             StartCoroutine(SwitchWorlds("AngerScene", 3f));
         }
         if (GameObject.Find("Boss") == null && !bossDead && current == "AngerBossFloor")
         {
             bossDead = true;
+            tod = GameObject.Find("Tod");
+            tod.GetComponent<NovelIdea>().resetTime();
             StartCoroutine(SwitchWorlds("DepressionScene", 3f));
         }
         if (GameObject.Find("DepressionBoss") == null && !bossDead && current == "DepressionBossFloor")
         {
             bossDead = true;
+            tod = GameObject.Find("Tod");
+            tod.GetComponent<NovelIdea>().resetTime();
             StartCoroutine(SwitchWorlds("Acceptance", 3f));
         }
     }

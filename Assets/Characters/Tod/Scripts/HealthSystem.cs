@@ -88,6 +88,10 @@ public class HealthSystem : MonoBehaviour
             {
                 damage(chargeDamageAmount);
             }
+            else if (other.gameObject.name == "ChainClap3(Clone)")
+            {
+                damage(screechDamageAmount);
+            }
             else if (other.gameObject.tag == "DenialBoss" && other.gameObject.GetComponent<bossMovement>().chargeFlag)
             {
                 damage(chargeDamageAmount);
@@ -135,6 +139,24 @@ public class HealthSystem : MonoBehaviour
                     damageTime = 1f;
                 }
             }
+            if (other.gameObject.name == "ChainExtend3" || other.gameObject.name == "ChainExtend3(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
+            }
+            if (other.gameObject.name == "ChainExtend4" || other.gameObject.name == "ChainExtend4(Clone)")
+            {
+                damageTime -= Time.deltaTime;
+                if (damageTime <= 0)
+                {
+                    damage(beamDamageAmount);
+                    damageTime = 1f;
+                }
+            }
         }
     }
 
@@ -158,6 +180,15 @@ public class HealthSystem : MonoBehaviour
             {
                 damageTime = 0;
             }
+            if (other.gameObject.name == "Extend" || other.gameObject.name == "Extend(Clone)")
+            {
+                damageTime = 0;
+            }
+            if (other.gameObject.name == "ExtendLines" || other.gameObject.name == "ExtendLines(Clone)")
+            {
+                damageTime = 0;
+            }
+            
         }
         
     }

@@ -33,7 +33,10 @@ public class DialogueStructure : MonoBehaviour
     {
         if (tod.GetComponent<NovelIdea>().getTime() > 0f && Input.GetMouseButtonDown(1))
         {
-            endText();
+            if (tod.GetComponent<NovelIdea>().getTime() > 0)
+            {
+                endText();
+            }
         }
         if (currentNode.getPrompt())
         {

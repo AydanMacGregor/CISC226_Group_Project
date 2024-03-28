@@ -30,6 +30,11 @@ public class NovelIdea : MonoBehaviour
         }
     }
 
+    public void resetTime()
+    {
+        scoreTime = 0;
+    }
+
     public void setTime(float t)
     {
         if (t > 0)
@@ -65,7 +70,8 @@ public class NovelIdea : MonoBehaviour
                         d[1].setNode(d[2]);
                         d[2].setNode(d[3]);
                         GameObject dc = GameObject.FindWithTag("DialogueSystem");
-                        currentText = (TextMeshProUGUI)FindObjectOfType(typeof(TextMeshProUGUI));
+                        GameObject c = GameObject.Find("Dialogue");
+                        currentText = c.GetComponent<TextMeshProUGUI>();;
                         currentText.enabled = true;
                         dc.GetComponent<DialogueStructure>().initializeVar(d, currentText);
                         this.GetComponent<AttackDefend>().s = true;

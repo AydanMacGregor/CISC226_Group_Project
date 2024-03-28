@@ -27,31 +27,31 @@ public class BargainAttack : MonoBehaviour
     {
         gameObject.GetComponent<BargainMovement>().isClaping = true;
         yield return new WaitForSeconds(1f);
+        SpawnClap();
+    }
+
+    void SpawnClap()
+    {
         gameObject.GetComponent<BargainAnimation>().ChainClap();
         Instantiate(soundwave, this.transform.position, Quaternion.identity);
+        StartCoroutine(UnClap());
+    }
+
+    public IEnumerator UnClap()
+    {
+        gameObject.GetComponent<BargainMovement>().isMovingBack = true;
+        yield return new WaitForSeconds(0.3f);
         gameObject.GetComponent<BargainMovement>().isClaping = false;
+        gameObject.GetComponent<BargainMovement>().isMovingBack = false;
     }
 
     IEnumerator ExtendA()
     {
         gameObject.GetComponent<BargainAnimation>().ExtendArms();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         Instantiate(extend, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2f);
-        extendLines = GameObject.FindGameObjectsWithTag("BeamLine");
-        foreach (GameObject el in extendLines)
-        {
-            Destroy(el);
-        }
-        Destroy(GameObject.FindWithTag("Beam"));
-        StartCoroutine(EndExtend());
-    }
-
-    IEnumerator EndExtend()
-    {
-        yield return new WaitForSeconds(0.5f);
         gameObject.GetComponent<BargainAnimation>().UnExtend();
-        StartCoroutine(BackToIdle());
     }
 
     IEnumerator BackToIdle()

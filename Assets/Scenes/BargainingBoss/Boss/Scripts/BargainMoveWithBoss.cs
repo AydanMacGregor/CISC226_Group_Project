@@ -10,13 +10,21 @@ public class BargainMoveWithBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boss = GameObject.FindWithTag("DenialBoss");
+        Destroy(this.gameObject, 2f);
+        boss = GameObject.FindWithTag("BargainingBoss");
         t = this.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        t.position = new Vector3(boss.transform.position.x + rotation.x, boss.transform.position.y + rotation.y, -2);
+        if (boss == null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            t.position = new Vector3(boss.transform.position.x + rotation.x, boss.transform.position.y + rotation.y, -2);
+        }   
     }
 }

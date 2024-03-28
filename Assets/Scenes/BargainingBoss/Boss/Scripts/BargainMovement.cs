@@ -20,6 +20,8 @@ public class BargainMovement : MonoBehaviour
     public bool isMovingBack = false;
     private Vector3 todDir;
 
+    private int attackChoice;
+
     void Start()
     {
         // Cache the transform for quicker access
@@ -123,9 +125,18 @@ public class BargainMovement : MonoBehaviour
         }
         else
         {
-            attackTime = 10f;
-            int attackChoice = Random.Range(0, 2);
-            this.GetComponent<attackTod>().StartAttack(attackChoice);
+            if (Vector2.Distance(Tod.transform.position, thisTransform.position) > 5f)
+            {
+                attackChoice = 1;
+                attackTime = 4f;
+            }
+            else
+            {
+                attackChoice = 0;
+                attackTime = 3f;
+            }
+            
+            this.GetComponent<BargainAttack>().StartAttack(attackChoice);
         }
     }
 
@@ -134,12 +145,12 @@ public class BargainMovement : MonoBehaviour
         if (isMovingBack)
         {
             todDir = (thisTransform.position - Tod.transform.position).normalized;
-            transform.position += todDir * moveSpeed * 3 * Time.deltaTime;
+            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
         }
         else
         {
             todDir = (Tod.transform.position - thisTransform.position).normalized;
-            transform.position += todDir * moveSpeed * 2 * Time.deltaTime;
+            transform.position += todDir * moveSpeed * 1.95f * Time.deltaTime;
         }
     }
 
@@ -153,8 +164,11 @@ public class BargainMovement : MonoBehaviour
     {
         if (collision.gameObject.name == "Tod" && isClaping)
         {
-            this.GetComponent<attackTod>().StopAllCoroutines();
-            StartCoroutine(this.GetComponent<attackTod>().MoveAwayTod());
+            this.GetComponent<BargainAttack>().StopAllCoroutines();
+            StartCoroutine(this.GetComponent<BargainAttack>().UnClap());
+            collision.gameObject.GetComponent<HealthSystem>().damage(25);
+            attackTime = 1f;
         }
     }
+
 }

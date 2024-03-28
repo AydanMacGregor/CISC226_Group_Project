@@ -11,20 +11,28 @@ public class BargainConstruct : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(this.gameObject, 2f);
         boss = GameObject.FindWithTag("BargainingBoss");
         t = this.transform;
         for (int i = 2; i < 30; i += 2)
         {
-            GameObject up = GameObject.Instantiate(ExtendLine, new Vector3(t.position.x, t.position.y + i, -2), Quaternion.identity);
-            up.GetComponent<moveWithBoss>().rotation = new Vector2(0, i);
-            GameObject down = GameObject.Instantiate(ExtendLine, new Vector3(t.position.x, t.position.y - i, -2), Quaternion.identity);
-            down.GetComponent<moveWithBoss>().rotation = new Vector2(0, i * -1);
+            GameObject right = GameObject.Instantiate(ExtendLine, new Vector3(t.position.x + i, t.position.y, -2), Quaternion.identity);
+            right.GetComponent<BargainMoveWithBoss>().rotation = new Vector2(i, 0);
+            GameObject left = GameObject.Instantiate(ExtendLine, new Vector3(t.position.x - i, t.position.y, -2), Quaternion.identity);
+            left.GetComponent<BargainMoveWithBoss>().rotation = new Vector2(i * -1, 0);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        t.position = new Vector3(boss.transform.position.x, boss.transform.position.y, -1);
+        if (boss == null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            t.position = new Vector3(boss.transform.position.x, boss.transform.position.y, -1);
+        }
     }
 }
