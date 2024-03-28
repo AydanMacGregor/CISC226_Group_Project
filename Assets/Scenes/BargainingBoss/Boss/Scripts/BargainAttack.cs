@@ -47,7 +47,7 @@ public class BargainAttack : MonoBehaviour
 
     IEnumerator Extend()
     {
-        gameObject.GetComponent<BargainAnimation>().ExtendArms();
+        gameObject.GetComponent<BargainAnimation>().ChainExtend();
         yield return new WaitForSeconds(0.2f);
         Instantiate(extend, this.transform.position, Quaternion.identity);
         yield return new WaitForSeconds(2f);
