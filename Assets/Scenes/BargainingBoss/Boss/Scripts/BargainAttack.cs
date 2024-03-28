@@ -17,7 +17,7 @@ public class BargainAttack : MonoBehaviour
                 StartCoroutine(Clap());
                 break;
             case 1:
-                StartCoroutine(ExtendA());
+                StartCoroutine(Extend());
                 break;
         }
 
@@ -45,7 +45,7 @@ public class BargainAttack : MonoBehaviour
         gameObject.GetComponent<BargainMovement>().isMovingBack = false;
     }
 
-    IEnumerator ExtendA()
+    IEnumerator Extend()
     {
         gameObject.GetComponent<BargainAnimation>().ExtendArms();
         yield return new WaitForSeconds(0.2f);
@@ -53,6 +53,7 @@ public class BargainAttack : MonoBehaviour
         yield return new WaitForSeconds(2f);
         gameObject.GetComponent<BargainAnimation>().UnExtend();
     }
+
 
     IEnumerator BackToIdle()
     {

@@ -32,7 +32,12 @@ public class BargainAnimation : MonoBehaviour
         an.Play("ChainClap");
     }
 
-    public void ExtendArms()
+    public void UnClap()
+    {
+        an.Play("ChainUnClap");
+    }
+
+    public void ChainExtend()
     {
         an.Play("ChainExtend");
     }

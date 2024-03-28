@@ -54,6 +54,7 @@ public class HealthSystem : MonoBehaviour
     // Check which attack hit Tod
     void OnCollisionEnter2D(Collision2D other)
     {
+        Debug.Log(other.gameObject.name);
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
             if (other.gameObject.tag == "Soul" && other.gameObject.GetComponent<SpriteRenderer>().sprite == Charge)
@@ -101,8 +102,10 @@ public class HealthSystem : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.gameObject.name);
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
+            
             if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
             {
                 damageTime -= Time.deltaTime;
@@ -162,6 +165,7 @@ public class HealthSystem : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
+        Debug.Log(other.gameObject.name);
         if (!gameObject.GetComponent<AttackDefend>().s)
         {
             if (other.gameObject.name == "Beam" || other.gameObject.name == "BeamLine(Clone)")
@@ -188,7 +192,6 @@ public class HealthSystem : MonoBehaviour
             {
                 damageTime = 0;
             }
-            
         }
         
     }
