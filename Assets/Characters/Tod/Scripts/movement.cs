@@ -26,6 +26,12 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        
+    }
+
+    void FixedUpdate()
+    {
         if (SceneManager.GetActiveScene().name == "Acceptance" && !finalScene)
         {
             direction = Vector2.up;
@@ -48,11 +54,6 @@ public class movement : MonoBehaviour
         {
             move = Vector2.zero;
         }
-        
-    }
-
-    void FixedUpdate()
-    {
         Move();
     }
 
