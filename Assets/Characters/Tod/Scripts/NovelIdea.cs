@@ -65,7 +65,7 @@ public class NovelIdea : MonoBehaviour
                         d.Add(new Node("Wait... are you doing that or am I?", false));
                         d.Add(new Node("- ...", true));
                         d.Add(new Node("ha! I can fight against you.", false));
-                        d.Add(new Node("Better be nice me, I don't always have to listen to you now.", false));
+                        d.Add(new Node("Better be nice to me, I don't always have to listen to you now.", false));
                         d[0].setNode(d[1]);
                         d[1].setNode(d[2]);
                         d[2].setNode(d[3]);
@@ -75,8 +75,8 @@ public class NovelIdea : MonoBehaviour
                         currentText.enabled = true;
                         dc.GetComponent<DialogueStructure>().initializeVar(d, currentText);
                         this.GetComponent<AttackDefend>().s = true;
-                        Vector3 scale = new Vector3(1, -1, 1);
-                        cam.projectionMatrix = cam.projectionMatrix * Matrix4x4.Scale(scale);
+                        Matrix4x4 scale = Matrix4x4.Scale(new Vector3(1, -1, 1));
+                        cam.projectionMatrix = cam.projectionMatrix * scale;
                         timedRebel = 0f;
                     }
                     else if (!idc)
@@ -85,8 +85,8 @@ public class NovelIdea : MonoBehaviour
                         {
                             firstPushBack = false;
                             this.GetComponent<AttackDefend>().s = false;
-                            Vector3 scale = new Vector3(1, -1, 1);
-                            cam.projectionMatrix = cam.projectionMatrix * Matrix4x4.Scale(scale);
+                            Matrix4x4 scale = Matrix4x4.Scale(new Vector3(1, -1, 1));
+                            cam.projectionMatrix = cam.projectionMatrix * scale;
                             timedRebel = scoreTime;
                             Debug.Log(scoreTime);
                         }

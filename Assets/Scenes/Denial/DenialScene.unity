@@ -346,7 +346,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &229994899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,7 +1449,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953570850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1457,8 +1457,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -290, y: -340}
-  m_SizeDelta: {x: 800, y: 400}
+  m_AnchoredPosition: {x: -290, y: -290}
+  m_SizeDelta: {x: 800, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &953570853
 MonoBehaviour:
@@ -38746,7 +38746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3510725614634357892, guid: c5237408392260d4395d344cc06c0dd2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3510725614634357892, guid: c5237408392260d4395d344cc06c0dd2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38847,7 +38847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2700045718111519766, guid: c7923ec8f258da84dba8cdb8f3037826, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2700045718111519766, guid: c7923ec8f258da84dba8cdb8f3037826, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38944,7 +38944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3379081801718267757, guid: 837c647a5e2cc0e458e79aa1c52053c2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3379081801718267757, guid: 837c647a5e2cc0e458e79aa1c52053c2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39068,6 +39068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tod Health Bar
       objectReference: {fileID: 0}
+    - target: {fileID: 3791405613176007082, guid: e518004d2239f8145979a59e8546f1aa, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4110922999262884349, guid: e518004d2239f8145979a59e8546f1aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -39110,7 +39114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4110922999262884349, guid: e518004d2239f8145979a59e8546f1aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4110922999262884349, guid: e518004d2239f8145979a59e8546f1aa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -39393,6 +39397,10 @@ PrefabInstance:
     - target: {fileID: 2924044315811269583, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
       propertyPath: m_Name
       value: DialogueSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: c
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
       propertyPath: tod

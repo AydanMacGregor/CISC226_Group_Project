@@ -46,7 +46,6 @@ public class DialogueStructure : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, c);
-                Debug.Log(wordIndex);
                 if (wordIndex >= 0 && wordIndex < 3)
                 {
                     if (currentNode.extraNodes.Count < 1 && wordIndex == 0)
