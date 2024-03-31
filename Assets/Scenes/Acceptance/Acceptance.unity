@@ -394,6 +394,10 @@ PrefabInstance:
       value: DialogueSystem
       objectReference: {fileID: 0}
     - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
+      propertyPath: c
+      value: 
+      objectReference: {fileID: 1245171933}
+    - target: {fileID: 7647407032323950217, guid: cdd15194e2d895b4e8acaa471c5f3e7b, type: 3}
       propertyPath: tod
       value: 
       objectReference: {fileID: 1177212115}
