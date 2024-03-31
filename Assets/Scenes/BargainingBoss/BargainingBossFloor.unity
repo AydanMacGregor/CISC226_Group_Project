@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "ink\xE2r:"
+  m_Text: 'Pactus:'
 --- !u!222 &71247755
 CanvasRenderer:
   m_ObjectHideFlags: 0
