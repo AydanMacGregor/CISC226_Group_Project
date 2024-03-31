@@ -31,7 +31,6 @@ public class healthD : MonoBehaviour
         if (other.gameObject.name == "SlashAttack(Clone)")
         {
             bossHealth -= 15;
-            Debug.Log(bossHealth);
         }
         healthBar.SetHealth(bossHealth);
     }
@@ -41,7 +40,6 @@ public class healthD : MonoBehaviour
         if(other.gameObject.name == "Raven(Clone)")
         {
             bossHealth -= 5;
-            Debug.Log(bossHealth);
         }
         healthBar.SetHealth(bossHealth);
     }

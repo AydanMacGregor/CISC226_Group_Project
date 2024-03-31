@@ -30,11 +30,18 @@ public class BargainHealth : MonoBehaviour
         {
             bargainBossHealth -= 10;
         }
-        else if (other.gameObject.name == "Raven(Clone)")
-        {
-            bargainBossHealth -= 25;
-        }
 
         healthBar.SetHealth(bargainBossHealth);
     }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.name == "Raven(Clone)")
+        {
+            bargainBossHealth -= 5;
+        }
+        healthBar.SetHealth(bargainBossHealth);
+    }
+
+
 }
