@@ -94,7 +94,6 @@ public class NovelIdea : MonoBehaviour
                 else if (!firstPushBack)
                 {
                     ran = Random.Range(0,4);
-                    ran = 0;
                     if (ran == 0)
                     {
                         Vector3 scale = new Vector3(1, -1, 1);
