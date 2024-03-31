@@ -21,8 +21,8 @@ public class DialogueStructure : MonoBehaviour
     
     void Start()
     {
-        GameObject temp = GameObject.Find("Main Camera");
-        c = temp.GetComponent<Camera>();
+        //GameObject temp = GameObject.Find("CameraUI");
+        //c = temp.GetComponent<Camera>();
         tod = GameObject.FindWithTag("Tod");
         textSpeed = .08f;
         if (SceneManager.GetActiveScene().name == "DenialScene")
@@ -46,6 +46,7 @@ public class DialogueStructure : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, c);
+                Debug.Log(wordIndex);
                 if (wordIndex >= 0 && wordIndex < 3)
                 {
                     if (currentNode.extraNodes.Count < 1 && wordIndex == 0)

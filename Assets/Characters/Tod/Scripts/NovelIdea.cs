@@ -86,15 +86,15 @@ public class NovelIdea : MonoBehaviour
                             firstPushBack = false;
                             this.GetComponent<AttackDefend>().s = false;
                             Matrix4x4 scale = Matrix4x4.Scale(new Vector3(1, -1, 1));
-                            cam.projectionMatrix = cam.projectionMatrix * scale;
+                            Camera.main.projectionMatrix = Camera.main.projectionMatrix * scale;
                             timedRebel = scoreTime;
-                            Debug.Log(scoreTime);
                         }
                     }
                 } 
                 else if (!firstPushBack)
                 {
-                    ran = Random.Range(0,4); 
+                    ran = Random.Range(0,4);
+                    ran = 0;
                     if (ran == 0)
                     {
                         Vector3 scale = new Vector3(1, -1, 1);
