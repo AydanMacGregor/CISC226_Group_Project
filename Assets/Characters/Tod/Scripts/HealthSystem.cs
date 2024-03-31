@@ -199,6 +199,13 @@ public class HealthSystem : MonoBehaviour
     // Damage Tod's health when the souls attack him
     public void damage(int damageAmount)
     {
+        // Camera shake
+        CameraShake cameraShake = new CameraShake();
+        cameraShake.ShakeCamera();
+
+        // Flash Red
+        StartCoroutine(RedFlash());
+
         currentHealth -= damageAmount;
         regenTimer = 8f;
         this.GetComponent<TodHealthBar>().SetHealth(currentHealth);
@@ -207,6 +214,14 @@ public class HealthSystem : MonoBehaviour
         {
             kill();
         }
+    }
+
+    //Flashes red upon taking damage
+    IEnumerator RedFlash()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     void regen()
