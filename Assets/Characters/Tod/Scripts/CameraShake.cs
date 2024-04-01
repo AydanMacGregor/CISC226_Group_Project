@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class CameraShake : MonoBehaviour
 {
-    private CinemachineVirtualCamera CinemachineVirtualCamera;
+    public CinemachineVirtualCamera CinemachineVirtualCamera;
     private float ShakeIntensity = 1f;
     private float ShakeTime = 0.2f;
 
@@ -14,7 +14,7 @@ public class CameraShake : MonoBehaviour
 
     void Awake()
     {
-        CinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+        //CinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
     public void Start()

@@ -9,7 +9,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private int minHealth = 0;
     [SerializeField] private int currentHealth;
     private int defaultHealth = 100;
-    private int eyeballDamageAmount = 50;
+    private int eyeballDamageAmount = 25;
     private int chargeDamageAmount = 25;
     private int beamDamageAmount = 25;
     private int flameDamageAmount = 50;
@@ -189,8 +189,8 @@ public class HealthSystem : MonoBehaviour
     public void damage(int damageAmount)
     {
         // Camera shake
-        CameraShake cameraShake = new CameraShake();
-        cameraShake.ShakeCamera();
+        GameObject cameraShake = GameObject.Find("Virtual Camera");
+        cameraShake.GetComponent<CameraShake>().ShakeCamera();
 
         // Flash Red
         StartCoroutine(RedFlash());
