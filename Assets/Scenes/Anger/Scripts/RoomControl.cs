@@ -59,6 +59,7 @@ public class RoomControl : MonoBehaviour
         if (checkEn)
         {
             numOfEn[current] += 1;
+            numGameObjects += 1;
         }
     }
 

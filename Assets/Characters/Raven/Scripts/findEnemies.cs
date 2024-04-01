@@ -16,7 +16,7 @@ public class findEnemies : MonoBehaviour
     void Start()
     {
         tod = GameObject.FindWithTag("Tod");
-        results = Physics2D.OverlapCircleAll(transform.transform.localPosition, 5f, LayerMask.GetMask("Bat", "Soul", "Boss"));
+        results = Physics2D.OverlapCircleAll(transform.transform.localPosition, 5f, LayerMask.GetMask("Bat", "Soul", "Boss", "Angel"));
         if (results.Length > 0)
         {
             for (int i = 0; i < results.Length; i++)
@@ -38,6 +38,13 @@ public class findEnemies : MonoBehaviour
         if (timer < 0)
         {
             hit = true;
+            tod = GameObject.FindWithTag("Tod");
+            Vector3 checkDir = (tod.transform.position - this.transform.position).normalized;
+            RaycastHit2D r = Physics2D.Raycast(this.transform.position, checkDir, 1f, LayerMask.GetMask("Confinment", "InnerWall"));
+            if (r.collider != null)
+            {
+                Destroy(gameObject);
+            }
         }
         if (en != null && !hit)
         {
@@ -74,7 +81,7 @@ public class findEnemies : MonoBehaviour
     {
         if (col != null)
         {
-            if (col.gameObject.layer == 12 || col.gameObject.layer == 9)
+            if (col.gameObject.layer == 12 || col.gameObject.layer == 9 || col.gameObject.layer == 11 || col.gameObject.layer == 14)
             {
                 hit = true;
             }

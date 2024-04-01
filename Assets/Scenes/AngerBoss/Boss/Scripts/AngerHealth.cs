@@ -35,11 +35,16 @@ public class AngerHealth : MonoBehaviour
         {
             angerBossHealth -= 10;
         }
-        else if(other.gameObject.name == "Raven(Clone)")
-        {
-            angerBossHealth -= 25;
-        }
 
+        healthBar.SetHealth(angerBossHealth);
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.name == "Raven(Clone)")
+        {
+            angerBossHealth -= 5;
+        }
         healthBar.SetHealth(angerBossHealth);
     }
 }

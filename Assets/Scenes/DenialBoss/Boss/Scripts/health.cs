@@ -32,11 +32,15 @@ public class health : MonoBehaviour
         {
             bossHealth -= 10;
         }
-        else if(other.gameObject.name == "Raven(Clone)")
-        {
-            bossHealth -= 25;
-        }
+        healthBar.SetHealth(bossHealth);
+    }
 
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.name == "Raven(Clone)")
+        {
+            bossHealth -= 5;
+        }
         healthBar.SetHealth(bossHealth);
     }
 }

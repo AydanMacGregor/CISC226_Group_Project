@@ -16,38 +16,38 @@ public class DenialDialogueSystem : MonoBehaviour
     {
         isprompts = new bool[] {false, false, true, false, true, true, true, false, false, false,
         true, true, true, true, true, true, true, true, true, false, false, false, true, true, true, false, false, false};
-        listoftext = new string[] {"Where... where am I? What happened? Am I dead?\n\nSpace to Continue",
-        "No... no, that can't be, I can't be dead?! I'm the Grim Reaper God Dammit!",
+        listoftext = new string[] {"W-where am I? What happened?\n\n\nSpace to Continue",
+        "Hello? I know you’re there, I know you’re watching me!",
         "- Hello Tod. +1\n(+1) Time it will take for Tod to fight back.\nClick Text to Continue",
-        "Who is there? Where am I? What is happening!?",
-        "- You're dead Tod.",
-        "- Don't worry about who I am.",
-        "- You're not dead.",
-        "How did I die? How do you know me and who are you?!",
-        "What do you mean? Answer me!",
-        "Why? Who are you? How did I get here?",
-        "- You have reached the end.",
-        "- You're here to ammend your grief.",
-        "- Not important.",
-        "- Do not be afraid, I am here to help.",
-        "- You are in a new realm.",
-        "- Stop asking questions.",
-        "- You are here to make amens.",
-        "- I am you, Tod.",
+        "Where are you? Reveal yourself!",
+        "- You have passed on.",
+        "- I saw your grave.",
+        "- Do not worry about who I am.",
+        "Passed like dead? I can’t be dead!",
+        "That’s not my grave, I’m still alive….",
+        "How can I not? Tell me who you are!",
+        "- I saw your name on the grave.",
+        "- You are here to make amends.",
+        "- You are dead Tod.",
+        "- I am here to guide you.",
+        "- You are not immortal.",
+        "- No you are not Tod.",
+        "- You are here to make amends.",
         "- I am of no concern to you.",
-        "Are you always this criptic? What is going on!",
-        "If you just answered my questions I would be at ease!",
-        "What? You are making no sense.",
-        "- Happy Reaping Tod.",
-        "- You will find what you seek.",
+        "- No.",
+        "Why are you so cryptic?",
+        "I am alive, why are you lying?!",
+        "You need to tell me the truth.",
+        "- You are in denial, Tod.",
+        "- I am not lying.",
         "- Answers in time.",
         "If you won't answer me, I guess I'll have to find answers myself.",
-        "How about I seek you?",
-        "I have to get out of here."};
+        "I have to get out of here.",
+        "Fine."};
 
         if (tod.GetComponent<NovelIdea>().getTime() > 0f)
         {
-            listoftext[0] = "Where... where am I? What happened? Am I dead?\n\nRight Click to Skip Dialogue";
+            listoftext[0] = "W-where am I? What happened?\n\n\nRight Click to Skip Dialogue";
             listoftext[2] = "- Hello Tod.";
         }
 

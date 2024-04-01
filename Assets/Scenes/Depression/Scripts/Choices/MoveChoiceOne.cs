@@ -48,6 +48,7 @@ public class MoveChoiceOne : MonoBehaviour
         if (chosen)
         {
             numOfEn[path] += 1;
+            numGameObjects += 1;
         }
     }
 

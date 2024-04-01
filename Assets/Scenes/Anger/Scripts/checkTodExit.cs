@@ -25,6 +25,10 @@ public class checkTodExit : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D other)
     {
-        con.GetComponent<RoomControl>().Block(num);
+        if (other.gameObject.name == "Tod")
+        {
+            con.GetComponent<RoomControl>().Block(num);
+        }
+        
     }
 }
