@@ -15,6 +15,7 @@ public class NovelIdea : MonoBehaviour
     public static float scoreTime;
     private bool firstPushBack;
     private bool idc = true;
+    private bool waitTime = false;
     
     void Start()
     {
@@ -23,6 +24,7 @@ public class NovelIdea : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "DenialScene")
         {
             firstPushBack = true;
+            this.GetComponent<TodNovelBar>().SetMaxVal(timedRebel);
         }
         else
         {
@@ -40,6 +42,11 @@ public class NovelIdea : MonoBehaviour
         if (t > 0)
         {
             scoreTime = t;
+            if (SceneManager.GetActiveScene().name != "DenialScene")
+            {
+                this.GetComponent<TodNovelBar>().SetMaxVal(t);
+                timedRebel = t;
+            }
         }
     }
 
@@ -53,7 +60,7 @@ public class NovelIdea : MonoBehaviour
     {
         if (canStart)
         {
-            if (timedRebel < 0)
+            if (timedRebel <= 0)
             {
                 if (firstPushBack)
                 {
@@ -78,6 +85,7 @@ public class NovelIdea : MonoBehaviour
                         Matrix4x4 scale = Matrix4x4.Scale(new Vector3(1, -1, 1));
                         cam.projectionMatrix = cam.projectionMatrix * scale;
                         timedRebel = 0f;
+                        waitTime = true;
                     }
                     else if (!idc)
                     {
@@ -86,14 +94,17 @@ public class NovelIdea : MonoBehaviour
                             firstPushBack = false;
                             this.GetComponent<AttackDefend>().s = false;
                             Matrix4x4 scale = Matrix4x4.Scale(new Vector3(1, -1, 1));
-                            Camera.main.projectionMatrix = Camera.main.projectionMatrix * scale;
+                            cam.projectionMatrix = cam.projectionMatrix * scale;
                             timedRebel = scoreTime;
+                            this.GetComponent<TodNovelBar>().SetMaxVal(scoreTime);
+                            waitTime = false;
                         }
                     }
                 } 
                 else if (!firstPushBack)
                 {
                     ran = Random.Range(0,4);
+                    waitTime = true;
                     if (ran == 0)
                     {
                         Vector3 scale = new Vector3(1, -1, 1);
@@ -121,10 +132,14 @@ public class NovelIdea : MonoBehaviour
                         }
                     }
                     StartCoroutine(Finished(ran));
-                    timedRebel = 20f;
                 }
             }
-            timedRebel -= Time.deltaTime;
+            if (!waitTime)
+            {
+                timedRebel -= Time.deltaTime;
+                this.GetComponent<TodNovelBar>().SetVal(timedRebel);
+            }
+            
         }
     }
 
@@ -151,5 +166,6 @@ public class NovelIdea : MonoBehaviour
             this.GetComponent<AttackDefend>().randFlip = new Vector2(1,1);
         }
         timedRebel = scoreTime;
+        waitTime = false;
     }
 }

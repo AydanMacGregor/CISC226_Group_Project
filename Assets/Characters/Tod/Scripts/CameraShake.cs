@@ -14,7 +14,7 @@ public class CameraShake : MonoBehaviour
 
     void Awake()
     {
-        //CinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
+        CinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
     public void Start()
