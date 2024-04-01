@@ -46,10 +46,21 @@ public class BHealth : MonoBehaviour
     // Damage the bat when the slash hit into it
     public void damage(int damageAmount)
     {
+        // Flash Red
+        StartCoroutine(RedFlash());
+
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    //Flashes red upon taking damage
+    IEnumerator RedFlash()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

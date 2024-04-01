@@ -48,11 +48,22 @@ public class Health : MonoBehaviour
     // Damage the soul when the slash hit into it
     public void damage(int damageAmount)
     {
+        // Flash Red
+        StartCoroutine(RedFlash());
+
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
             kill();
         }
+    }
+
+    //Flashes red upon taking damage
+    IEnumerator RedFlash()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     // Destroy soul if health >= minHealth
