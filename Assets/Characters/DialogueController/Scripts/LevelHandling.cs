@@ -12,6 +12,7 @@ public class LevelHandling : MonoBehaviour
     private string current;
     private bool bossDead = false;
     private bool call = false;
+    private bool touched = false;
     GameObject tod;
     
     void Start()
@@ -23,9 +24,10 @@ public class LevelHandling : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.layer == LayerMask.NameToLayer("Tod"))
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Tod") && !touched)
         {
             currentText.enabled = true;
+            touched = true;
             List<Node> l = new List<Node>();
             if (current == "DenialScene")
             {
@@ -57,7 +59,6 @@ public class LevelHandling : MonoBehaviour
             }
             else if (current == "AngerScene")
             {
-                hit = true;
                 l.Add(new Node("Once I'm done with this person you're next you hear me!", false));
                 GameObject c = GameObject.Find("Dialogue");
                 currentText = c.GetComponent<TextMeshProUGUI>();
@@ -71,7 +72,6 @@ public class LevelHandling : MonoBehaviour
             }
             else if (current == "DepressionScene")
             {
-                hit = true;
                 l.Add(new Node("I don't think I can take another.", false));
                 GameObject c = GameObject.Find("Dialogue");
                 currentText = c.GetComponent<TextMeshProUGUI>();
@@ -113,7 +113,6 @@ public class LevelHandling : MonoBehaviour
             GameObject c = GameObject.Find("Dialogue");
             if (!c.GetComponent<TextMeshProUGUI>().enabled)
             {
-                Debug.Log("ah");
                 StartCoroutine(SwitchWorlds("MainMenuScene", 3f));
             }
         }
