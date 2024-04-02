@@ -18,6 +18,7 @@ public class DialogueStructure : MonoBehaviour
     private GameObject tutorial;
     public GameObject background;
     public Camera c;
+    private bool start = false;
     
     void Start()
     {
@@ -34,51 +35,54 @@ public class DialogueStructure : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tod.GetComponent<NovelIdea>().getTime() > 0f && Input.GetMouseButtonDown(1))
+        if (start)
         {
-            if (tod.GetComponent<NovelIdea>().getTime() > 0)
+            if (tod.GetComponent<NovelIdea>().getTime() > 0f && Input.GetMouseButtonDown(1))
             {
-                endText();
-            }
-        }
-        if (currentNode.getPrompt())
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, c);
-                Debug.Log(wordIndex);
-                if (wordIndex >= 0 && wordIndex < 3)
+                if (tod.GetComponent<NovelIdea>().getTime() > 0)
                 {
-                    if (currentNode.extraNodes.Count < 1 && wordIndex == 0)
+                    endText();
+                }
+            }
+            if (currentNode.getPrompt())
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    wordIndex = TMP_TextUtilities.FindIntersectingLine(textComponent, Input.mousePosition, c);
+                    if (wordIndex >= 0 && wordIndex < 3)
                     {
-                        currentNode = currentNode.nextPrompt(wordIndex);
-                        NextLine();
-                    }
-                    else if (currentNode.extraNodes.Count >= 1)
-                    {
-                        todScore += timeScores[wordIndex];
-                        currentNode = currentNode.nextPrompt(wordIndex);
-                        NextLine();
+                        if (currentNode.extraNodes.Count < 1 && wordIndex == 0)
+                        {
+                            currentNode = currentNode.nextPrompt(wordIndex);
+                            NextLine();
+                        }
+                        else if (currentNode.extraNodes.Count >= 1)
+                        {
+                            todScore += timeScores[wordIndex];
+                            currentNode = currentNode.nextPrompt(wordIndex);
+                            NextLine();
+                        }
                     }
                 }
             }
+            else if (Input.GetKeyDown("space"))
+            {
+                if (currentNode.getNext() == null)
+                {
+                    endText();
+                }
+                else if (textComponent.text == currentNode.getText())
+                {
+                    NextLine();
+                }
+                else
+                {
+                    StopAllCoroutines();
+                    textComponent.text = currentNode.getText();
+                }
+            }
         }
-        else if (Input.GetKeyDown("space"))
-        {
-            if (currentNode.getNext() == null)
-            {
-                endText();
-            }
-            else if (textComponent.text == currentNode.getText())
-            {
-                NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                textComponent.text = currentNode.getText();
-            }
-        }
+        
         
     }
 
@@ -93,6 +97,10 @@ public class DialogueStructure : MonoBehaviour
         if (tutorial != null)
         {
             tutorial.GetComponent<guide>().start = true;
+        }
+        if (SceneManager.GetActiveScene().name.Contains("Boss"))
+        {
+            tod.GetComponent<NovelIdea>().canStart = true;
         }
     }
 
@@ -111,6 +119,7 @@ public class DialogueStructure : MonoBehaviour
         }
         textComponent = t;
         StartDialogue();
+        start = true;
     }
     
     public void StartDialogue()

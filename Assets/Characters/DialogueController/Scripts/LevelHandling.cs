@@ -35,6 +35,8 @@ public class LevelHandling : MonoBehaviour
                 GameObject c = GameObject.Find("Dialogue");
                 currentText = c.GetComponent<TextMeshProUGUI>();
                 currentText.enabled = true;
+                tod = GameObject.Find("Tod");
+                tod.GetComponent<NovelIdea>().canStart = false;
                 StartCoroutine(SwitchWorlds("DenialBossFloor", 3f));
             }
             else if (current == "DenialBossFloor")
@@ -50,6 +52,8 @@ public class LevelHandling : MonoBehaviour
                 GameObject c = GameObject.Find("Dialogue");
                 currentText = c.GetComponent<TextMeshProUGUI>();
                 currentText.enabled = true;
+                tod = GameObject.Find("Tod");
+                tod.GetComponent<NovelIdea>().canStart = false;
                 StartCoroutine(SwitchWorlds("BargainingBossFloor", 3f));
             }
             else if (current == "BargainingBossFloor")
@@ -63,6 +67,8 @@ public class LevelHandling : MonoBehaviour
                 GameObject c = GameObject.Find("Dialogue");
                 currentText = c.GetComponent<TextMeshProUGUI>();
                 currentText.enabled = true;
+                tod = GameObject.Find("Tod");
+                tod.GetComponent<NovelIdea>().canStart = false;
                 StartCoroutine(SwitchWorlds("AngerBossFloor", 5f));
             }
             else if (current == "AngerBossFloor")
@@ -76,6 +82,8 @@ public class LevelHandling : MonoBehaviour
                 GameObject c = GameObject.Find("Dialogue");
                 currentText = c.GetComponent<TextMeshProUGUI>();
                 currentText.enabled = true;
+                tod = GameObject.Find("Tod");
+                tod.GetComponent<NovelIdea>().canStart = false;
                 StartCoroutine(SwitchWorlds("DepressionBossFloor", 3f));
             }
             else if (current == "DepressionBossFloor")

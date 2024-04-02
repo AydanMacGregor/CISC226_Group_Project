@@ -42,12 +42,14 @@ public class NovelIdea : MonoBehaviour
         if (t > 0)
         {
             scoreTime = t;
-            if (SceneManager.GetActiveScene().name != "DenialScene")
-            {
-                this.GetComponent<TodNovelBar>().SetMaxVal(t);
-                timedRebel = t;
-            }
         }
+        if (SceneManager.GetActiveScene().name != "DenialScene")
+        {
+            this.GetComponent<TodNovelBar>().SetMaxVal(scoreTime);
+            this.GetComponent<TodNovelBar>().SetVal(scoreTime);
+            timedRebel = scoreTime;
+        }
+        
     }
 
     public float getTime()
@@ -101,9 +103,11 @@ public class NovelIdea : MonoBehaviour
                         }
                     }
                 } 
-                else if (!firstPushBack)
+                else if (!firstPushBack && !waitTime)
                 {
+                    Debug.Log("Hey");
                     ran = Random.Range(0,4);
+                    Debug.Log(ran);
                     waitTime = true;
                     if (ran == 0)
                     {
