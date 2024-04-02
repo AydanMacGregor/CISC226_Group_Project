@@ -25,6 +25,7 @@ public class Walkinganimation : MonoBehaviour
         slash = gameObject.GetComponent<AttackDefend>().sl;
         if (!sh)
         {
+           
             dir = gameObject.GetComponent<movement>().direction;
             if (rb.velocity == Vector2.zero)
             {
@@ -38,19 +39,19 @@ public class Walkinganimation : MonoBehaviour
                 }
             }
             else if (dir.x > 0)
-            {
+            {   
                 animationChoice = slash ? "Walking_Right_NS" : "Walking_Right";
                 an.Play(animationChoice);
                 gameObject.GetComponent<SpriteRenderer>().flipX = false;
             }
             else if (dir.x < 0)
-            {
+            {  
                 animationChoice = slash ? "Walking_Right_NS" : "Walking_Right";
                 an.Play(animationChoice);
                 gameObject.GetComponent<SpriteRenderer>().flipX = true;
             }
             else if (dir.y > 0)
-            {
+            {  
                 animationChoice = slash ? "Walking_Up_NS" : "Walking_Up";
                 an.Play(animationChoice);
             }

@@ -14,6 +14,8 @@ public class AttackDefend : MonoBehaviour
     public bool sl = false;
     public Vector2 randFlip = new Vector2(1,1);
     public List<GameObject> ravens = new List<GameObject>();
+    public AudioSource src;
+    public AudioClip sfx1, sfx2;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,8 @@ public class AttackDefend : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    src.clip=sfx2;
+                    src.Play();
                     attackTimer = 0.5f;
                     sl = true;
                     Instantiate(slash, new Vector3(tod.transform.position.x + (0.5f * dir.x * randFlip.x), tod.transform.position.y + (0.5f * dir.y * randFlip.y), tod.transform.position.z), Quaternion.identity);
@@ -55,8 +59,11 @@ public class AttackDefend : MonoBehaviour
 
     IEnumerator StartShield()
     {
+        src.clip=sfx1;
+        src.Play();
         yield return new WaitForSeconds(1f);
         StartCoroutine(EndShield());
+        
     }
 
     IEnumerator EndShield()

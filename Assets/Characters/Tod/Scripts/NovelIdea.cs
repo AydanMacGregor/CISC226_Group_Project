@@ -16,6 +16,8 @@ public class NovelIdea : MonoBehaviour
     private bool firstPushBack;
     private bool idc = true;
     private bool waitTime = false;
+     public AudioSource src;
+    public AudioClip sfx3;
     
     void Start()
     {
@@ -66,8 +68,9 @@ public class NovelIdea : MonoBehaviour
             {
                 if (firstPushBack)
                 {
-                    if (idc)
-                    {
+                    if (idc){
+                        src.clip=sfx3;
+                        src.Play();
                         idc = false;
                         ran = 0;
                         List<Node> d = new List<Node>();
@@ -105,6 +108,8 @@ public class NovelIdea : MonoBehaviour
                 } 
                 else if (!firstPushBack && !waitTime)
                 {
+                    src.clip=sfx3;
+                    src.Play();
                     Debug.Log("Hey");
                     ran = Random.Range(0,4);
                     Debug.Log(ran);

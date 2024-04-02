@@ -3,7 +3,10 @@ guid: 668cceb390e910e409bc928bd1f7d451
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cam: {instanceID: 0}
+  - src: {instanceID: 0}
+  - sfx1: {fileID: 8300000, guid: 863b3faf7dd129647b1f57b1ddb29f43, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
