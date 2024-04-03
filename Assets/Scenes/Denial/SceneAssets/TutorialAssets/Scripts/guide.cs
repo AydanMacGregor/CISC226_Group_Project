@@ -74,11 +74,9 @@ public class guide : MonoBehaviour
                     }
                     break;
                 case 2:
-                    if (GameObject.Find("Raven(Clone)"))
+                    if (Input.GetKeyDown(KeyCode.E))
                     {
-                        currentText.enabled = false;
-                        check = false;
-                        i++;
+                        StartCoroutine(checkRaven());
                     }
                     break;
                 case 3:
@@ -91,6 +89,18 @@ public class guide : MonoBehaviour
                     }
                     break;
             }
+        }
+    }
+
+    IEnumerator checkRaven()
+    {
+        yield return new WaitForSeconds(0.3f);
+        if (GameObject.Find("Raven(Clone)"))
+        {
+            currentText.enabled = false;
+            check = false;
+            i++;
+            Debug.Log(i);
         }
     }
 }

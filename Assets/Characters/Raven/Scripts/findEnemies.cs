@@ -16,13 +16,13 @@ public class findEnemies : MonoBehaviour
     void Start()
     {
         tod = GameObject.FindWithTag("Tod");
-        results = Physics2D.OverlapCircleAll(transform.transform.localPosition, 5f, LayerMask.GetMask("Bat", "Soul", "Boss", "Angel"));
+        results = Physics2D.OverlapCircleAll(transform.transform.localPosition, 4f, LayerMask.GetMask("Bat", "Soul", "Boss", "Angel"));
         if (results.Length > 0)
         {
             for (int i = 0; i < results.Length; i++)
             {
-                Vector2 currDir = (Vector2)(this.transform.position - results[i].gameObject.transform.position);
-                RaycastHit2D wallCast = Physics2D.Raycast(this.transform.position, currDir, 5f, LayerMask.GetMask("Confinment", "InnerWall"));
+                Vector2 currDir = (Vector2)(results[i].gameObject.transform.position - this.transform.position);
+                RaycastHit2D wallCast = Physics2D.Raycast(this.transform.position, currDir, 4f, LayerMask.GetMask("Confinment", "InnerWall"));
                 if (wallCast == false)
                 {
                     en = results[i].gameObject;
