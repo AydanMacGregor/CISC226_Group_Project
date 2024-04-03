@@ -35,7 +35,7 @@ public class DialogueStructure : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (start)
+        if (start && textComponent.enabled)
         {
             if (tod.GetComponent<NovelIdea>().getTime() > 0f && Input.GetMouseButtonDown(1))
             {

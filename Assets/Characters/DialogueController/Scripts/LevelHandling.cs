@@ -112,6 +112,10 @@ public class LevelHandling : MonoBehaviour
         {
             StartCoroutine(SwitchWorlds("DenialScene", 0f));
         }
+        if (current == "End" && Input.GetKeyDown("space"))
+        {
+            StartCoroutine(SwitchWorlds("MainMenuScene", 0f));
+        }
         if (!currentText.enabled && hit && current != "Acceptance")
         {
             Destroy(gameObject);
@@ -121,7 +125,8 @@ public class LevelHandling : MonoBehaviour
             GameObject c = GameObject.Find("Dialogue");
             if (!c.GetComponent<TextMeshProUGUI>().enabled)
             {
-                StartCoroutine(SwitchWorlds("MainMenuScene", 3f));
+                GameObject.Find("Tod").GetComponent<NovelIdea>().resetTime();
+                StartCoroutine(SwitchWorlds("End", 1f));
             }
         }
         if (GameObject.Find("Boss") == null && !bossDead && current == "DenialBossFloor")
