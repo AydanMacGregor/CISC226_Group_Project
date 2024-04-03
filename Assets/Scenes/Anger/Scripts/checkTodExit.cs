@@ -27,8 +27,47 @@ public class checkTodExit : MonoBehaviour
     {
         if (other.gameObject.name == "Tod")
         {
-            con.GetComponent<RoomControl>().Block(num);
+            StartCoroutine(wait(other.gameObject));
         }
-        
+    }
+
+    IEnumerator wait(GameObject t)
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (num == 0)
+        {
+            if (this.transform.rotation.z == 90)
+            {
+                if (t.transform.position.x > this.transform.position.x)
+                {
+                    con.GetComponent<RoomControl>().Block(num);
+                }
+            }
+            else if (this.transform.position.y < t.transform.position.y)
+            {
+                con.GetComponent<RoomControl>().Block(num);
+            }
+        }
+        else if (num == 1)
+        {
+            if (this.transform.rotation.z == 90)
+            {
+                if (t.transform.position.x < this.transform.position.x)
+                {
+                    con.GetComponent<RoomControl>().Block(num);
+                }
+            }
+            else if (this.transform.position.y < t.transform.position.y)
+            {
+                con.GetComponent<RoomControl>().Block(num);
+            }
+        }
+        else
+        {
+            if (this.transform.position.y < t.transform.position.y)
+            {
+                con.GetComponent<RoomControl>().Block(num);
+            }
+        }
     }
 }
