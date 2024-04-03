@@ -16,7 +16,7 @@ public class NovelIdea : MonoBehaviour
     private bool firstPushBack;
     private bool idc = true;
     private bool waitTime = false;
-     public AudioSource src;
+    public AudioSource src;
     public AudioClip sfx3;
     public bool flipx = false;
     public bool flipy = false;
