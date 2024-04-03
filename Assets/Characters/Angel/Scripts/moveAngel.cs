@@ -149,8 +149,8 @@ public class moveAngel : MonoBehaviour
             {
                 attackTime = 2f; 
             }
-            this.GetComponent<AAttack>().attackChoice(attack);
-            this.GetComponent<AAnimation>().chooseAttack(attack);
+            this.GetComponent<AAttack>().attackChoice(1);
+            this.GetComponent<AAnimation>().chooseAttack(1);
         }
         attackTime -= Time.deltaTime;
     }

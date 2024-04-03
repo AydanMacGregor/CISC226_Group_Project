@@ -63,7 +63,7 @@ public class AAttack : MonoBehaviour
         Vector3 ran = new Vector3(Random.Range(-3,3), Random.Range(-3,3), 0f);
         Vector2 Dir = ((Vector2) this.transform.position + (Vector2)ran - (Vector2) this.transform.position).normalized;
         RaycastHit2D cast = Physics2D.Raycast(this.transform.position, Dir, 3f, LayerMask.GetMask("Confinment", "InnerWall"));
-        while (cast.collider != null && (cast.collider.name == "Confinment" || cast.collider.name == "InnerWall"))
+        while (cast.collider != null && (cast.collider.name == "OuterWall" || cast.collider.name == "InnerWall"))
         {
             ran = new Vector3(Random.Range(-3,3), Random.Range(-3,3), 0f);
             Dir = ((Vector2) this.transform.position + (Vector2)ran - (Vector2) this.transform.position).normalized;
