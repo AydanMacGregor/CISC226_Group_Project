@@ -11,6 +11,7 @@ public class RoomControl : MonoBehaviour
     private int current;
     private int[] numOfEn = {8, 5, 9};
     private GameObject[] rooms;
+
     // Start is called before the first frame update
     public void Block(int n)
     {

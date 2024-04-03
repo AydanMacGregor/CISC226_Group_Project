@@ -15,7 +15,7 @@ public class AttackDefend : MonoBehaviour
     public Vector2 randFlip = new Vector2(1,1);
     public List<GameObject> ravens = new List<GameObject>();
     public AudioSource src;
-    public AudioClip sfx1, sfx2;
+    public AudioClip sfx1, sfx2, sfx3;
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +50,8 @@ public class AttackDefend : MonoBehaviour
                 {
                     if (ravens.Count < 3)
                     {
+                        src.clip=sfx3;
+                        src.Play();
                         ravens.Add(Instantiate(raven, this.transform.position, Quaternion.identity));
                     }
                 }

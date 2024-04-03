@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     private int defaultHealth = 100;
     private int defaultDamageAmount = 50;
     public GameObject slash;
+    public AudioSource src;
+    public AudioClip sfx1;
     
 
     // Start is called before the first frame update
@@ -49,11 +51,15 @@ public class Health : MonoBehaviour
     public void damage(int damageAmount)
     {
         // Flash Red
+        src.clip=sfx1;
+        src.Play();
         StartCoroutine(RedFlash());
 
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
+            src.clip=sfx1;
+            src.Play();
             kill();
         }
     }
