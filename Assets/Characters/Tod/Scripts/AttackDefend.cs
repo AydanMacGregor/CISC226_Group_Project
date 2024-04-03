@@ -71,6 +71,8 @@ public class AttackDefend : MonoBehaviour
     IEnumerator EndShield()
     {
         an.Play("UnShield");
+        src.clip=sfx1;
+        src.Play();
         yield return new WaitForSeconds(1f);
         this.GetComponent<NovelIdea>().blockInput = false;
         s = false;

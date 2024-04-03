@@ -12,6 +12,14 @@ public class SelfDestruct : MonoBehaviour
     {
         pos = GameObject.FindWithTag("Tod");
         dir = pos.GetComponent<movement>().direction;
+        if (pos.GetComponent<NovelIdea>().flipx)
+        {
+            dir.x *= -1;
+        }
+        else if (pos.GetComponent<NovelIdea>().flipy)
+        {
+            dir.y *= -1;
+        }
         if (dir.x < 0)
         {
             tf.Rotate(0,180,90);
@@ -39,6 +47,7 @@ public class SelfDestruct : MonoBehaviour
 
     void Update()
     {
+        
         transform.position = new Vector3(pos.transform.position.x + (0.5f * dir.x), pos.transform.position.y + (0.5f * dir.y), pos.transform.position.z);
     }
 

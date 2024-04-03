@@ -22,13 +22,6 @@ public class movement : MonoBehaviour
     {
         doneDialogue = true;
     }
-    
-    // Update is called once per frame
-    void Update()
-    {
-   
-        
-    }
 
     void FixedUpdate()
     {
@@ -59,8 +52,6 @@ public class movement : MonoBehaviour
 
     void ProcessInputs()
     {
-        
-        
         moveX = Input.GetAxisRaw("Horizontal");
         moveY = Input.GetAxisRaw("Vertical");
         moveX *= xFlip;

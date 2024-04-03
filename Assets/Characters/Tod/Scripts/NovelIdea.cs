@@ -18,6 +18,8 @@ public class NovelIdea : MonoBehaviour
     private bool waitTime = false;
      public AudioSource src;
     public AudioClip sfx3;
+    public bool flipx = false;
+    public bool flipy = false;
     
     void Start()
     {
@@ -110,9 +112,9 @@ public class NovelIdea : MonoBehaviour
                 {
                     src.clip=sfx3;
                     src.Play();
-                    Debug.Log("Hey");
+                    GameObject cameraShake = GameObject.Find("Virtual Camera");
+                    cameraShake.GetComponent<CameraShake>().ShakeCamera();
                     ran = Random.Range(0,4);
-                    Debug.Log(ran);
                     waitTime = true;
                     if (ran == 0)
                     {
@@ -133,11 +135,11 @@ public class NovelIdea : MonoBehaviour
                     {
                         if (Random.Range(0,2) == 0)
                         {
-                            this.GetComponent<AttackDefend>().randFlip.x = -1;
+                            flipx = true;
                         }
                         else
                         {
-                            this.GetComponent<AttackDefend>().randFlip.y = -1;
+                            flipy = true;
                         }
                     }
                     StartCoroutine(Finished(ran));
@@ -172,7 +174,8 @@ public class NovelIdea : MonoBehaviour
         }
         else if (r == 3)
         {
-            this.GetComponent<AttackDefend>().randFlip = new Vector2(1,1);
+            flipx = false;
+            flipy = false;
         }
         timedRebel = scoreTime;
         waitTime = false;
