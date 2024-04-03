@@ -10,6 +10,8 @@ public class checkWorld : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.GetComponent<AudioSource>().Play();
+    
         if (SceneManager.GetActiveScene().name == "DepressionScene")
         {
             this.GetComponent<SpriteRenderer>().sprite = blue;

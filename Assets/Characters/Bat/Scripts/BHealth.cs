@@ -9,6 +9,8 @@ public class BHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
     private int defaultHealth = 150;
     private int defaultDamageAmount = 50;
+    public AudioSource src;
+    public AudioClip sfx1;
 
     // Start is called before the first frame update
     void Start()
@@ -47,11 +49,16 @@ public class BHealth : MonoBehaviour
     public void damage(int damageAmount)
     {
         // Flash Red
+        
+        src.clip=sfx1;
+        src.Play();
         StartCoroutine(RedFlash());
 
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
+            src.clip=sfx1;
+            src.Play();
             Destroy(gameObject);
         }
     }

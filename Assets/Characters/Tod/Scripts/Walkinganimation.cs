@@ -25,7 +25,6 @@ public class Walkinganimation : MonoBehaviour
         slash = gameObject.GetComponent<AttackDefend>().sl;
         if (!sh)
         {
-           
             dir = gameObject.GetComponent<movement>().direction;
             if (rb.velocity == Vector2.zero)
             {

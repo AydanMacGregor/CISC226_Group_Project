@@ -11,7 +11,6 @@ public class movement : MonoBehaviour
     public Vector2 direction;
     public GameObject tod;
     public bool doneDialogue;
-   
 
     public int xFlip = 1;
     public int yFlip = 1;
@@ -27,7 +26,7 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+   
         
     }
 
