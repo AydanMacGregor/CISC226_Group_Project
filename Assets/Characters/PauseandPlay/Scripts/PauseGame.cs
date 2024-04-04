@@ -26,6 +26,11 @@ public class PauseGame : MonoBehaviour
 
     public void Exit()
     {
+        GameObject t = GameObject.Find("Tod");
+        if (t != null)
+        {
+            t.GetComponent<NovelIdea>().resetTime();
+        }
         ContinueOrPauseGame();
         string name = "MainMenuScene";
         SceneManager.LoadScene(name);
