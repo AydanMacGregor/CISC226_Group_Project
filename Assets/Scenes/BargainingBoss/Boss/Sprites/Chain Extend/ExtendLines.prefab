@@ -11,12 +11,10 @@ GameObject:
   - component: {fileID: 8631750434240208797}
   - component: {fileID: 6104913522335301264}
   - component: {fileID: 1089189509134561593}
-  - component: {fileID: 1780300872019232430}
   - component: {fileID: 9056913510775929862}
   - component: {fileID: 2850097845327207484}
-  - component: {fileID: 6608482897483330918}
   m_Layer: 0
-  m_Name: ChainExtend4
+  m_Name: ExtendLines
   m_TagString: Extend
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,20 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 0}
   rotation: {x: 0, y: 0}
---- !u!114 &1780300872019232430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5917191652665089617}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b98ae45b78fe4dab9cf555b256b5c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ExtendLine: {fileID: 4943612032314425329, guid: 46d1f15d131484b12b82f26698e19a13, type: 3}
-  boss: {fileID: 0}
 --- !u!61 &9056913510775929862
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,17 +173,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &6608482897483330918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5917191652665089617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c6c1c557060a4907a642ba8f6786ed7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boss: {fileID: 0}
-  rotation: {x: 0, y: 0}

@@ -24,6 +24,7 @@ public class BargainMoveWithBoss : MonoBehaviour
         }
         else
         {
+            Debug.Log(rotation.x);
             t.position = new Vector3(boss.transform.position.x + rotation.x, boss.transform.position.y + rotation.y, -2);
         }   
     }

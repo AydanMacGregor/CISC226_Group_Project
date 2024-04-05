@@ -60,8 +60,6 @@ public class BargainMovement : MonoBehaviour
         {
             if (hit.collider.name == "OuterWall")
             {
-                Debug.Log(direction);
-
                 if (direction.x < 0)
                 {
                     currentMoveDirection = 0;
