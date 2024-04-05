@@ -110,7 +110,7 @@ public class HealthSystem : MonoBehaviour
                 if (damageTime <= 0)
                 {
                     damage(beamDamageAmount);
-                    damageTime = 1f;
+                    damageTime = 0.5f;
                 }
             }
             if (other.gameObject.name == "BeamOfBall" || other.gameObject.name == "BeamOfBall(Clone)")
@@ -119,7 +119,7 @@ public class HealthSystem : MonoBehaviour
                 if (damageTime <= 0)
                 {
                     damage(10);
-                    damageTime = 2f;
+                    damageTime = 0.5f;
                 }
             }
             if (other.gameObject.name == "DevineLine" || other.gameObject.name == "DevineLine(Clone)")
@@ -128,7 +128,7 @@ public class HealthSystem : MonoBehaviour
                 if (damageTime <= 0)
                 {
                     damage(beamDamageAmount);
-                    damageTime = 1f;
+                    damageTime = 0.5f;
                 }
             }
             if (other.gameObject.name == "DevineCenter" || other.gameObject.name == "DevineCenter(Clone)")
@@ -137,25 +137,16 @@ public class HealthSystem : MonoBehaviour
                 if (damageTime <= 0)
                 {
                     damage(beamDamageAmount);
-                    damageTime = 1f;
+                    damageTime = 0.5f;
                 }
             }
-            if (other.gameObject.name == "ChainExtend3" || other.gameObject.name == "ChainExtend3(Clone)")
+            if (other.gameObject.name == "ExtendLines" || other.gameObject.name == "ExtendLines(Clone)")
             {
                 damageTime -= Time.deltaTime;
                 if (damageTime <= 0)
                 {
                     damage(beamDamageAmount);
-                    damageTime = 1f;
-                }
-            }
-            if (other.gameObject.name == "ChainExtend4" || other.gameObject.name == "ChainExtend4(Clone)")
-            {
-                damageTime -= Time.deltaTime;
-                if (damageTime <= 0)
-                {
-                    damage(beamDamageAmount);
-                    damageTime = 1f;
+                    damageTime = 0.5f;
                 }
             }
         }
