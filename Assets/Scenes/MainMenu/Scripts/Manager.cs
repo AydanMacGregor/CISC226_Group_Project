@@ -8,7 +8,15 @@ public class Manager : MonoBehaviour
     public string prevScene = "";
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(gameObject);
     }
 }

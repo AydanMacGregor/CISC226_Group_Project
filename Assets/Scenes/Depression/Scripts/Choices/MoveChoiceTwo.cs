@@ -18,6 +18,7 @@ public class MoveChoiceTwo : MonoBehaviour
         {
             if (onceOver)
             {
+                onceOver = false;
                 chosen = true;
                 th = Instantiate(bt, new Vector3(39.5f, -0.5f, 0f), Quaternion.identity);
                 moveBlockers();
@@ -48,6 +49,7 @@ public class MoveChoiceTwo : MonoBehaviour
         if (chosen)
         {
             numOfEn[path] += 1;
+            numGameObjects += 1;
         }
     }
 

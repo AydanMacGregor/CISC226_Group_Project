@@ -55,15 +55,15 @@ public class AAttack : MonoBehaviour
         {
             GameObject cOne = GameObject.Find("ChoiceOne");
             GameObject cTwo = GameObject.Find("ChoiceTwo");
-            cOne.GetComponent<RoomControl>().addEn();
-            cTwo.GetComponent<RoomControl>().addEn();
+            cOne.GetComponent<MoveChoiceOne>().addEn();
+            cTwo.GetComponent<MoveChoiceTwo>().addEn();
         }
         this.GetComponent<moveAngel>().isDevine = true;
         yield return new WaitForSeconds(0.7f);
         Vector3 ran = new Vector3(Random.Range(-3,3), Random.Range(-3,3), 0f);
         Vector2 Dir = ((Vector2) this.transform.position + (Vector2)ran - (Vector2) this.transform.position).normalized;
         RaycastHit2D cast = Physics2D.Raycast(this.transform.position, Dir, 3f, LayerMask.GetMask("Confinment", "InnerWall"));
-        while (cast.collider != null && (cast.collider.name == "OuterWall" || cast.collider.name == "InnerWall"))
+        while (cast.collider != null && (cast.collider.name == "OuterWall" || cast.collider.name == "InnerWall" || cast.collider.name == "BlockTod(Clone)"))
         {
             ran = new Vector3(Random.Range(-3,3), Random.Range(-3,3), 0f);
             Dir = ((Vector2) this.transform.position + (Vector2)ran - (Vector2) this.transform.position).normalized;

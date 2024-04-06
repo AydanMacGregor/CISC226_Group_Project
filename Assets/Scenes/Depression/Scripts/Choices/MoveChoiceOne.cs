@@ -18,6 +18,7 @@ public class MoveChoiceOne : MonoBehaviour
         {
             if (onceOver)
             {
+                onceOver = false;
                 chosen = true;
                 th = Instantiate(bt, new Vector3(11.5f, 37.5f, 0f), Quaternion.identity);
                 moveBlockers();

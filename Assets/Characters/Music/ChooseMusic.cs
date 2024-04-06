@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ChooseMusic : MonoBehaviour
 {
+    public static ChooseMusic InstanceM;
     public AudioSource audioMain;
     public AudioSource audioLevel;
     public AudioSource audioBoss;
@@ -14,6 +15,15 @@ public class ChooseMusic : MonoBehaviour
 
     private void Awake()
     {
+        if (InstanceM == null)
+        {
+            InstanceM = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
         DontDestroyOnLoad(gameObject);
         audioLevel.Stop();
         audioBoss.Stop();
